@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+                {!! Html::image('images/rm-logo.png','logo', array('class'=>'img-fluid img-thumbnail')) !!}
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 

@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers\User;
 
+use Auth;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -19,16 +26,6 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -36,7 +33,25 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:4',
+            'email' => 'required|email|unique:users,email',
+            'password'  => 'same:repeat_password|min:6',
+            'repeat_password'   => 'same:password|min:6'
+        ]);
+        
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+
+        if ($user->save()){
+            return [
+                'response'=>'OK'
+            ];
+        }
+
+        return ['response'=>'KO'];
     }
 
     /**
@@ -47,18 +62,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(User $user)
-    {
-        //
+        return User::findOrFail($user);
     }
 
     /**
@@ -69,8 +73,37 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, User $user)
-    {
-        //
+    {   
+        $request->validate([
+            'name' => 'required|min:4'
+        ]);
+
+        $user->name = $request->name;
+        
+        //if the email changes, then check out that new email doesn't exists in DB
+        if ($user->email !== $request->email){
+            $request->validate([
+                'email' => 'required|email|unique:users,email'
+            ]);
+            $user->email = $request->email;
+        }
+
+        if (!empty($request->password)){
+            $request->validate([
+                'password'  => 'same:repeat_password|min:6',
+                'repeat_password'   => 'same:password|min:6'
+            ]);
+
+            $user->password = Hash::make($request->password);
+        }
+        
+        if ($user->save()){
+            return [
+                'response'=>'OK'
+            ];
+        }
+
+        return ['response'=>'KO'];
     }
 
     /**
@@ -81,6 +114,19 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $current_user = auth('api')->user();
+        $response = false;
+
+        if ($user->id != $current_user->id){
+           $response = $user->delete();
+        }
+
+        if ($response){
+            return [
+                'response'=>'OK'
+            ];
+        }
+
+        return ['response'=>'KO'];
     }
 }

@@ -1,3 +1,5 @@
+import Vue from "vue";
+import axios from "axios";
 
 window._ = require('lodash');
 
@@ -22,7 +24,14 @@ try {
 
 window.axios = require('axios');
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+//window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.Vue = Vue;
+axios.defaults.headers.common = {
+    'X-CSRF-TOKEN': Laravel.csrfToken,
+    'X-Requested-With': 'XMLHttpRequest',
+    'Authorization': 'Bearer ' + Laravel.apiToken,
+};
+window.Vue.prototype.$http = axios;
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that

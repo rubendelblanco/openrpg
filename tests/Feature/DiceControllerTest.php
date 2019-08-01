@@ -40,13 +40,13 @@ class DiceController extends TestCase
 
     /**
      * Test case that extracts deterministic properties for a single roll.
-     * Only the number of rolled dices and the faces in the dice are tested.
+     * Only the number of rolled die and the faces in the die are tested.
      */
     public function testEndpointYieldsNumberOfDicesSimple()
     {
         $response = $this->get('/api/roll?q=1d6');
         $response->assertJson([
-            "dices" => 1,
+            "dice" => 1,
             "size" => [6],
         ]);
     }
@@ -55,27 +55,27 @@ class DiceController extends TestCase
     {
         $response = $this->get('/api/roll?q=1d6,1D10,1d5');
         $response->assertJson([
-            "dices" => 3,
+            "dice" => 3,
             "size" => [6, 10, 5],
         ]);
     }
 
     /**
-     * Test case that extracts deterministic properties for multiple dices.
+     * Test case that extracts deterministic properties for multiple dice.
      * This test case is important because if you pass a xDy value, with x>1,
-     * you have to test that the system treats it as multiple dices.
+     * you have to test that the system treats it as multiple dice.
      */
     public function testEndpointYieldsNumberOfDicesMultiple()
     {
         $response = $this->get('/api/roll?q=2d5');
         $response->assertJson([
-            "dices" => 2,
+            "dice" => 2,
             "size" => [5, 5],
         ]);
     }
 
     /**
-     * Test case that extracts deterministic properties for a list of dices.
+     * Test case that extracts deterministic properties for a list of dice.
      * This test case is important because the ordering for the size and
      * outcome array in the response is important.
      */
@@ -83,7 +83,7 @@ class DiceController extends TestCase
     {
         $response = $this->get('/api/roll?q=1d6,2d10');
         $response->assertJson([
-            "dices" => 3,
+            "dice" => 3,
             "size" => [6, 10, 10],
         ]);
     }

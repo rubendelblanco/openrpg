@@ -40,7 +40,7 @@ class DiceController extends Controller
      * it is valid or at least not malformed. The combination is a string
      * of comma separated rolls, each roll having the form xDy, where x and y
      * being natural numbers with different meanings. We will ignore the
-     * dice semantics here and accept any kind of dices for the moment, so
+     * dice semantics here and accept any kind of dice for the moment, so
      * rolls such as 10d25 or 13D26 are totally valid here.
      *
      * @param string $rollSet the list of rolls to yield.
@@ -50,25 +50,25 @@ class DiceController extends Controller
     {
         /* Accumulator object to store partial results of rolls. */
         $result = [
-            "dices"    => 0,  /* Number of dices that were roll in total. */
-            "outcomes" => [], /* Outcome for rolled dice $i. */
-            "size"     => [], /* Number of faces in rolled dice $i. */
+            "dice"    => 0,   /* Number of dice that were roll in total. */
+            "outcomes" => [], /* Outcome for rolled die $i. */
+            "size"     => [], /* Number of faces in rolled die $i. */
             "sum"      => 0,  /* Sum of all outcomes. */
         ];
 
         $rolls = explode(",", strtolower($rollSet));
         foreach ($rolls as $roll) {
-            /* Decode the command to see how many dices to roll. */
-            [$dicesToRoll, $facesInDice] = explode("d", $roll);
+            /* Decode the command to see how many dice to roll. */
+            [$diceToRoll, $facesInDie] = explode("d", $roll);
 
-            /* Always roll each dice separately, even if more than one. */
-            for ($i = 0; $i < $dicesToRoll; $i++) {
-                $randomValue = random_int(1, $facesInDice);
+            /* Always roll each die separately, even if more than one. */
+            for ($i = 0; $i < $diceToRoll; $i++) {
+                $randomValue = random_int(1, $facesInDie);
 
                 /* Update the result accumulators. */
-                $result["dices"]++;
+                $result["dice"]++;
                 $result["outcomes"][] = $randomValue;
-                $result["size"][]     = intval($facesInDice);
+                $result["size"][]     = intval($facesInDie);
                 $result["sum"]       += $randomValue;
             }
         }

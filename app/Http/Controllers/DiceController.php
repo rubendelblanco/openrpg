@@ -50,10 +50,9 @@ class DiceController extends Controller
     {
         /* Accumulator object to store partial results of rolls. */
         $result = [
-            "dice"    => 0,   /* Number of dice that were roll in total. */
-            "outcomes" => [], /* Outcome for rolled die $i. */
-            "size"     => [], /* Number of faces in rolled die $i. */
-            "sum"      => 0,  /* Sum of all outcomes. */
+            "dice"  => 0,  /* Number of dice that were roll in total. */
+            "rolls" => [], /* Outcomes for each die that was rolled. */
+            "sum"   => 0,  /* Sum of all outcomes. */
         ];
 
         $rolls = explode(",", strtolower($rollSet));
@@ -67,9 +66,11 @@ class DiceController extends Controller
 
                 /* Update the result accumulators. */
                 $result["dice"]++;
-                $result["outcomes"][] = $randomValue;
-                $result["size"][]     = intval($facesInDie);
-                $result["sum"]       += $randomValue;
+                $result["rolls"][] = [
+                    "size"    => intval($facesInDie),
+                    "outcome" => $randomValue,
+                ];
+                $result["sum"] += $randomValue;
             }
         }
         return $result;

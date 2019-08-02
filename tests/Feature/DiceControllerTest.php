@@ -39,6 +39,19 @@ class DiceController extends TestCase
     }
 
     /**
+     * Test case that sums the outcomes and tests it is correct.
+     */
+    public function testEndpointSumsTheOutcomes()
+    {
+        $response = $this->get('/api/roll?q=2d6');
+        $content = $response->getOriginalContent();
+        $outcome1 = $content["rolls"][0]["outcome"];
+        $outcome2 = $content["rolls"][1]["outcome"];
+        $sum = $content["sum"];
+        $this->assertEquals($sum, $outcome1 + $outcome2);
+    }
+
+    /**
      * Test case that extracts deterministic properties for a single roll.
      * Only the number of rolled die and the faces in the die are tested.
      */
@@ -47,8 +60,10 @@ class DiceController extends TestCase
         $response = $this->get('/api/roll?q=1d6');
         $response->assertJson([
             "dice" => 1,
-            "size" => [6],
         ]);
+        $content = $response->getOriginalContent();
+        $this->assertCount(1, $content["rolls"]);
+        $this->assertEquals($content["rolls"][0]["size"], 6);
     }
 
     public function testEndpointAcceptsUppercaseCommands()
@@ -56,8 +71,12 @@ class DiceController extends TestCase
         $response = $this->get('/api/roll?q=1d6,1D10,1d5');
         $response->assertJson([
             "dice" => 3,
-            "size" => [6, 10, 5],
         ]);
+        $content = $response->getOriginalContent();
+        $this->assertCount(3, $content["rolls"]);
+        $this->assertEquals($content["rolls"][0]["size"], 6);
+        $this->assertEquals($content["rolls"][1]["size"], 10);
+        $this->assertEquals($content["rolls"][2]["size"], 5);
     }
 
     /**
@@ -70,8 +89,11 @@ class DiceController extends TestCase
         $response = $this->get('/api/roll?q=2d5');
         $response->assertJson([
             "dice" => 2,
-            "size" => [5, 5],
         ]);
+        $content = $response->getOriginalContent();
+        $this->assertCount(2, $content["rolls"]);
+        $this->assertEquals($content["rolls"][0]["size"], 5);
+        $this->assertEquals($content["rolls"][1]["size"], 5);
     }
 
     /**
@@ -84,7 +106,12 @@ class DiceController extends TestCase
         $response = $this->get('/api/roll?q=1d6,2d10');
         $response->assertJson([
             "dice" => 3,
-            "size" => [6, 10, 10],
         ]);
+        $content = $response->getOriginalContent();
+        $this->assertArrayHasKey("rolls", $content);
+        $this->assertCount(3, $content["rolls"]);
+        $this->assertEquals($content["rolls"][0]["size"], 6);
+        $this->assertEquals($content["rolls"][1]["size"], 10);
+        $this->assertEquals($content["rolls"][2]["size"], 10);
     }
 }

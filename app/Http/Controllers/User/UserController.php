@@ -14,7 +14,7 @@ class UserController extends Controller
     {
         $this->middleware('auth:api');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -36,22 +36,23 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|min:4',
             'email' => 'required|email|unique:users,email',
-            'password'  => 'same:repeat_password|min:6',
-            'repeat_password'   => 'same:password|min:6'
+            'password' => 'same:repeat_password|min:6',
+            'repeat_password' => 'same:password|min:6'
         ]);
-        
+
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
 
-        if ($user->save()){
+        if ($user->save()) {
             return [
-                'response'=>'OK'
+                'response' => 'OK',
+                'message' => 'Usuario creado'
             ];
         }
 
-        return ['response'=>'KO'];
+        return ['response' => 'KO'];
     }
 
     /**
@@ -73,7 +74,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, User $user)
-    {   
+    {
         $request->validate([
             'name' => 'required|min:4'
         ]);
@@ -81,29 +82,30 @@ class UserController extends Controller
         $user->name = $request->name;
         
         //if the email changes, then check out that new email doesn't exists in DB
-        if ($user->email !== $request->email){
+        if ($user->email !== $request->email) {
             $request->validate([
                 'email' => 'required|email|unique:users,email'
             ]);
             $user->email = $request->email;
         }
 
-        if (!empty($request->password)){
+        if (!empty($request->password)) {
             $request->validate([
-                'password'  => 'same:repeat_password|min:6',
-                'repeat_password'   => 'same:password|min:6'
+                'password' => 'same:repeat_password|min:6',
+                'repeat_password' => 'same:password|min:6'
             ]);
 
             $user->password = Hash::make($request->password);
         }
-        
-        if ($user->save()){
+
+        if ($user->save()) {
             return [
-                'response'=>'OK'
+                'response' => 'OK',
+                'message' => 'Usuario editado: ' . $user->email
             ];
         }
 
-        return ['response'=>'KO'];
+        return ['response' => 'KO'];
     }
 
     /**
@@ -116,17 +118,25 @@ class UserController extends Controller
     {
         $current_user = auth('api')->user();
         $response = false;
+        $email = null;
 
-        if ($user->id != $current_user->id){
-           $response = $user->delete();
+        if ($user->id != $current_user->id) {
+            $email = $user->email;
+            $response = $user->delete();
+        } else {
+            return response()->json(
+                ['response' => 'KO', 'message' => 'Cannot delete yourself'],
+                403
+            );
         }
 
-        if ($response){
+        if ($response) {
             return [
-                'response'=>'OK'
+                'response' => 'OK',
+                'message' => 'Usuario borrado: ' . $user->email
             ];
         }
 
-        return ['response'=>'KO'];
+        return ['response' => 'KO'];
     }
 }

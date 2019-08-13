@@ -1,5 +1,5 @@
 <template>
-    <div>
-        <user-table></user-table>
-    </div>
+  <div>
+    <user-table></user-table>
+  </div>
 </template>

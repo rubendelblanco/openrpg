@@ -8,10 +8,12 @@
 require('./bootstrap');
 import Vue from 'vue';
 import Router from 'vue-router';
+import VueFormGenerator from 'vue-form-generator';
 const BootstrapVue = require('bootstrap-vue');
 
 Vue.use(BootstrapVue);
 Vue.use(Router);
+Vue.use(VueFormGenerator);
 
 /**
  * The following block of code may be used to automatically register your
@@ -24,12 +26,11 @@ Vue.use(Router);
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('sidebar-admin-component', require('./components/SidebarAdminComponent.vue').default);
 Vue.component('user-table', require('./components/UserTable.vue').default);
 Vue.component('content-editable', require('./components/ContentEditable.vue').default);
-Vue.component('change-password', require('./components/ChangePassword.vue').default);
-Vue.component('submit-button', require('./components/SubmitButton.vue').default);
+Vue.component('validation-errors', require('./components/alerts/ValidationErrors.vue').default);
+Vue.component('success-message', require('./components/alerts/SuccessMessage.vue').default);
 
 let router = new Router({
     routes: [

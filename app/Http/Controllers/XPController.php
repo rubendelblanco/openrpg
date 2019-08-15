@@ -167,7 +167,7 @@ class XPController extends Controller
      * @param Request $request
      * @return void
      */
-    public function bonusXP(Request $request)
+    public function getBonusXP(Request $request)
     {
         $codePattern = '/^[abcdefghijkl]$/i';
         $request->validate([

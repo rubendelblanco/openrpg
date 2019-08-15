@@ -18,3 +18,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::resource('users', 'User\UserController');
 Route::get('/roll', 'DiceController@roll');
+Route::get('/xp/maneuver', 'XPController@getManeuverXP');
+Route::get('/xp/spell', 'XPController@getSpellXP');
+Route::get('/xp/travel', 'XPController@getTravelOrHPXP');
+Route::get('/xp/hp', 'XPController@getTravelOrHPXP');
+Route::get('/xp/critical', 'XPController@getCriticalXP');
+Route::get('/xp/kill', 'XPController@getKillXP');
+Route::get('/xp/bonus', 'XPController@getBonusXP');

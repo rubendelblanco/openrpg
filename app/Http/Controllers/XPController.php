@@ -19,6 +19,12 @@ class XPController extends Controller
      */
     public function getManeuverXP(Request $request)
     {
+        $manPattern = '/^(mf|f|m|d|md|ed|lc|ab)$/i';
+        $request->validate([
+            'man' => ["required", "regex:$manPattern"],
+            'mod' => 'numeric|min:0.5'
+        ]);
+
         $table = array(
             'mf' => '5',
             'f' => '10',
@@ -29,11 +35,6 @@ class XPController extends Controller
             'lc' => '300',
             'ab' => '500'
         );
-        $critPattern = '/^(mf|f|m|d|md|ed|lc|ab)$/i';
-        $request->validate([
-            'man' => 'required',
-            'mod' => 'numeric|min:0'
-        ]);
         $maneuver = strtolower($request->man);
         $modifier = $this->getModifier($request);
 
@@ -58,18 +59,18 @@ class XPController extends Controller
         $request->validate([
             'caster' => 'required|integer|min:1',
             'spell' => 'required|integer|min:1',
-            'mod' => 'numeric|min:0'
+            'mod' => 'numeric|min:0.5'
         ]);
         $modifier = $this->getModifier($request);
-        $total = (100 - (10 * ($request->caster - $request->spell))) * $modifier;
+        $base = (100 - (10 * ($request->caster - $request->spell)));
 
-        if ($total > 200) {
-            $total = 200;
-        } else if ($total < 0) {
-            $total = 0;
+        if ($base > 200) {
+            $base = 200;
+        } else if ($base < 0) {
+            $base = 0;
         }
 
-        return ['response' => 'OK', 'message' => $total];
+        return ['response' => 'OK', 'message' => $base * $modifier];
     }
 
     /**
@@ -83,7 +84,7 @@ class XPController extends Controller
     {
         $request->validate([
             'base' => 'required|integer|min:0',
-            'mod' => 'numeric|min:0'
+            'mod' => 'numeric|min:0.5'
         ]);
         $modifier = $this->getModifier($request);
         return ['response' => 'OK', 'message' => $request->base * $modifier];
@@ -106,9 +107,9 @@ class XPController extends Controller
         );
         $critPattern = '/^[abcde]$/i';
         $request->validate([
-            'crit' => 'required|regex:$critPattern',
-            'level' => 'required|numeric|min:1',
-            'mod' => 'numeric|min:0'
+            'crit' => ["required", "regex:$critPattern"],
+            'level' => 'required|integer|min:1',
+            'mod' => 'numeric|min:0.5'
         ]);
         $critical = strtolower($request->crit);
 
@@ -133,9 +134,9 @@ class XPController extends Controller
     public function getKillXP(Request $request)
     {
         $request->validate([
-            'attack' => 'required|numeric|min:1',
-            'def' => 'required|numeric|min:1',
-            'mod' => 'numeric|min:0'
+            'attack' => 'required|integer|min:1',
+            'def' => 'required|integer|min:1',
+            'mod' => 'numeric|min:0.5'
         ]);
         $modifier = $this->getModifier($request);
         $diff = $request->def - $request->attack;
@@ -146,9 +147,9 @@ class XPController extends Controller
             if ($diff == -1) {
                 $total = 150;
             } else if ($diff == -2 or $diff == -3) {
-                $total = 150 + (($diferencia + 1) * 20);
+                $total = 150 + (($diff + 1) * 20);
             } else {
-                $total = 110 + (($diferencia + 3) * 10);
+                $total = 110 + (($diff + 3) * 10);
             }
         }
 
@@ -171,8 +172,8 @@ class XPController extends Controller
     {
         $codePattern = '/^[abcdefghijkl]$/i';
         $request->validate([
-            'level' => 'required|numeric|min:1',
-            'code' => 'required|regex:$codePattern',
+            'level' => 'required|integer|min:1',
+            'code' => ["required", "regex:$codePattern"],
         ]);
         $table = [
             [
@@ -219,7 +220,7 @@ class XPController extends Controller
             'l' => 250
         ];
         $code = strtolower($request->code);
-        $level = $request->level;
+        $level = $request->level > 21 ? 21 : $request->level;
 
         if (!isset($table[0][$code])) {
             return response()->json(
@@ -231,10 +232,11 @@ class XPController extends Controller
         if ($level == 1 || $level == 2) {
             return ['response' => 'OK', 'message' => $table[0][$code]];
         } else if ($level == 3 || $level == 4) {
-            return ['response' => 'OK', 'message' => $table[0][$code]];
+            return ['response' => 'OK', 'message' => $table[1][$code]];
         } else {
             $row = ceil($level / 2);
-            $total = $table[count($table) - 1][$code] - ($row - (count($table) * $inc[$code]));
+            $total = $table[count($table) - 1][$code] - (($row - count($table)) * $inc[$code]);
+            $total = $total < 0 ? 0 : $total;
             return ['response' => 'OK', 'message' => $total];
         }
     }
@@ -247,7 +249,7 @@ class XPController extends Controller
      */
     private function getModifier(Request $request)
     {
-        if ($request->has('mod')) {
+        if ($request->has('mod') && $request->mod >= 0.5) {
             return $request->mod;
         } else {
             return '1';

@@ -13,7 +13,8 @@ return [
     |
     */
 
-    'default' => env('MYSQL_DB_CONNECTION'),
+    'default' => env('DB_CONNECTION', 'pgsql'),
+
 
     /*
     |--------------------------------------------------------------------------
@@ -32,31 +33,18 @@ return [
     */
 
     'connections' => [
-        'mysql' => [
-            'driver' => 'mysql',
-            'host' => env('MYSQL_DB_HOST'),
-            'port' => env('MYSQL_DB_PORT'),
-            'database' => env('MYSQL_DB_DATABASE'),
-            'username' => env('MYSQL_DB_USERNAME'),
-            'password' => env('MYSQL_DB_PASSWORD'),
-            'unix_socket' => env('MYSQL_DB_SOCKET', ''),
-            'charset' => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
-            'prefix' => '',
-            'prefix_indexes' => true,
-            'strict' => true,
-            'engine' => null,
-        ],
-        'mongodb' => [
-            'driver'   => 'mongodb',
-            'host'     => env('DB_HOST', 'localhost'),
-            'port'     => env('DB_PORT', 27017),
+        'pgsql' => [
+            'driver' => 'pgsql',
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '5432'),
             'database' => env('DB_DATABASE'),
             'username' => env('DB_USERNAME'),
             'password' => env('DB_PASSWORD'),
-            'options'  => [
-                'database' => 'admin' // sets the authentication database required by mongo 3
-            ]
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'schema' => 'public',
+            'sslmode' => 'prefer',
         ],
 
     ],

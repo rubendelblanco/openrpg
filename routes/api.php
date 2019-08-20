@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Fragment\RoutableFragmentRenderer;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +19,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('users', 'User\UserController')->except([ 'create', 'edit' ]);
+});
+Route::get('/roll', 'DiceController@roll');
+Route::prefix('xp')->group(function () {
+    Route::get('maneuver', 'XPController@getManeuverXP');
+    Route::get('spell', 'XPController@getSpellXP');
+    Route::get('travel', 'XPController@getTravelOrHPXP');
+    Route::get('hp', 'XPController@getTravelOrHPXP');
+    Route::get('critical', 'XPController@getCriticalXP');
+    Route::get('kill', 'XPController@getKillXP');
+    Route::get('bonus', 'XPController@getBonusXP');
+});
+

@@ -13,11 +13,13 @@ use Symfony\Component\HttpKernel\Fragment\RoutableFragmentRenderer;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-/*
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});*/
-Route::resource('users', 'User\UserController');
+});
+
+Route::resource('users', 'User\UserController')->except([ 'create', 'edit' ]);
+});
 Route::get('/roll', 'DiceController@roll');
 Route::prefix('xp')->group(function () {
     Route::get('maneuver', 'XPController@getManeuverXP');
@@ -28,3 +30,4 @@ Route::prefix('xp')->group(function () {
     Route::get('kill', 'XPController@getKillXP');
     Route::get('bonus', 'XPController@getBonusXP');
 });
+

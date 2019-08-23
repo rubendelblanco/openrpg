@@ -22,7 +22,8 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        return view('home');
+    {   
+        $user = auth()->user();
+        return view('home')->with('api_token', $user->api_token);
     }
 }

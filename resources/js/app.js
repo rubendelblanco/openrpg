@@ -6,10 +6,14 @@
  */
 
 require('./bootstrap');
+import Vue from 'vue';
+import Router from 'vue-router';
+import VueFormGenerator from 'vue-form-generator';
 const BootstrapVue = require('bootstrap-vue');
 
-window.Vue = require('vue');
 Vue.use(BootstrapVue);
+Vue.use(Router);
+Vue.use(VueFormGenerator);
 
 /**
  * The following block of code may be used to automatically register your
@@ -22,9 +26,37 @@ Vue.use(BootstrapVue);
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('sidebar-admin-component', require('./components/SidebarAdminComponent.vue').default);
 Vue.component('user-table', require('./components/UserTable.vue').default);
+Vue.component('content-editable', require('./components/ContentEditable.vue').default);
+Vue.component('validation-errors', require('./components/alerts/ValidationErrors.vue').default);
+Vue.component('success-message', require('./components/alerts/SuccessMessage.vue').default);
+
+let router = new Router({
+    routes: [
+        {   
+            name:'name_index',
+            path:'/users',
+            component: require('./views/users/index').default
+        },
+        {
+            name: 'user_show',
+            path: '/users/:id(\\d+)',
+            component: require('./views/users/show').default
+        },
+        {
+            name: 'user_edit',
+            path: '/users/:id/edit',
+            component: require('./views/users/edit').default
+        },
+        {
+            name: 'user_create',
+            path: '/users/create',
+            component: require('./views/users/create').default
+        }
+    ],
+    linkExactActiveClass: 'active'
+});
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -33,5 +65,6 @@ Vue.component('user-table', require('./components/UserTable.vue').default);
  */
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    router
 });

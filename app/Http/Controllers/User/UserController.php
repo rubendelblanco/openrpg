@@ -44,6 +44,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
+        $user->api_token = Str::random(60);
 
         if ($user->save()) {
             return [

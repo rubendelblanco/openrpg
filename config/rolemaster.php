@@ -16,4 +16,10 @@ return [
         'Fu'    => 'Fuerza',
         'Rp'    => 'Rapidez'
     ],
+    'spell_reigns' => [
+        'Ese' => 'Esencia',
+        'Can' => 'Canalización',
+        'Men' => 'Mentalismo',
+        'Arc' => 'Arcano'
+    ]
 ];

@@ -40,8 +40,8 @@ class CreateSkillCategoryTable extends Migration
      * @return void
      */
     public function down()
-    {
-        Schema::dropIfExists('skill_categories');
+    {   
         Schema::dropIfExists('skills');
+        Schema::dropIfExists('skill_categories');
     }
 }

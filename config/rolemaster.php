@@ -21,5 +21,16 @@ return [
         'Can' => 'Canalización',
         'Men' => 'Mentalismo',
         'Arc' => 'Arcano'
+    ],
+    'resistance_rolls' => [
+        'Ese' => 'Esencia',
+        'Can' => 'Canalización',
+        'Men' => 'Mentalismo',
+        'Arc' => 'Arcano',
+        'Ven' => 'Veneno',
+        'Enf' => 'Enfermedad',
+        'Fri' => 'Frío',
+        'Cal' => 'Calor',
+        'Mie' => 'Miedo'
     ]
 ];

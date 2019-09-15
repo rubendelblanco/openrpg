@@ -25,11 +25,13 @@ class CreateSkillCategoryTable extends Migration
 
         Schema::create('skills', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('skill_category_id')->unsigned();
+            $table->string('skill_category_id');
             $table->string('name');
+            $table->string('code')->unique();
             $table->mediumText('description');
+            
             $table->foreign('skill_category_id')
-            ->references('id')->on('skill_categories')
+            ->references('code')->on('skill_categories')
             ->onDelete('cascade');
         });
     }

@@ -13,14 +13,14 @@ class CulturesSkills extends Migration
      */
     public function up()
     {
-        Schema::create('culture_skill_category', function (Blueprint $table) {
+        Schema::create('culture_skill_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('skill_category_id')->unsigned();
             $table->integer('culture_id')->unsigned();
             $table->string('ranks');
         });
 
-        Schema::create('culture_skill', function (Blueprint $table) {
+        Schema::create('culture_skills', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('skill_id')->unsigned();
             $table->integer('culture_id')->unsigned();
@@ -34,8 +34,8 @@ class CulturesSkills extends Migration
      * @return void
      */
     public function down()
-    {
-        Schema::dropIfExists('culture_skill_category');
+    {   
         Schema::dropIfExists('culture_skill');
+        Schema::dropIfExists('culture_skill_category');
     }
 }

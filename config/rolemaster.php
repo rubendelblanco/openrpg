@@ -5,6 +5,7 @@ Here we go with rolemaster rules and constants!
 
 return [
     'stats_codes' => ['Ag','Co','Me','Ra','Ad','Em','In','Pr','Fu','Rp'],
+    'profession_skill_type' => ['everyman','occupational','restricted'],
     'spell_user' => ['pure','semi','hybrid','none'],
     'stats' => [
         'Ag' => 'Agilidad',

@@ -4,6 +4,7 @@ Here we go with rolemaster rules and constants!
  */
 
 return [
+    'stats_codes' => ['Ag','Co','Me','Ra','Ad','Em','In','Pr','Fu','Rp'],
     'stats' => [
         'Ag' => 'Agilidad',
         'Co' => 'Constitución',
@@ -16,7 +17,7 @@ return [
         'Fu'    => 'Fuerza',
         'Rp'    => 'Rapidez'
     ],
-    'spell_reigns' => [
+    'spell_realms' => [
         'Ese' => 'Esencia',
         'Can' => 'Canalización',
         'Men' => 'Mentalismo',

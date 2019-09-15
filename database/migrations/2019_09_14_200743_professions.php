@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class SpellListCosts extends Migration
+class Professions extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,14 @@ class SpellListCosts extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::create('spell_list_dps', function (Blueprint $table) {
+    {   
+        $stats_list = config('rolemaster.stats_codes');
+        Schema::create('professions', function (Blueprint $table) use ($stats_list) {
             $table->increments('id');
-            $table->string('spell_user_type')->unique();
-            $table->json('own_realm');
-            $table->json('other_realm');
-            $table->boolean('is_editable');
+            $table->string('name')->unique();
+            $table->enum('stat1', $stats_list);
+            $table->enum('stat2', $stats_list);
+            $table->json('spell_realms');
         });
     }
 
@@ -29,6 +30,6 @@ class SpellListCosts extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('spell_list_dps');
+        //
     }
 }

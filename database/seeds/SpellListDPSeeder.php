@@ -14,7 +14,7 @@ class SpellListDPSeeder extends Seeder
         $spell_users = [
             [
                 'spell_user_type' => 'pure',
-                'own_reign' => [
+                'own_realm' => [
                     'basics' => [
                         '5' => '3/3/3',
                         '10' => '3/3/3',
@@ -51,7 +51,7 @@ class SpellListDPSeeder extends Seeder
                         '21' => '4/4/4'
                     ]
                 ],
-                'other_reign' => [
+                'other_realm' => [
                     'open' => [
                         '5' => '10/10',
                         '10' => '12',
@@ -91,7 +91,7 @@ class SpellListDPSeeder extends Seeder
             ],
             [
                 'spell_user_type' => 'semi',
-                'own_reign' => [
+                'own_realm' => [
                     'basics' => [
                         '5' => '6/6/6',
                         '10' => '6/6/6',
@@ -128,7 +128,7 @@ class SpellListDPSeeder extends Seeder
                         '21' => '6/6/6'
                     ]
                 ],
-                'other_reign' => [
+                'other_realm' => [
                     'open' => [
                         '5' => '30',
                         '10' => '60',
@@ -168,7 +168,7 @@ class SpellListDPSeeder extends Seeder
             ],
             [
                 'spell_user_type' => 'hybrid',
-                'own_reign' => [
+                'own_realm' => [
                     'basics' => [
                         '5' => '3/3/3',
                         '10' => '3/3/3',
@@ -205,7 +205,7 @@ class SpellListDPSeeder extends Seeder
                         '21' => '4/4/4'
                     ]
                 ],
-                'other_reign' => [
+                'other_realm' => [
                     'open' => [
                         '5' => '12',
                         '10' => '25',
@@ -248,13 +248,13 @@ class SpellListDPSeeder extends Seeder
         $non_spell_users = [
             [
                 'spell_user_type' => 'ladron',
-                'own_reign' => [
+                'own_realm' => [
                     'open' => '18',
                     'closed' => '35',
                     'other' => '70',
                     'training' => '8/8/8'
                 ],
-                'other_reign' => [
+                'other_realm' => [
                     'open' => '80',
                     'closed' => '100',
                     'other' => '70',
@@ -264,13 +264,13 @@ class SpellListDPSeeder extends Seeder
             ],
             [
                 'spell_user_type' => 'luchador',
-                'own_reign' => [
+                'own_realm' => [
                     'open' => '25',
                     'closed' => '40',
                     'other' => '80',
                     'training' => '8/8/8'
                 ],
-                'other_reign' => [
+                'other_realm' => [
                     'open' => '90',
                     'closed' => '105',
                     'other' => '80',
@@ -280,13 +280,13 @@ class SpellListDPSeeder extends Seeder
             ],
             [
                 'spell_user_type' => 'bribon',
-                'own_reign' => [
+                'own_realm' => [
                     'open' => '15',
                     'closed' => '25',
                     'other' => '50',
                     'training' => '8/8/8'
                 ],
-                'other_reign' => [
+                'other_realm' => [
                     'open' => '60',
                     'closed' => '90',
                     'other' => '50',
@@ -296,13 +296,13 @@ class SpellListDPSeeder extends Seeder
             ],
             [
                 'spell_user_type' => 'monje_guerrero',
-                'own_reign' => [
+                'own_realm' => [
                     'open' => '20',
                     'closed' => '30',
                     'other' => '60',
                     'training' => '8/8/8'
                 ],
-                'other_reign' => [
+                'other_realm' => [
                     'open' => '70',
                     'closed' => '105',
                     'other' => '95',
@@ -320,8 +320,8 @@ class SpellListDPSeeder extends Seeder
         foreach ($non_spell_users as $non_spell_user) {
             $row = [];
             $row['spell_user_type'] = $non_spell_user['spell_user_type'];
-            $row['own_reign'] = $this->fill_dp($non_spell_user['own_reign']);
-            $row['other_reign'] = $this->fill_dp($non_spell_user['other_reign']);
+            $row['own_realm'] = $this->fill_dp($non_spell_user['own_realm']);
+            $row['other_realm'] = $this->fill_dp($non_spell_user['other_realm']);
             $this->insert_row($row);
         }
     }
@@ -329,16 +329,16 @@ class SpellListDPSeeder extends Seeder
     private function insert_row($row){
         DB::table('spell_list_dps')->insert([
             'spell_user_type' => $row['spell_user_type'],
-            'own_reign' => json_encode($row['own_reign']),
-            'other_reign' => json_encode($row['other_reign']),
+            'own_realm' => json_encode($row['own_realm']),
+            'other_realm' => json_encode($row['other_realm']),
             'is_editable' => 0
         ]);
     }
 
-    private function fill_dp($spell_reign_type){
+    private function fill_dp($spell_realm_type){
         $data = [];
 
-        foreach ($spell_reign_type as $index => $value) {
+        foreach ($spell_realm_type as $index => $value) {
             $data[$index] = [];
 
             for ($i = 1; $i <= 5; $i++) {

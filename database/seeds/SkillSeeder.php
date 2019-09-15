@@ -79,7 +79,7 @@ class SkillSeeder extends Seeder
             $skillCategory = DB::table('skill_categories')->where('code', $category)->first();
             foreach ($names as $name) {
                 DB::table('skills')->insert([
-                    'skill_categories_id' => $skillCategory->id,
+                    'skill_category_id' => $skillCategory->id,
                     'name' => trim($name),
                     'description' => ''
                 ]);

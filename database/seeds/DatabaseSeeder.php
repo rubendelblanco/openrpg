@@ -14,6 +14,9 @@ class DatabaseSeeder extends Seeder
          $this->call(UserSeeder::class);
          $this->call(SkillCategorySeeder::class);
          $this->call(SkillSeeder::class);
-         $this->call(SpellListDP::class);
+         $this->call(SpellListDPSeeder::class);
+         $this->call(ProfessionSeeder::class);
+         $this->call(BonusProfessionSkillCategoriesSeeder::class);
+         $this->call(ProfessionSkillTypeSeeder::class);
     }
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class SkillSeeder extends Seeder
 {
@@ -76,11 +77,11 @@ class SkillSeeder extends Seeder
         ];
 
         foreach ($data as $category => $names) {
-            $skillCategory = DB::table('skill_categories')->where('code', $category)->first();
             foreach ($names as $name) {
                 DB::table('skills')->insert([
-                    'skill_categories_id' => $skillCategory->id,
+                    'skill_category_id' => $category,
                     'name' => trim($name),
+                    'code' => Str::slug(trim($name),'_'),
                     'description' => ''
                 ]);
             }

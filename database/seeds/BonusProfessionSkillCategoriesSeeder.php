@@ -13,14 +13,14 @@ class BonusProfessionSkillCategoriesSeeder extends Seeder
     {
         $data = [
             'Bardo' => [
-                'Autoc' => 5,
-                'Comun' => 5,
-                'DesFis' => 5,
-                'Infl' => 5,
-                'PerPod' => 5
+                'Autoc' => [5,'2/7'],
+                'Comun' => [5,'1/1/1'],
+                'DesFis' => [5,'6/14'],
+                'Infl' => [5,'1/4'],
+                'PerPod' => [5,'3/6']
             ]
         ];
-        $professions_map = DB::table('professions')->pluck('id', 'name');
+        $professions_map = DB::table('professions')->pluck('code', 'name');
 
         foreach ($data as $prof => $categories) {
             foreach ($categories as $cat => $bonus) {
@@ -28,7 +28,8 @@ class BonusProfessionSkillCategoriesSeeder extends Seeder
                     [
                         'skill_category_id' => $cat,
                         'profession_id' => $professions_map[$prof],
-                        'bonus' => $bonus,
+                        'bonus' => $bonus[0],
+                        'dp' => $bonus[1],
                     ]
                 );
             }

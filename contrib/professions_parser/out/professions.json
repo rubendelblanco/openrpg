@@ -1,0 +1,2527 @@
+{
+    "indagador": {
+        "features": [
+            "Ag",
+            "Em"
+        ],
+        "realms": [
+            "Ese"
+        ],
+        "profession_bonus": [
+            {
+                "prof": "Armas*2manos",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*Arrojadizas",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*Artilleria",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*Contundentes",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*Asta",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*Filo",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*Proyectiles",
+                "bonus": "5"
+            },
+            {
+                "prof": "Conocimiento*Magico",
+                "bonus": "5"
+            },
+            {
+                "prof": "Desarrollo Fisico",
+                "bonus": "5"
+            },
+            {
+                "prof": "Influencia",
+                "bonus": "5"
+            },
+            {
+                "prof": "Percepcion*Busqueda",
+                "bonus": "10"
+            },
+            {
+                "prof": "Percepcion*Perspicacia",
+                "bonus": "10"
+            },
+            {
+                "prof": "Percepcion*Sentidos",
+                "bonus": "10"
+            },
+            {
+                "prof": "Percepcion de Poder",
+                "bonus": "10"
+            },
+            {
+                "prof": "Subterfugio*Ataque",
+                "bonus": "5"
+            },
+            {
+                "prof": "Subterfugio*Mecanica",
+                "bonus": "5"
+            },
+            {
+                "prof": "Subterfugio*Sigilo",
+                "bonus": "5"
+            },
+            {
+                "prof": "Urbana",
+                "bonus": "5"
+            }
+        ],
+        "skill_category_ranges": [
+            {
+                "skill_cat": "Armadura*Ligera",
+                "ranges": "5/5/5"
+            },
+            {
+                "skill_cat": "Armadura*Media",
+                "ranges": "10"
+            },
+            {
+                "skill_cat": "Armadura*Pesada",
+                "ranges": "11"
+            },
+            {
+                "skill_cat": "Armas*Categoria1",
+                "ranges": "3/9"
+            },
+            {
+                "skill_cat": "Armas*Categoria2",
+                "ranges": "6"
+            },
+            {
+                "skill_cat": "Armas*Categoria3",
+                "ranges": "7"
+            },
+            {
+                "skill_cat": "Armas*Categoria4",
+                "ranges": "8"
+            },
+            {
+                "skill_cat": "Armas*Categoria5",
+                "ranges": "10"
+            },
+            {
+                "skill_cat": "Armas*Categoria6",
+                "ranges": "15"
+            },
+            {
+                "skill_cat": "Armas*Categoria7",
+                "ranges": "15"
+            },
+            {
+                "skill_cat": "Arte*Activo",
+                "ranges": "2/4"
+            },
+            {
+                "skill_cat": "Arte*Pasivo",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Artes Marciales*Golpes",
+                "ranges": "4"
+            },
+            {
+                "skill_cat": "Artes Marciales*Barridos",
+                "ranges": "4"
+            },
+            {
+                "skill_cat": "Artes Marciales*Maniobras de Combate",
+                "ranges": "8"
+            },
+            {
+                "skill_cat": "Ataques Especiales",
+                "ranges": "6"
+            },
+            {
+                "skill_cat": "Atletismo*Gimnasia",
+                "ranges": "2/4"
+            },
+            {
+                "skill_cat": "Atletismo*Potencia",
+                "ranges": "3/9"
+            },
+            {
+                "skill_cat": "Atletismo*Resistencia",
+                "ranges": "2/7"
+            },
+            {
+                "skill_cat": "Autocontrol",
+                "ranges": "2/7"
+            },
+            {
+                "skill_cat": "Ciencia/Analitica*Basica",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Ciencia/Analitica*Especializada",
+                "ranges": "8"
+            },
+            {
+                "skill_cat": "Comunicacion",
+                "ranges": "2/2/2"
+            },
+            {
+                "skill_cat": "Conocimiento*General",
+                "ranges": "1/3"
+            },
+            {
+                "skill_cat": "Conocimiento*Magico",
+                "ranges": "2/6"
+            },
+            {
+                "skill_cat": "Conocimiento*Oscuro",
+                "ranges": "3/7"
+            },
+            {
+                "skill_cat": "Conocimiento*Tecnico",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Defensas Especiales",
+                "ranges": "30"
+            },
+            {
+                "skill_cat": "Desarrollo de Puntos de Poder",
+                "ranges": "8"
+            },
+            {
+                "skill_cat": "Desarrollo Fisico",
+                "ranges": "6/14"
+            },
+            {
+                "skill_cat": "Exteriores*Animales",
+                "ranges": "2/6"
+            },
+            {
+                "skill_cat": "Exteriores*Entorno",
+                "ranges": "2/6"
+            },
+            {
+                "skill_cat": "Hechizos Dirigidos",
+                "ranges": "10"
+            },
+            {
+                "skill_cat": "Influencia",
+                "ranges": "1/4"
+            },
+            {
+                "skill_cat": "Maniobras de Combate",
+                "ranges": "6/14"
+            },
+            {
+                "skill_cat": "Manipulacion del Poder",
+                "ranges": "6/12"
+            },
+            {
+                "skill_cat": "Oficios",
+                "ranges": "4/10"
+            },
+            {
+                "skill_cat": "Percepcion*Busqueda",
+                "ranges": "2/6"
+            },
+            {
+                "skill_cat": "Percepcion*Perspicacia",
+                "ranges": "4/12"
+            },
+            {
+                "skill_cat": "Percepcion*Sentidos",
+                "ranges": "3/7"
+            },
+            {
+                "skill_cat": "Percepcion de Poder",
+                "ranges": "3/6"
+            },
+            {
+                "skill_cat": "Subterfugio*Ataque",
+                "ranges": "12"
+            },
+            {
+                "skill_cat": "Subterfugio*Mecanica",
+                "ranges": "4"
+            },
+            {
+                "skill_cat": "Subterfugio*Sigilo",
+                "ranges": "2/7"
+            },
+            {
+                "skill_cat": "Tecnica/Comercio*General",
+                "ranges": "3/7"
+            },
+            {
+                "skill_cat": "Tecnica/Comercio*Profesional",
+                "ranges": "8"
+            },
+            {
+                "skill_cat": "Tecnica/Comercio*Vocacional",
+                "ranges": "5/12"
+            },
+            {
+                "skill_cat": "Urbana",
+                "ranges": "2/4"
+            }
+        ],
+        "common_skills": [
+            "Detectar Emboscadas, Sentido del Tiempo, Detectar Trampas, Buscar"
+        ],
+        "professional_skills": [
+            "Abrir Cerraduras"
+        ],
+        "restricted_skills": []
+    },
+    "ladron": {
+        "features": [
+            "Ag",
+            "Rp"
+        ],
+        "realms": [
+            "Ese",
+            "Can",
+            "Men"
+        ],
+        "profession_bonus": [
+            {
+                "prof": "Atletismo*Gimnasia",
+                "bonus": "5"
+            },
+            {
+                "prof": "Autocontrol",
+                "bonus": "15"
+            },
+            {
+                "prof": "Desarrollo Fisico",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*2manos",
+                "bonus": "10"
+            },
+            {
+                "prof": "Armas*Arrojadizas",
+                "bonus": "10"
+            },
+            {
+                "prof": "Armas*Artilleria",
+                "bonus": "10"
+            },
+            {
+                "prof": "Armas*Contundentes",
+                "bonus": "10"
+            },
+            {
+                "prof": "Armas*Asta",
+                "bonus": "10"
+            },
+            {
+                "prof": "Armas*Filo",
+                "bonus": "10"
+            },
+            {
+                "prof": "Armas*Proyectiles",
+                "bonus": "10"
+            },
+            {
+                "prof": "Percepcion*Busqueda",
+                "bonus": "10"
+            },
+            {
+                "prof": "Percepcion*Perspicacia",
+                "bonus": "10"
+            },
+            {
+                "prof": "Percepcion*Sentidos",
+                "bonus": "10"
+            },
+            {
+                "prof": "Subterfugio*Ataque",
+                "bonus": "15"
+            },
+            {
+                "prof": "Subterfugio*Mecanica",
+                "bonus": "15"
+            },
+            {
+                "prof": "Subterfugio*Sigilo",
+                "bonus": "15"
+            }
+        ],
+        "skill_category_ranges": [
+            {
+                "skill_cat": "Armadura*Ligera",
+                "ranges": "2/2/2"
+            },
+            {
+                "skill_cat": "Armadura*Media",
+                "ranges": "3/3/3"
+            },
+            {
+                "skill_cat": "Armadura*Pesada",
+                "ranges": "4/4/4"
+            },
+            {
+                "skill_cat": "Armas*Categoria1",
+                "ranges": "2/7"
+            },
+            {
+                "skill_cat": "Armas*Categoria2",
+                "ranges": "3/8"
+            },
+            {
+                "skill_cat": "Armas*Categoria3",
+                "ranges": "4"
+            },
+            {
+                "skill_cat": "Armas*Categoria4",
+                "ranges": "4"
+            },
+            {
+                "skill_cat": "Armas*Categoria5",
+                "ranges": "4"
+            },
+            {
+                "skill_cat": "Armas*Categoria6",
+                "ranges": "6"
+            },
+            {
+                "skill_cat": "Armas*Categoria7",
+                "ranges": "6"
+            },
+            {
+                "skill_cat": "Arte*Activo",
+                "ranges": "2/4"
+            },
+            {
+                "skill_cat": "Arte*Pasivo",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Artes Marciales*Golpes",
+                "ranges": "3/7"
+            },
+            {
+                "skill_cat": "Artes Marciales*Barridos",
+                "ranges": "3/7"
+            },
+            {
+                "skill_cat": "Artes Marciales*Maniobras de Combate",
+                "ranges": "5"
+            },
+            {
+                "skill_cat": "Ataques Especiales",
+                "ranges": "2/8"
+            },
+            {
+                "skill_cat": "Atletismo*Gimnasia",
+                "ranges": "1/3"
+            },
+            {
+                "skill_cat": "Atletismo*Potencia",
+                "ranges": "3/6"
+            },
+            {
+                "skill_cat": "Atletismo*Resistencia",
+                "ranges": "2/7"
+            },
+            {
+                "skill_cat": "Autocontrol",
+                "ranges": "2/6"
+            },
+            {
+                "skill_cat": "Ciencia/Analitica*Basica",
+                "ranges": "3/6"
+            },
+            {
+                "skill_cat": "Ciencia/Analitica*Especializada",
+                "ranges": "12"
+            },
+            {
+                "skill_cat": "Comunicacion",
+                "ranges": "3/3/3"
+            },
+            {
+                "skill_cat": "Conocimiento*General",
+                "ranges": "1/3"
+            },
+            {
+                "skill_cat": "Conocimiento*Magico",
+                "ranges": "5"
+            },
+            {
+                "skill_cat": "Conocimiento*Oscuro",
+                "ranges": "3/7"
+            },
+            {
+                "skill_cat": "Conocimiento*Tecnico",
+                "ranges": "2/4"
+            },
+            {
+                "skill_cat": "Defensas Especiales",
+                "ranges": "25"
+            },
+            {
+                "skill_cat": "Desarrollo de Puntos de Poder",
+                "ranges": "15"
+            },
+            {
+                "skill_cat": "Desarrollo Fisico",
+                "ranges": "5/12"
+            },
+            {
+                "skill_cat": "Exteriores*Animales",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Exteriores*Entorno",
+                "ranges": "2/6"
+            },
+            {
+                "skill_cat": "Hechizos Dirigidos",
+                "ranges": "20"
+            },
+            {
+                "skill_cat": "Influencia",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Maniobras de Combate",
+                "ranges": "4/12"
+            },
+            {
+                "skill_cat": "Manipulacion del Poder",
+                "ranges": "18"
+            },
+            {
+                "skill_cat": "Oficios",
+                "ranges": "4/10"
+            },
+            {
+                "skill_cat": "Percepcion*Busqueda",
+                "ranges": "1/3"
+            },
+            {
+                "skill_cat": "Percepcion*Perspicacia",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Percepcion*Sentidos",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Percepcion de Poder",
+                "ranges": "6"
+            },
+            {
+                "skill_cat": "Subterfugio*Ataque",
+                "ranges": "2/6"
+            },
+            {
+                "skill_cat": "Subterfugio*Mecanica",
+                "ranges": "1/3"
+            },
+            {
+                "skill_cat": "Subterfugio*Sigilo",
+                "ranges": "1/3"
+            },
+            {
+                "skill_cat": "Tecnica/Comercio*General",
+                "ranges": "3/7"
+            },
+            {
+                "skill_cat": "Tecnica/Comercio*Profesional",
+                "ranges": "8"
+            },
+            {
+                "skill_cat": "Tecnica/Comercio*Vocacional",
+                "ranges": "5/12"
+            },
+            {
+                "skill_cat": "Urbana",
+                "ranges": "1/2"
+            }
+        ],
+        "common_skills": [
+            "Embaucar, Maquinaria, {Percepcion del Entorno: Ciudades; Percepcion del Entorno: Combate; Percepcion del Entorno: Durmiendo; Percepcion del Entorno: Exploracion}"
+        ],
+        "professional_skills": [
+            "Abrir Cerraduras"
+        ],
+        "restricted_skills": []
+    },
+    "mago": {
+        "features": [
+            "Em",
+            "Ra"
+        ],
+        "realms": [
+            "Ese"
+        ],
+        "profession_bonus": [
+            {
+                "prof": "Conocimiento*Magico",
+                "bonus": "10"
+            },
+            {
+                "prof": "Desarrollo de Puntos de Poder",
+                "bonus": "5"
+            },
+            {
+                "prof": "Listas Basicas de Hechizos",
+                "bonus": "5"
+            },
+            {
+                "prof": "Listas Abiertas de Hechizos",
+                "bonus": "5"
+            },
+            {
+                "prof": "Listas Cerradas de Hechizos",
+                "bonus": "5"
+            },
+            {
+                "prof": "Listas Basicas de Otras Profesiones",
+                "bonus": "5"
+            },
+            {
+                "prof": "Listas Abiertas de Otros Reinos",
+                "bonus": "5"
+            },
+            {
+                "prof": "Listas Cerradas de Otros Reinos",
+                "bonus": "5"
+            },
+            {
+                "prof": "Listas Basicas de Otros Reinos",
+                "bonus": "5"
+            },
+            {
+                "prof": "Listas Abiertas Arcanas",
+                "bonus": "5"
+            },
+            {
+                "prof": "Hechizos Dirigidos",
+                "bonus": "10"
+            },
+            {
+                "prof": "Percepcion de Poder",
+                "bonus": "20"
+            }
+        ],
+        "skill_category_ranges": [
+            {
+                "skill_cat": "Armadura*Ligera",
+                "ranges": "9"
+            },
+            {
+                "skill_cat": "Armadura*Media",
+                "ranges": "10"
+            },
+            {
+                "skill_cat": "Armadura*Pesada",
+                "ranges": "11"
+            },
+            {
+                "skill_cat": "Armas*Categoria1",
+                "ranges": "9"
+            },
+            {
+                "skill_cat": "Armas*Categoria2",
+                "ranges": "20"
+            },
+            {
+                "skill_cat": "Armas*Categoria3",
+                "ranges": "20"
+            },
+            {
+                "skill_cat": "Armas*Categoria4",
+                "ranges": "20"
+            },
+            {
+                "skill_cat": "Armas*Categoria5",
+                "ranges": "20"
+            },
+            {
+                "skill_cat": "Armas*Categoria6",
+                "ranges": "20"
+            },
+            {
+                "skill_cat": "Armas*Categoria7",
+                "ranges": "20"
+            },
+            {
+                "skill_cat": "Arte*Activo",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Arte*Pasivo",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Artes Marciales*Golpes",
+                "ranges": "9"
+            },
+            {
+                "skill_cat": "Artes Marciales*Barridos",
+                "ranges": "9"
+            },
+            {
+                "skill_cat": "Artes Marciales*Maniobras de Combate",
+                "ranges": "18"
+            },
+            {
+                "skill_cat": "Ataques Especiales",
+                "ranges": "15"
+            },
+            {
+                "skill_cat": "Atletismo*Gimnasia",
+                "ranges": "3"
+            },
+            {
+                "skill_cat": "Atletismo*Potencia",
+                "ranges": "6"
+            },
+            {
+                "skill_cat": "Atletismo*Resistencia",
+                "ranges": "3"
+            },
+            {
+                "skill_cat": "Autocontrol",
+                "ranges": "6"
+            },
+            {
+                "skill_cat": "Ciencia/Analitica*Basica",
+                "ranges": "1/4"
+            },
+            {
+                "skill_cat": "Ciencia/Analitica*Especializada",
+                "ranges": "6/14"
+            },
+            {
+                "skill_cat": "Comunicacion",
+                "ranges": "2/2/2"
+            },
+            {
+                "skill_cat": "Conocimiento*General",
+                "ranges": "1/3"
+            },
+            {
+                "skill_cat": "Conocimiento*Magico",
+                "ranges": "1/4"
+            },
+            {
+                "skill_cat": "Conocimiento*Oscuro",
+                "ranges": "3/7"
+            },
+            {
+                "skill_cat": "Conocimiento*Tecnico",
+                "ranges": "2/6"
+            },
+            {
+                "skill_cat": "Defensas Especiales",
+                "ranges": "40"
+            },
+            {
+                "skill_cat": "Desarrollo de Puntos de Poder",
+                "ranges": "4"
+            },
+            {
+                "skill_cat": "Desarrollo Fisico",
+                "ranges": "15"
+            },
+            {
+                "skill_cat": "Exteriores*Animales",
+                "ranges": "3"
+            },
+            {
+                "skill_cat": "Exteriores*Entorno",
+                "ranges": "3"
+            },
+            {
+                "skill_cat": "Hechizos Dirigidos",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Influencia",
+                "ranges": "2/6"
+            },
+            {
+                "skill_cat": "Maniobras de Combate",
+                "ranges": "18"
+            },
+            {
+                "skill_cat": "Manipulacion del Poder",
+                "ranges": "4/10"
+            },
+            {
+                "skill_cat": "Oficios",
+                "ranges": "4/10"
+            },
+            {
+                "skill_cat": "Percepcion*Busqueda",
+                "ranges": "3"
+            },
+            {
+                "skill_cat": "Percepcion*Perspicacia",
+                "ranges": "6"
+            },
+            {
+                "skill_cat": "Percepcion*Sentidos",
+                "ranges": "3/7"
+            },
+            {
+                "skill_cat": "Percepcion de Poder",
+                "ranges": "1/4"
+            },
+            {
+                "skill_cat": "Subterfugio*Ataque",
+                "ranges": "15"
+            },
+            {
+                "skill_cat": "Subterfugio*Mecanica",
+                "ranges": "7"
+            },
+            {
+                "skill_cat": "Subterfugio*Sigilo",
+                "ranges": "5"
+            },
+            {
+                "skill_cat": "Tecnica/Comercio*General",
+                "ranges": "3/7"
+            },
+            {
+                "skill_cat": "Tecnica/Comercio*Profesional",
+                "ranges": "8"
+            },
+            {
+                "skill_cat": "Tecnica/Comercio*Vocacional",
+                "ranges": "5/12"
+            },
+            {
+                "skill_cat": "Urbana",
+                "ranges": "3"
+            }
+        ],
+        "common_skills": [
+            "Sentido del Tiempo, Meditacion"
+        ],
+        "professional_skills": [],
+        "restricted_skills": []
+    },
+    "clerigo": {
+        "features": [
+            "In",
+            "Me"
+        ],
+        "realms": [
+            "Can"
+        ],
+        "profession_bonus": [
+            {
+                "prof": "Conocimiento*Magico",
+                "bonus": "5"
+            },
+            {
+                "prof": "Desarrollo de Puntos de Poder",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*2manos",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*Arrojadizas",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*Artilleria",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*Contundentes",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*Asta",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*Filo",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*Proyectiles",
+                "bonus": "5"
+            },
+            {
+                "prof": "Exteriores*Animales",
+                "bonus": "5"
+            },
+            {
+                "prof": "Exteriores*Entorno",
+                "bonus": "5"
+            },
+            {
+                "prof": "Influencia",
+                "bonus": "5"
+            },
+            {
+                "prof": "Listas Basicas de Hechizos",
+                "bonus": "5"
+            },
+            {
+                "prof": "Listas Abiertas de Hechizos",
+                "bonus": "5"
+            },
+            {
+                "prof": "Listas Cerradas de Hechizos",
+                "bonus": "5"
+            },
+            {
+                "prof": "Listas Basicas de Otras Profesiones",
+                "bonus": "5"
+            },
+            {
+                "prof": "Listas Abiertas de Otros Reinos",
+                "bonus": "5"
+            },
+            {
+                "prof": "Listas Cerradas de Otros Reinos",
+                "bonus": "5"
+            },
+            {
+                "prof": "Listas Basicas de Otros Reinos",
+                "bonus": "5"
+            },
+            {
+                "prof": "Listas Abiertas Arcanas",
+                "bonus": "5"
+            },
+            {
+                "prof": "Percepcion*Busqueda",
+                "bonus": "5"
+            },
+            {
+                "prof": "Percepcion*Perspicacia",
+                "bonus": "5"
+            },
+            {
+                "prof": "Percepcion*Sentidos",
+                "bonus": "5"
+            },
+            {
+                "prof": "Percepcion de Poder",
+                "bonus": "15"
+            }
+        ],
+        "skill_category_ranges": [
+            {
+                "skill_cat": "Armadura*Ligera",
+                "ranges": "2/2/2"
+            },
+            {
+                "skill_cat": "Armadura*Media",
+                "ranges": "10"
+            },
+            {
+                "skill_cat": "Armadura*Pesada",
+                "ranges": "11"
+            },
+            {
+                "skill_cat": "Armas*Categoria1",
+                "ranges": "6"
+            },
+            {
+                "skill_cat": "Armas*Categoria2",
+                "ranges": "7"
+            },
+            {
+                "skill_cat": "Armas*Categoria3",
+                "ranges": "9"
+            },
+            {
+                "skill_cat": "Armas*Categoria4",
+                "ranges": "9"
+            },
+            {
+                "skill_cat": "Armas*Categoria5",
+                "ranges": "9"
+            },
+            {
+                "skill_cat": "Armas*Categoria6",
+                "ranges": "20"
+            },
+            {
+                "skill_cat": "Armas*Categoria7",
+                "ranges": "2"
+            },
+            {
+                "skill_cat": "Arte*Activo",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Arte*Pasivo",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Artes Marciales*Golpes",
+                "ranges": "6"
+            },
+            {
+                "skill_cat": "Artes Marciales*Barridos",
+                "ranges": "6"
+            },
+            {
+                "skill_cat": "Artes Marciales*Maniobras de Combate",
+                "ranges": "12"
+            },
+            {
+                "skill_cat": "Ataques Especiales",
+                "ranges": "10"
+            },
+            {
+                "skill_cat": "Atletismo*Gimnasia",
+                "ranges": "3"
+            },
+            {
+                "skill_cat": "Atletismo*Potencia",
+                "ranges": "6"
+            },
+            {
+                "skill_cat": "Atletismo*Resistencia",
+                "ranges": "3"
+            },
+            {
+                "skill_cat": "Autocontrol",
+                "ranges": "5"
+            },
+            {
+                "skill_cat": "Ciencia/Analitica*Basica",
+                "ranges": "1/4"
+            },
+            {
+                "skill_cat": "Ciencia/Analitica*Especializada",
+                "ranges": "6/14"
+            },
+            {
+                "skill_cat": "Comunicacion",
+                "ranges": "2/2/2"
+            },
+            {
+                "skill_cat": "Conocimiento*General",
+                "ranges": "1/3"
+            },
+            {
+                "skill_cat": "Conocimiento*Magico",
+                "ranges": "2/4"
+            },
+            {
+                "skill_cat": "Conocimiento*Oscuro",
+                "ranges": "3/7"
+            },
+            {
+                "skill_cat": "Conocimiento*Tecnico",
+                "ranges": "2/6"
+            },
+            {
+                "skill_cat": "Defensas Especiales",
+                "ranges": "30"
+            },
+            {
+                "skill_cat": "Desarrollo de Puntos de Poder",
+                "ranges": "4"
+            },
+            {
+                "skill_cat": "Desarrollo Fisico",
+                "ranges": "10"
+            },
+            {
+                "skill_cat": "Exteriores*Animales",
+                "ranges": "3"
+            },
+            {
+                "skill_cat": "Exteriores*Entorno",
+                "ranges": "2/7"
+            },
+            {
+                "skill_cat": "Hechizos Dirigidos",
+                "ranges": "3"
+            },
+            {
+                "skill_cat": "Influencia",
+                "ranges": "2/4"
+            },
+            {
+                "skill_cat": "Maniobras de Combate",
+                "ranges": "10"
+            },
+            {
+                "skill_cat": "Manipulacion del Poder",
+                "ranges": "4/10"
+            },
+            {
+                "skill_cat": "Oficios",
+                "ranges": "4/10"
+            },
+            {
+                "skill_cat": "Percepcion*Busqueda",
+                "ranges": "2/6"
+            },
+            {
+                "skill_cat": "Percepcion*Perspicacia",
+                "ranges": "6"
+            },
+            {
+                "skill_cat": "Percepcion*Sentidos",
+                "ranges": "3/7"
+            },
+            {
+                "skill_cat": "Percepcion de Poder",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Subterfugio*Ataque",
+                "ranges": "15"
+            },
+            {
+                "skill_cat": "Subterfugio*Mecanica",
+                "ranges": "7"
+            },
+            {
+                "skill_cat": "Subterfugio*Sigilo",
+                "ranges": "5"
+            },
+            {
+                "skill_cat": "Tecnica/Comercio*General",
+                "ranges": "3/7"
+            },
+            {
+                "skill_cat": "Tecnica/Comercio*Profesional",
+                "ranges": "8"
+            },
+            {
+                "skill_cat": "Tecnica/Comercio*Vocacional",
+                "ranges": "5/12"
+            },
+            {
+                "skill_cat": "Urbana",
+                "ranges": "3"
+            }
+        ],
+        "common_skills": [
+            "Sentido del Tiempo, Meditacion"
+        ],
+        "professional_skills": [
+            "Religion, Adivinacion, Percepcion del Poder"
+        ],
+        "restricted_skills": []
+    },
+    "mentalista": {
+        "features": [
+            "Pr",
+            "Ad"
+        ],
+        "realms": [
+            "Men"
+        ],
+        "profession_bonus": [
+            {
+                "prof": "Autocontrol",
+                "bonus": "5"
+            },
+            {
+                "prof": "Conocimiento*Magico",
+                "bonus": "5"
+            },
+            {
+                "prof": "Desarrollo de Puntos de Poder",
+                "bonus": "5"
+            },
+            {
+                "prof": "Desarrollo Fisico",
+                "bonus": "5"
+            },
+            {
+                "prof": "Influencia",
+                "bonus": "5"
+            },
+            {
+                "prof": "Listas Basicas de Hechizos",
+                "bonus": "5"
+            },
+            {
+                "prof": "Listas Abiertas de Hechizos",
+                "bonus": "5"
+            },
+            {
+                "prof": "Listas Cerradas de Hechizos",
+                "bonus": "5"
+            },
+            {
+                "prof": "Listas Basicas de Otras Profesiones",
+                "bonus": "5"
+            },
+            {
+                "prof": "Listas Abiertas de Otros Reinos",
+                "bonus": "5"
+            },
+            {
+                "prof": "Listas Cerradas de Otros Reinos",
+                "bonus": "5"
+            },
+            {
+                "prof": "Listas Basicas de Otros Reinos",
+                "bonus": "5"
+            },
+            {
+                "prof": "Listas Abiertas Arcanas",
+                "bonus": "5"
+            },
+            {
+                "prof": "Percepcion*Busqueda",
+                "bonus": "5"
+            },
+            {
+                "prof": "Percepcion*Perspicacia",
+                "bonus": "5"
+            },
+            {
+                "prof": "Percepcion*Sentidos",
+                "bonus": "5"
+            },
+            {
+                "prof": "Percepcion de Poder",
+                "bonus": "10"
+            }
+        ],
+        "skill_category_ranges": [
+            {
+                "skill_cat": "Armadura*Ligera",
+                "ranges": "4/4/4"
+            },
+            {
+                "skill_cat": "Armadura*Media",
+                "ranges": "6/6/6"
+            },
+            {
+                "skill_cat": "Armadura*Pesada",
+                "ranges": "7/7/7"
+            },
+            {
+                "skill_cat": "Armas*Categoria1",
+                "ranges": "6"
+            },
+            {
+                "skill_cat": "Armas*Categoria2",
+                "ranges": "8"
+            },
+            {
+                "skill_cat": "Armas*Categoria3",
+                "ranges": "15"
+            },
+            {
+                "skill_cat": "Armas*Categoria4",
+                "ranges": "20"
+            },
+            {
+                "skill_cat": "Armas*Categoria5",
+                "ranges": "20"
+            },
+            {
+                "skill_cat": "Armas*Categoria6",
+                "ranges": "20"
+            },
+            {
+                "skill_cat": "Armas*Categoria7",
+                "ranges": "20"
+            },
+            {
+                "skill_cat": "Arte*Activo",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Arte*Pasivo",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Artes Marciales*Golpes",
+                "ranges": "3"
+            },
+            {
+                "skill_cat": "Artes Marciales*Barridos",
+                "ranges": "3"
+            },
+            {
+                "skill_cat": "Artes Marciales*Maniobras de Combate",
+                "ranges": "6"
+            },
+            {
+                "skill_cat": "Ataques Especiales",
+                "ranges": "12"
+            },
+            {
+                "skill_cat": "Atletismo*Gimnasia",
+                "ranges": "3/9"
+            },
+            {
+                "skill_cat": "Atletismo*Potencia",
+                "ranges": "5"
+            },
+            {
+                "skill_cat": "Atletismo*Resistencia",
+                "ranges": "3"
+            },
+            {
+                "skill_cat": "Autocontrol",
+                "ranges": "3"
+            },
+            {
+                "skill_cat": "Ciencia/Analitica*Basica",
+                "ranges": "1/4"
+            },
+            {
+                "skill_cat": "Ciencia/Analitica*Especializada",
+                "ranges": "6/14"
+            },
+            {
+                "skill_cat": "Comunicacion",
+                "ranges": "2/2/2"
+            },
+            {
+                "skill_cat": "Conocimiento*General",
+                "ranges": "1/3"
+            },
+            {
+                "skill_cat": "Conocimiento*Magico",
+                "ranges": "2/4"
+            },
+            {
+                "skill_cat": "Conocimiento*Oscuro",
+                "ranges": "3/7"
+            },
+            {
+                "skill_cat": "Conocimiento*Tecnico",
+                "ranges": "2/6"
+            },
+            {
+                "skill_cat": "Defensas Especiales",
+                "ranges": "18"
+            },
+            {
+                "skill_cat": "Desarrollo de Puntos de Poder",
+                "ranges": "4"
+            },
+            {
+                "skill_cat": "Desarrollo Fisico",
+                "ranges": "12"
+            },
+            {
+                "skill_cat": "Exteriores*Animales",
+                "ranges": "3"
+            },
+            {
+                "skill_cat": "Exteriores*Entorno",
+                "ranges": "3"
+            },
+            {
+                "skill_cat": "Hechizos Dirigidos",
+                "ranges": "2/6"
+            },
+            {
+                "skill_cat": "Influencia",
+                "ranges": "2/6"
+            },
+            {
+                "skill_cat": "Maniobras de Combate",
+                "ranges": "14"
+            },
+            {
+                "skill_cat": "Manipulacion del Poder",
+                "ranges": "4/10"
+            },
+            {
+                "skill_cat": "Oficios",
+                "ranges": "4/10"
+            },
+            {
+                "skill_cat": "Percepcion*Busqueda",
+                "ranges": "3"
+            },
+            {
+                "skill_cat": "Percepcion*Perspicacia",
+                "ranges": "5"
+            },
+            {
+                "skill_cat": "Percepcion*Sentidos",
+                "ranges": "3/7"
+            },
+            {
+                "skill_cat": "Percepcion de Poder",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Subterfugio*Ataque",
+                "ranges": "15"
+            },
+            {
+                "skill_cat": "Subterfugio*Mecanica",
+                "ranges": "7"
+            },
+            {
+                "skill_cat": "Subterfugio*Sigilo",
+                "ranges": "5"
+            },
+            {
+                "skill_cat": "Tecnica/Comercio*General",
+                "ranges": "3/7"
+            },
+            {
+                "skill_cat": "Tecnica/Comercio*Profesional",
+                "ranges": "8"
+            },
+            {
+                "skill_cat": "Tecnica/Comercio*Vocacional",
+                "ranges": "5/12"
+            },
+            {
+                "skill_cat": "Urbana",
+                "ranges": "3"
+            }
+        ],
+        "common_skills": [
+            "Detectar Mentiras, Sentido del Tiempo, Seduccion"
+        ],
+        "professional_skills": [],
+        "restricted_skills": []
+    },
+    "montaraz": {
+        "features": [
+            "Co",
+            "In"
+        ],
+        "realms": [
+            "Can"
+        ],
+        "profession_bonus": [
+            {
+                "prof": "Desarrollo Fisico",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*2manos",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*Arrojadizas",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*Artilleria",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*Contundentes",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*Asta",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*Filo",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*Proyectiles",
+                "bonus": "5"
+            },
+            {
+                "prof": "Atletismo*Gimnasia",
+                "bonus": "5"
+            },
+            {
+                "prof": "Atletismo*Potencia",
+                "bonus": "5"
+            },
+            {
+                "prof": "Atletismo*Resistencia",
+                "bonus": "5"
+            },
+            {
+                "prof": "Exteriores*Animales",
+                "bonus": "20"
+            },
+            {
+                "prof": "Exteriores*Entorno",
+                "bonus": "20"
+            },
+            {
+                "prof": "Percepcion*Busqueda",
+                "bonus": "10"
+            },
+            {
+                "prof": "Percepcion*Perspicacia",
+                "bonus": "10"
+            },
+            {
+                "prof": "Percepcion*Sentidos",
+                "bonus": "10"
+            },
+            {
+                "prof": "Subterfugio*Sigilo",
+                "bonus": "5"
+            }
+        ],
+        "skill_category_ranges": [
+            {
+                "skill_cat": "Armadura*Ligera",
+                "ranges": "2/2/2"
+            },
+            {
+                "skill_cat": "Armadura*Media",
+                "ranges": "4/4/4"
+            },
+            {
+                "skill_cat": "Armadura*Pesada",
+                "ranges": "5/5/5"
+            },
+            {
+                "skill_cat": "Armas*Categoria1",
+                "ranges": "3/7"
+            },
+            {
+                "skill_cat": "Armas*Categoria2",
+                "ranges": "4"
+            },
+            {
+                "skill_cat": "Armas*Categoria3",
+                "ranges": "6"
+            },
+            {
+                "skill_cat": "Armas*Categoria4",
+                "ranges": "6"
+            },
+            {
+                "skill_cat": "Armas*Categoria5",
+                "ranges": "6"
+            },
+            {
+                "skill_cat": "Armas*Categoria6",
+                "ranges": "9"
+            },
+            {
+                "skill_cat": "Armas*Categoria7",
+                "ranges": "9"
+            },
+            {
+                "skill_cat": "Arte*Activo",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Arte*Pasivo",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Artes Marciales*Golpes",
+                "ranges": "4"
+            },
+            {
+                "skill_cat": "Artes Marciales*Barridos",
+                "ranges": "4"
+            },
+            {
+                "skill_cat": "Artes Marciales*Maniobras de Combate",
+                "ranges": "8"
+            },
+            {
+                "skill_cat": "Ataques Especiales",
+                "ranges": "3/9"
+            },
+            {
+                "skill_cat": "Atletismo*Gimnasia",
+                "ranges": "3/6"
+            },
+            {
+                "skill_cat": "Atletismo*Potencia",
+                "ranges": "3/7"
+            },
+            {
+                "skill_cat": "Atletismo*Resistencia",
+                "ranges": "1/5"
+            },
+            {
+                "skill_cat": "Autocontrol",
+                "ranges": "2/7"
+            },
+            {
+                "skill_cat": "Ciencia/Analitica*Basica",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Ciencia/Analitica*Especializada",
+                "ranges": "8"
+            },
+            {
+                "skill_cat": "Comunicacion",
+                "ranges": "3/3/3"
+            },
+            {
+                "skill_cat": "Conocimiento*General",
+                "ranges": "1/3"
+            },
+            {
+                "skill_cat": "Conocimiento*Magico",
+                "ranges": "3/6"
+            },
+            {
+                "skill_cat": "Conocimiento*Oscuro",
+                "ranges": "3/7"
+            },
+            {
+                "skill_cat": "Conocimiento*Tecnico",
+                "ranges": "2/6"
+            },
+            {
+                "skill_cat": "Defensas Especiales",
+                "ranges": "30"
+            },
+            {
+                "skill_cat": "Desarrollo de Puntos de Poder",
+                "ranges": "8"
+            },
+            {
+                "skill_cat": "Desarrollo Fisico",
+                "ranges": "4/12"
+            },
+            {
+                "skill_cat": "Exteriores*Animales",
+                "ranges": "1/5"
+            },
+            {
+                "skill_cat": "Exteriores*Entorno",
+                "ranges": "1/3"
+            },
+            {
+                "skill_cat": "Hechizos Dirigidos",
+                "ranges": "15"
+            },
+            {
+                "skill_cat": "Influencia",
+                "ranges": "2/6"
+            },
+            {
+                "skill_cat": "Maniobras de Combate",
+                "ranges": "5/12"
+            },
+            {
+                "skill_cat": "Manipulacion del Poder",
+                "ranges": "6/12"
+            },
+            {
+                "skill_cat": "Oficios",
+                "ranges": "4/10"
+            },
+            {
+                "skill_cat": "Percepcion*Busqueda",
+                "ranges": "1/4"
+            },
+            {
+                "skill_cat": "Percepcion*Perspicacia",
+                "ranges": "3/12"
+            },
+            {
+                "skill_cat": "Percepcion*Sentidos",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Percepcion de Poder",
+                "ranges": "5"
+            },
+            {
+                "skill_cat": "Subterfugio*Ataque",
+                "ranges": "6"
+            },
+            {
+                "skill_cat": "Subterfugio*Mecanica",
+                "ranges": "4"
+            },
+            {
+                "skill_cat": "Subterfugio*Sigilo",
+                "ranges": "1/5"
+            },
+            {
+                "skill_cat": "Tecnica/Comercio*General",
+                "ranges": "3/7"
+            },
+            {
+                "skill_cat": "Tecnica/Comercio*Profesional",
+                "ranges": "8"
+            },
+            {
+                "skill_cat": "Tecnica/Comercio*Vocacional",
+                "ranges": "5/12"
+            },
+            {
+                "skill_cat": "Urbana",
+                "ranges": "3/6"
+            }
+        ],
+        "common_skills": [],
+        "professional_skills": [],
+        "restricted_skills": []
+    },
+    "bribon": {
+        "features": [
+            "Ag",
+            "Fu"
+        ],
+        "realms": [
+            "Ese",
+            "Can",
+            "Men"
+        ],
+        "profession_bonus": [
+            {
+                "prof": "Atletismo*Gimnasia",
+                "bonus": "5"
+            },
+            {
+                "prof": "Desarrollo Fisico",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armadura*Ligera",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armadura*Media",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armadura*Pesada",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*2manos",
+                "bonus": "15"
+            },
+            {
+                "prof": "Armas*Arrojadizas",
+                "bonus": "15"
+            },
+            {
+                "prof": "Armas*Artilleria",
+                "bonus": "15"
+            },
+            {
+                "prof": "Armas*Contundentes",
+                "bonus": "15"
+            },
+            {
+                "prof": "Armas*Asta",
+                "bonus": "15"
+            },
+            {
+                "prof": "Armas*Filo",
+                "bonus": "15"
+            },
+            {
+                "prof": "Armas*Proyectiles",
+                "bonus": "15"
+            },
+            {
+                "prof": "Percepcion*Busqueda",
+                "bonus": "5"
+            },
+            {
+                "prof": "Percepcion*Perspicacia",
+                "bonus": "5"
+            },
+            {
+                "prof": "Percepcion*Sentidos",
+                "bonus": "5"
+            },
+            {
+                "prof": "Subterfugio*Ataque",
+                "bonus": "10"
+            },
+            {
+                "prof": "Subterfugio*Mecanica",
+                "bonus": "10"
+            },
+            {
+                "prof": "Subterfugio*Sigilo",
+                "bonus": "10"
+            },
+            {
+                "prof": "Maniobras de Combate",
+                "bonus": "5"
+            }
+        ],
+        "skill_category_ranges": [
+            {
+                "skill_cat": "Armadura*Ligera",
+                "ranges": "1/1/1"
+            },
+            {
+                "skill_cat": "Armadura*Media",
+                "ranges": "2/2/2"
+            },
+            {
+                "skill_cat": "Armadura*Pesada",
+                "ranges": "3/3/3"
+            },
+            {
+                "skill_cat": "Armas*Categoria1",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Armas*Categoria2",
+                "ranges": "3/8"
+            },
+            {
+                "skill_cat": "Armas*Categoria3",
+                "ranges": "3/9"
+            },
+            {
+                "skill_cat": "Armas*Categoria4",
+                "ranges": "3/9"
+            },
+            {
+                "skill_cat": "Armas*Categoria5",
+                "ranges": "3/9"
+            },
+            {
+                "skill_cat": "Armas*Categoria6",
+                "ranges": "6"
+            },
+            {
+                "skill_cat": "Armas*Categoria7",
+                "ranges": "6"
+            },
+            {
+                "skill_cat": "Arte*Activo",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Arte*Pasivo",
+                "ranges": "2/6"
+            },
+            {
+                "skill_cat": "Artes Marciales*Golpes",
+                "ranges": "3/7"
+            },
+            {
+                "skill_cat": "Artes Marciales*Barridos",
+                "ranges": "3/7"
+            },
+            {
+                "skill_cat": "Artes Marciales*Maniobras de Combate",
+                "ranges": "5"
+            },
+            {
+                "skill_cat": "Ataques Especiales",
+                "ranges": "2/7"
+            },
+            {
+                "skill_cat": "Atletismo*Gimnasia",
+                "ranges": "1/5"
+            },
+            {
+                "skill_cat": "Atletismo*Potencia",
+                "ranges": "2/6"
+            },
+            {
+                "skill_cat": "Atletismo*Resistencia",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Autocontrol",
+                "ranges": "2/9"
+            },
+            {
+                "skill_cat": "Ciencia/Analitica*Basica",
+                "ranges": "3/6"
+            },
+            {
+                "skill_cat": "Ciencia/Analitica*Especializada",
+                "ranges": "12"
+            },
+            {
+                "skill_cat": "Comunicacion",
+                "ranges": "3/3/3"
+            },
+            {
+                "skill_cat": "Conocimiento*General",
+                "ranges": "1/3"
+            },
+            {
+                "skill_cat": "Conocimiento*Magico",
+                "ranges": "4"
+            },
+            {
+                "skill_cat": "Conocimiento*Oscuro",
+                "ranges": "3/7"
+            },
+            {
+                "skill_cat": "Conocimiento*Tecnico",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Defensas Especiales",
+                "ranges": "25"
+            },
+            {
+                "skill_cat": "Desarrollo de Puntos de Poder",
+                "ranges": "12"
+            },
+            {
+                "skill_cat": "Desarrollo Fisico",
+                "ranges": "3/9"
+            },
+            {
+                "skill_cat": "Exteriores*Animales",
+                "ranges": "1/5"
+            },
+            {
+                "skill_cat": "Exteriores*Entorno",
+                "ranges": "2/4"
+            },
+            {
+                "skill_cat": "Hechizos Dirigidos",
+                "ranges": "20"
+            },
+            {
+                "skill_cat": "Influencia",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Maniobras de Combate",
+                "ranges": "4/10"
+            },
+            {
+                "skill_cat": "Manipulacion del Poder",
+                "ranges": "12"
+            },
+            {
+                "skill_cat": "Oficios",
+                "ranges": "4/10"
+            },
+            {
+                "skill_cat": "Percepcion*Busqueda",
+                "ranges": "1/5"
+            },
+            {
+                "skill_cat": "Percepcion*Perspicacia",
+                "ranges": "2/6"
+            },
+            {
+                "skill_cat": "Percepcion*Sentidos",
+                "ranges": "2/6"
+            },
+            {
+                "skill_cat": "Percepcion de Poder",
+                "ranges": "7"
+            },
+            {
+                "skill_cat": "Subterfugio*Ataque",
+                "ranges": "4/8"
+            },
+            {
+                "skill_cat": "Subterfugio*Mecanica",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Subterfugio*Sigilo",
+                "ranges": "1/3"
+            },
+            {
+                "skill_cat": "Tecnica/Comercio*General",
+                "ranges": "3/7"
+            },
+            {
+                "skill_cat": "Tecnica/Comercio*Profesional",
+                "ranges": "8"
+            },
+            {
+                "skill_cat": "Tecnica/Comercio*Vocacional",
+                "ranges": "5/12"
+            },
+            {
+                "skill_cat": "Urbana",
+                "ranges": "1/3"
+            }
+        ],
+        "common_skills": [
+            "Embaucar, Abrir Cerraduras, Boxeo, Percepcion del Entorno: Ciudades"
+        ],
+        "professional_skills": [],
+        "restricted_skills": []
+    },
+    "bardo": {
+        "features": [
+            "Me",
+            "Pr"
+        ],
+        "realms": [
+            "Men"
+        ],
+        "profession_bonus": [
+            {
+                "prof": "Arte*Activo",
+                "bonus": "5"
+            },
+            {
+                "prof": "Autocontrol",
+                "bonus": "5"
+            },
+            {
+                "prof": "Comunicacion",
+                "bonus": "5"
+            },
+            {
+                "prof": "Desarrollo Fisico",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*2manos",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*Arrojadizas",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*Artilleria",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*Contundentes",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*Asta",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*Filo",
+                "bonus": "5"
+            },
+            {
+                "prof": "Armas*Proyectiles",
+                "bonus": "5"
+            },
+            {
+                "prof": "Conocimiento*General",
+                "bonus": "5"
+            },
+            {
+                "prof": "Conocimiento*Magico",
+                "bonus": "5"
+            },
+            {
+                "prof": "Conocimiento*Oscuro",
+                "bonus": "5"
+            },
+            {
+                "prof": "Conocimiento*Tecnico",
+                "bonus": "5"
+            },
+            {
+                "prof": "Influencia",
+                "bonus": "5"
+            },
+            {
+                "prof": "Percepcion*Busqueda",
+                "bonus": "5"
+            },
+            {
+                "prof": "Percepcion*Perspicacia",
+                "bonus": "5"
+            },
+            {
+                "prof": "Percepcion*Sentidos",
+                "bonus": "5"
+            },
+            {
+                "prof": "Percepcion de Poder",
+                "bonus": "5"
+            }
+        ],
+        "skill_category_ranges": [
+            {
+                "skill_cat": "Armadura*Ligera",
+                "ranges": "2/2/2"
+            },
+            {
+                "skill_cat": "Armadura*Media",
+                "ranges": "3/3/3"
+            },
+            {
+                "skill_cat": "Armadura*Pesada",
+                "ranges": "5/5/5"
+            },
+            {
+                "skill_cat": "Armas*Categoria1",
+                "ranges": "3/9"
+            },
+            {
+                "skill_cat": "Armas*Categoria2",
+                "ranges": "6"
+            },
+            {
+                "skill_cat": "Armas*Categoria3",
+                "ranges": "7"
+            },
+            {
+                "skill_cat": "Armas*Categoria4",
+                "ranges": "7"
+            },
+            {
+                "skill_cat": "Armas*Categoria5",
+                "ranges": "7"
+            },
+            {
+                "skill_cat": "Armas*Categoria6",
+                "ranges": "15"
+            },
+            {
+                "skill_cat": "Armas*Categoria7",
+                "ranges": "15"
+            },
+            {
+                "skill_cat": "Arte*Activo",
+                "ranges": "1/2"
+            },
+            {
+                "skill_cat": "Arte*Pasivo",
+                "ranges": "1/3"
+            },
+            {
+                "skill_cat": "Artes Marciales*Golpes",
+                "ranges": "3"
+            },
+            {
+                "skill_cat": "Artes Marciales*Barridos",
+                "ranges": "3"
+            },
+            {
+                "skill_cat": "Artes Marciales*Maniobras de Combate",
+                "ranges": "6/14"
+            },
+            {
+                "skill_cat": "Ataques Especiales",
+                "ranges": "6"
+            },
+            {
+                "skill_cat": "Atletismo*Gimnasia",
+                "ranges": "2/6"
+            },
+            {
+                "skill_cat": "Atletismo*Potencia",
+                "ranges": "4/9"
+            },
+            {
+                "skill_cat": "Atletismo*Resistencia",
+                "ranges": "2/7"
+            },
+            {
+                "skill_cat": "Autocontrol",
+                "ranges": "2/7"
+            },
+            {
+                "skill_cat": "Ciencia/Analitica*Basica",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Ciencia/Analitica*Especializada",
+                "ranges": "8"
+            },
+            {
+                "skill_cat": "Comunicacion",
+                "ranges": "1/1/1"
+            },
+            {
+                "skill_cat": "Conocimiento*General",
+                "ranges": "1/2"
+            },
+            {
+                "skill_cat": "Conocimiento*Magico",
+                "ranges": "1/4"
+            },
+            {
+                "skill_cat": "Conocimiento*Oscuro",
+                "ranges": "2/4"
+            },
+            {
+                "skill_cat": "Conocimiento*Tecnico",
+                "ranges": "2/4"
+            },
+            {
+                "skill_cat": "Defensas Especiales",
+                "ranges": "15"
+            },
+            {
+                "skill_cat": "Desarrollo de Puntos de Poder",
+                "ranges": "8"
+            },
+            {
+                "skill_cat": "Desarrollo Fisico",
+                "ranges": "6/14"
+            },
+            {
+                "skill_cat": "Exteriores*Animales",
+                "ranges": "2/7"
+            },
+            {
+                "skill_cat": "Exteriores*Entorno",
+                "ranges": "2/6"
+            },
+            {
+                "skill_cat": "Hechizos Dirigidos",
+                "ranges": "10"
+            },
+            {
+                "skill_cat": "Influencia",
+                "ranges": "1/4"
+            },
+            {
+                "skill_cat": "Maniobras de Combate",
+                "ranges": "6/14"
+            },
+            {
+                "skill_cat": "Manipulacion del Poder",
+                "ranges": "6/12"
+            },
+            {
+                "skill_cat": "Oficios",
+                "ranges": "4/10"
+            },
+            {
+                "skill_cat": "Percepcion*Busqueda",
+                "ranges": "2/6"
+            },
+            {
+                "skill_cat": "Percepcion*Perspicacia",
+                "ranges": "4/12"
+            },
+            {
+                "skill_cat": "Percepcion*Sentidos",
+                "ranges": "3/7"
+            },
+            {
+                "skill_cat": "Percepcion de Poder",
+                "ranges": "3/6"
+            },
+            {
+                "skill_cat": "Subterfugio*Ataque",
+                "ranges": "12"
+            },
+            {
+                "skill_cat": "Subterfugio*Mecanica",
+                "ranges": "4"
+            },
+            {
+                "skill_cat": "Subterfugio*Sigilo",
+                "ranges": "2/7"
+            },
+            {
+                "skill_cat": "Tecnica/Comercio*General",
+                "ranges": "3/7"
+            },
+            {
+                "skill_cat": "Tecnica/Comercio*Profesional",
+                "ranges": "8"
+            },
+            {
+                "skill_cat": "Tecnica/Comercio*Vocacional",
+                "ranges": "5/12"
+            },
+            {
+                "skill_cat": "Urbana",
+                "ranges": "2/4"
+            }
+        ],
+        "common_skills": [
+            "Sentido del Tiempo"
+        ],
+        "professional_skills": [],
+        "restricted_skills": []
+    },
+    "luchador": {
+        "features": [
+            "Co",
+            "Fu"
+        ],
+        "realms": [
+            "Ese",
+            "Can",
+            "Men"
+        ],
+        "profession_bonus": [
+            {
+                "prof": "Desarrollo Fisico",
+                "bonus": "10"
+            },
+            {
+                "prof": "Armadura*Ligera",
+                "bonus": "10"
+            },
+            {
+                "prof": "Armadura*Media",
+                "bonus": "10"
+            },
+            {
+                "prof": "Armadura*Pesada",
+                "bonus": "10"
+            },
+            {
+                "prof": "Armas*2manos",
+                "bonus": "20"
+            },
+            {
+                "prof": "Armas*Arrojadizas",
+                "bonus": "20"
+            },
+            {
+                "prof": "Armas*Artilleria",
+                "bonus": "20"
+            },
+            {
+                "prof": "Armas*Contundentes",
+                "bonus": "20"
+            },
+            {
+                "prof": "Armas*Asta",
+                "bonus": "20"
+            },
+            {
+                "prof": "Armas*Filo",
+                "bonus": "20"
+            },
+            {
+                "prof": "Armas*Proyectiles",
+                "bonus": "20"
+            },
+            {
+                "prof": "Maniobras de Combate",
+                "bonus": "10"
+            }
+        ],
+        "skill_category_ranges": [
+            {
+                "skill_cat": "Armadura*Ligera",
+                "ranges": "1/1/1"
+            },
+            {
+                "skill_cat": "Armadura*Media",
+                "ranges": "2/2/2"
+            },
+            {
+                "skill_cat": "Armadura*Pesada",
+                "ranges": "2/2/2"
+            },
+            {
+                "skill_cat": "Armas*Categoria1",
+                "ranges": "1/5"
+            },
+            {
+                "skill_cat": "Armas*Categoria2",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Armas*Categoria3",
+                "ranges": "2/7"
+            },
+            {
+                "skill_cat": "Armas*Categoria4",
+                "ranges": "2/7"
+            },
+            {
+                "skill_cat": "Armas*Categoria5",
+                "ranges": "2/7"
+            },
+            {
+                "skill_cat": "Armas*Categoria6",
+                "ranges": "5"
+            },
+            {
+                "skill_cat": "Armas*Categoria7",
+                "ranges": "5"
+            },
+            {
+                "skill_cat": "Arte*Activo",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Arte*Pasivo",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Artes Marciales*Golpes",
+                "ranges": "3/8"
+            },
+            {
+                "skill_cat": "Artes Marciales*Barridos",
+                "ranges": "3/8"
+            },
+            {
+                "skill_cat": "Artes Marciales*Maniobras de Combate",
+                "ranges": "5/12"
+            },
+            {
+                "skill_cat": "Ataques Especiales",
+                "ranges": "2/6"
+            },
+            {
+                "skill_cat": "Atletismo*Gimnasia",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Atletismo*Potencia",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Atletismo*Resistencia",
+                "ranges": "2/6"
+            },
+            {
+                "skill_cat": "Autocontrol",
+                "ranges": "2/6"
+            },
+            {
+                "skill_cat": "Ciencia/Analitica*Basica",
+                "ranges": "3/6"
+            },
+            {
+                "skill_cat": "Ciencia/Analitica*Especializada",
+                "ranges": "12"
+            },
+            {
+                "skill_cat": "Comunicacion",
+                "ranges": "3/3/3"
+            },
+            {
+                "skill_cat": "Conocimiento*General",
+                "ranges": "1/3"
+            },
+            {
+                "skill_cat": "Conocimiento*Magico",
+                "ranges": "6"
+            },
+            {
+                "skill_cat": "Conocimiento*Oscuro",
+                "ranges": "3/7"
+            },
+            {
+                "skill_cat": "Conocimiento*Tecnico",
+                "ranges": "2/6"
+            },
+            {
+                "skill_cat": "Defensas Especiales",
+                "ranges": "25"
+            },
+            {
+                "skill_cat": "Desarrollo de Puntos de Poder",
+                "ranges": "20"
+            },
+            {
+                "skill_cat": "Desarrollo Fisico",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Exteriores*Animales",
+                "ranges": "1/4"
+            },
+            {
+                "skill_cat": "Exteriores*Entorno",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Hechizos Dirigidos",
+                "ranges": "20"
+            },
+            {
+                "skill_cat": "Influencia",
+                "ranges": "2/7"
+            },
+            {
+                "skill_cat": "Maniobras de Combate",
+                "ranges": "3/9"
+            },
+            {
+                "skill_cat": "Manipulacion del Poder",
+                "ranges": "18"
+            },
+            {
+                "skill_cat": "Oficios",
+                "ranges": "4/10"
+            },
+            {
+                "skill_cat": "Percepcion*Busqueda",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Percepcion*Perspicacia",
+                "ranges": "2/9"
+            },
+            {
+                "skill_cat": "Percepcion*Sentidos",
+                "ranges": "2/6"
+            },
+            {
+                "skill_cat": "Percepcion de Poder",
+                "ranges": "8"
+            },
+            {
+                "skill_cat": "Subterfugio*Ataque",
+                "ranges": "6/10"
+            },
+            {
+                "skill_cat": "Subterfugio*Mecanica",
+                "ranges": "3/8"
+            },
+            {
+                "skill_cat": "Subterfugio*Sigilo",
+                "ranges": "2/5"
+            },
+            {
+                "skill_cat": "Tecnica/Comercio*General",
+                "ranges": "3/7"
+            },
+            {
+                "skill_cat": "Tecnica/Comercio*Profesional",
+                "ranges": "8"
+            },
+            {
+                "skill_cat": "Tecnica/Comercio*Vocacional",
+                "ranges": "5/12"
+            },
+            {
+                "skill_cat": "Urbana",
+                "ranges": "2/4"
+            }
+        ],
+        "common_skills": [
+            "Percepcion del Entorno: Combate",
+            "Frenesi",
+            "Liderazgo",
+            "Boxeo",
+            "Placaje",
+            "Maniobras de Combate#1"
+        ],
+        "professional_skills": [],
+        "restricted_skills": []
+    }
+}

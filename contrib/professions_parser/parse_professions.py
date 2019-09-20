@@ -116,9 +116,26 @@ def parse_spells(content):
     }
 
 def parse_training_packs(content):
+    def proc_pack(t_pack):
+        str_points = t_pack["points"].strip()
+        points = 0
+        typical = None
+        if str_points:
+            if str_points[-1] == "+":
+                typical = True
+                points = int(str_points[:-1])
+            elif str_points[-1] == "-":
+                typical = False
+                points = int(str_points[:-1])
+            else:
+                points = int(str_points)
+        t_pack["points"] = points
+        t_pack["typical"] = typical
+        return t_pack
+
     return {
         "training_packs": [
-            make_dict(split_by(line), keys=("pack", "points"))
+            proc_pack(make_dict(split_by(line), keys=("pack", "points")))
             for line in content
         ]
     }

@@ -45,13 +45,11 @@ def parse_profession(profession_name, content):
     payload = []
     result = {}
     for index, line in enumerate(content):
-        if "####" in line:
+        if "###" in line:
             lines = content[last_index:index]
             last_index = index + 1
             data = parsing_indexes[parse_index](lines)
             parse_index += 1
-            if parse_index >= len(parsing_indexes):
-                break
             payload = []
             if data:
                 result.update(data)
@@ -147,8 +145,6 @@ def main():
         content = read_profession(profession_file)
         prof_data =  parse_profession(profession_file, content)
         professions_data[profession_name] = prof_data
-
-
     # Dump data to file
     with open("./out/professions.json", "w+", encoding="utf-8") as fp:
         fp.write(json.dumps(professions_data, indent=4))

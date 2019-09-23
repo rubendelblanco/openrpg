@@ -31,11 +31,14 @@ Vue.component('user-table', require('./components/UserTable.vue').default);
 Vue.component('content-editable', require('./components/ContentEditable.vue').default);
 Vue.component('validation-errors', require('./components/alerts/ValidationErrors.vue').default);
 Vue.component('success-message', require('./components/alerts/SuccessMessage.vue').default);
+Vue.component('desktop-menu', require('./components/desktop_menu/RadialMenu.vue').default);
+Vue.component('overlay', require('./components/layers/overlay.vue').default);
+Vue.component('hamburguer-menu', require('./components/desktop_menu/Hamburguer.vue').default);
 
 let router = new Router({
     routes: [
         {   
-            name:'name_index',
+            name:'user_index',
             path:'/users',
             component: require('./views/users/index').default
         },
@@ -53,6 +56,11 @@ let router = new Router({
             name: 'user_create',
             path: '/users/create',
             component: require('./views/users/create').default
+        },
+        {
+            name: 'home',
+            path: '/',
+            component: require('./views/home/index').default
         }
     ],
     linkExactActiveClass: 'active'

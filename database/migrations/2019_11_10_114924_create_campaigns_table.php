@@ -11,7 +11,7 @@ class CreateCampaignsTable extends Migration
         Schema::create('campaigns', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('gamemaster_id')->unsigned();
-            $table->string('title')->nullable(false);
+            $table->string('title');
             $table->string('description')->nullable(true);
             $table->timestamps();
         });

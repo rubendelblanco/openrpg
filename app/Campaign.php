@@ -13,4 +13,12 @@ class Campaign extends Model
     {
         return $this->belongsTo('App\User', 'gamemaster_id');
     }
+
+    /**
+     * Retrieves the list of adventures associated with this campaign.
+     */
+    public function adventures()
+    {
+        return $this->hasMany('App\Adventure');
+    }
 }

@@ -7,6 +7,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
+use App\Adventure;
 use App\Campaign;
 use App\User;
 
@@ -42,5 +43,16 @@ class CampaignModelTest extends TestCase
             "gamemaster_id" => $user->id,
         ]);
         $this->assertEquals($campaign->gamemaster->id, $user->id);
+    }
+
+    public function testCampaignHasAdventures()
+    {
+        $campaign = factory(Campaign::class)->create();
+        $adventure = factory(Adventure::class)->create([
+            "campaign_id" => $campaign->id,
+        ]);
+
+        $this->assertCount(1, $campaign->adventures);
+        $this->assertEquals($campaign->adventures()->first()->id, $adventure->id);
     }
 }

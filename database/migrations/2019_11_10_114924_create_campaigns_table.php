@@ -12,7 +12,7 @@ class CreateCampaignsTable extends Migration
             $table->increments('id');
             $table->integer('gamemaster_id')->unsigned();
             $table->string('title');
-            $table->string('description')->nullable(true);
+            $table->text('description')->nullable(true);
             $table->timestamps();
         });
     }

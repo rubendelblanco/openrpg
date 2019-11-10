@@ -17,7 +17,7 @@ class CreateAdventuresTable extends Migration
             $table->increments('id');
             $table->integer('campaign_id')->unsigned();
             $table->string('title');
-            $table->string('description')->nullable('true');
+            $table->text('description')->nullable('true');
             $table->timestamps();
         });
     }

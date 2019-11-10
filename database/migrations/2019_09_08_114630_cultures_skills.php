@@ -34,8 +34,8 @@ class CulturesSkills extends Migration
      * @return void
      */
     public function down()
-    {   
-        Schema::dropIfExists('culture_skill');
-        Schema::dropIfExists('culture_skill_category');
+    {
+        Schema::dropIfExists('culture_skills');
+        Schema::dropIfExists('culture_skill_categories');
     }
 }

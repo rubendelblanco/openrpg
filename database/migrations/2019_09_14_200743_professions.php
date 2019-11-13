@@ -12,7 +12,7 @@ class Professions extends Migration
      * @return void
      */
     public function up()
-    {   
+    {
         $stats_list = config('rolemaster.stats_codes');
         $spell_user_types = config('rolemaster.spell_user');
         Schema::create('professions', function (Blueprint $table) use ($stats_list, $spell_user_types) {
@@ -33,6 +33,6 @@ class Professions extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('professions');
     }
 }

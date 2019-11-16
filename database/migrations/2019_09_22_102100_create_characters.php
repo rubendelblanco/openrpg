@@ -17,6 +17,8 @@ class CreateCharacters extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('name');
+            $table->integer('experience');
+            $table->integer('level');
             $table->timestamps();
 
             $table->foreign('user_id')

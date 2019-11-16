@@ -94,7 +94,7 @@ class XPController extends Controller
      * Returns experience points for make a critical hit to a foe
      *
      * @param Request $request
-     * @return void
+     * @return mixed
      */
     public function getCriticalXP(Request $request)
     {
@@ -166,7 +166,7 @@ class XPController extends Controller
      * described in Creatures & monsters manual
      *
      * @param Request $request
-     * @return void
+     * @return mixed
      */
     public function getBonusXP(Request $request)
     {

@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('users', 'User\UserController')->except([ 'create', 'edit' ]);
+Route::resource('characters', 'CharacterController')->except([ 'create', 'edit' ]);
 Route::get('/roll', 'DiceController@roll');
 Route::prefix('xp')->group(function () {
     Route::get('maneuver', 'XPController@getManeuverXP');
@@ -29,4 +30,5 @@ Route::prefix('xp')->group(function () {
     Route::get('kill', 'XPController@getKillXP');
     Route::get('bonus', 'XPController@getBonusXP');
 });
+
 

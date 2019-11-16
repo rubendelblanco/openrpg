@@ -5,7 +5,7 @@
         <div class="panel-body">
             <form @submit="submitForm">
                 <vue-form-generator :schema="schema" :model="model" :options="formOptions"></vue-form-generator>
-                <b-button type="submit">Crear usuario</b-button>
+                <b-button type="submit">Crear Personaje</b-button>
             </form>
         </div>
     </div>
@@ -17,10 +17,8 @@
         data() {
             return {
                 model: {
-                    name: "",
-                    email: "",
-                    password: "",
-                    repeat_password: ""
+                  /*  name: "",
+                    experience: ""*/
                 },
                 schema,
                 formOptions: {
@@ -33,6 +31,9 @@
                 success: false,
                 success_message: ""
             };
+        },
+        mounted() {
+            this.getUsers();
         },
         methods: {
             submitForm(e) {
@@ -52,7 +53,12 @@
                             this.validationErrors = err.response.data.errors;
                         }
                     });
-            }
+            },
+            getUsers(ctx, callback) {
+                axios.get("/api/users").then(response => {
+                    this.schema.selectField.values = response.data.map(u => ({id:u.id, name:u.name+' ('+u.email+')'}));
+                });
+            },
         }
     };
 </script>

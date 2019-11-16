@@ -1,15 +1,24 @@
 <script>
     import VueFormGenerator from 'vue-form-generator'
 
+    const selectField = {
+        type: 'select',
+        label: 'User',
+        model: 'user',
+        values: [],
+        required:true,
+    };
+
     export default {
+        selectField,
         fields: [
+            selectField,
             {
                 type: 'input',
                 inputType: 'text',
                 label: 'Name',
                 model: 'name',
                 placeholder: 'Character name',
-                featured: true,
                 required: true
             },
             {
@@ -19,13 +28,6 @@
                 model: 'experience',
                 placeholder: 'Experience points'
             },
-            {
-                type: 'input',
-                inputType: 'number',
-                label: 'Level',
-                model: 'Level',
-                required: true
-            }
         ]
     };
 </script>

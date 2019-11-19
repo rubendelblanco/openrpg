@@ -56,7 +56,7 @@ class CharacterController extends Controller
      */
     public function show(Character $character)
     {
-        return Character::firstOrFail($character);
+        return Character::findOrFail($character->id);
     }
 
     /**

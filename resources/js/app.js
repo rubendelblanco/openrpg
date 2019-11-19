@@ -34,6 +34,7 @@ Vue.component('success-message', require('./components/alerts/SuccessMessage.vue
 Vue.component('desktop-menu', require('./components/desktop_menu/RadialMenu.vue').default);
 Vue.component('overlay', require('./components/layers/overlay.vue').default);
 Vue.component('hamburguer-menu', require('./components/desktop_menu/Hamburguer.vue').default);
+Vue.component('character-table', require('./components/CharacterTable.vue').default);
 
 let router = new Router({
     routes: [
@@ -56,6 +57,26 @@ let router = new Router({
             name: 'user_create',
             path: '/users/create',
             component: require('./views/users/create').default
+        },
+        {
+            name: 'character_index',
+            path: '/characters',
+            component: require('./views/characters/index').default
+        },
+        {
+            name: 'character_create',
+            path: '/characters/create',
+            component: require('./views/characters/create').default
+        },
+        {
+            name: 'character_edit',
+            path: '/characters/:id/edit',
+            component: require('./views/characters/edit').default
+        },
+        {
+            name: 'character_show',
+            path: '/characters/:id(\\d+)',
+            component: require('./views/characters/show').default
         },
         {
             name: 'home',

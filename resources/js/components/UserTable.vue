@@ -65,7 +65,6 @@ export default {
       axios
         .delete(`api/users/${id}`)
         .then(response => {
-          console.log(response);
           this.$bvModal.hide("modal-confirm-delete");
           this.user_confirm = {};
           this.users = this.users.filter(user => user.id != id);

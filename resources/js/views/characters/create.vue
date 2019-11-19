@@ -17,8 +17,7 @@
         data() {
             return {
                 model: {
-                  /*  name: "",
-                    experience: ""*/
+
                 },
                 schema,
                 formOptions: {

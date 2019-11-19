@@ -7,12 +7,15 @@
         model: 'user',
         values: [],
         required:true,
+        selectOptions: {
+            hideNoneSelectedText: true
+        }
     };
 
     export default {
         selectField,
         fields: [
-            selectField,
+           selectField,
             {
                 type: 'input',
                 inputType: 'text',

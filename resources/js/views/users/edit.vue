@@ -41,7 +41,7 @@ export default {
     axios
       .get(`/api/users/${this.$route.params.id}`)
       .then(res => {
-        this.model = res.data[0];
+        this.model = res.data;
       })
       .catch(err => {
         this.errors.push(err);

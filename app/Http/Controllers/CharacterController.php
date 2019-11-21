@@ -66,9 +66,8 @@ class CharacterController extends Controller
      * @param  int  $character
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreEditCharacterRequest $request, $character)
+    public function update(StoreEditCharacterRequest $request, Character $character)
     {
-
         $character->user_id = $request->user;
         $character->name = $request->name;
         $character->experience = $request->experience;

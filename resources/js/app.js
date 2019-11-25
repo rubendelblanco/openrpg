@@ -82,6 +82,11 @@ let router = new Router({
             name: 'home',
             path: '/',
             component: require('./views/home/index').default
+        },
+        {
+            name: 'xp',
+            path: '/xp',
+            component: require('./views/experience/index').default
         }
     ],
     linkExactActiveClass: 'active'

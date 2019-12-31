@@ -14,12 +14,12 @@ class XPController extends Controller
     /**
      * Returns a maneuver experience points
      *
-     * @param Request $request 
+     * @param Request $request
      * @return array response
      */
     public function getManeuverXP(Request $request)
     {
-        $manPattern = '/^(mf|f|m|d|md|ed|lc|ab)$/i';
+        $manPattern = '/^(mf|f|n|d|md|ed|lc|ab)$/i';
         $request->validate([
             'man' => ["required", "regex:$manPattern"],
             'mod' => 'numeric|min:0.5'
@@ -28,7 +28,7 @@ class XPController extends Controller
         $table = array(
             'mf' => '5',
             'f' => '10',
-            'm' => '50',
+            'n' => '50',
             'd' => '100',
             'md' => '150',
             'ed' => '200',
@@ -75,7 +75,7 @@ class XPController extends Controller
 
     /**
      * Returns experience points for travel and/or hit points delivered and received.
-     * The calculation method is the same for both, so we use the same function. 
+     * The calculation method is the same for both, so we use the same function.
      *
      * @param Request $request
      * @return array
@@ -243,7 +243,7 @@ class XPController extends Controller
 
     /**
      * Calculates the modifier if the request has one. If not it will be 1.
-     * 
+     *
      * @param Request $request
      * @return string modifier/multiplier.
      */

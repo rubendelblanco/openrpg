@@ -68,8 +68,19 @@ class CharacterController extends Controller
      */
     public function update(StoreEditCharacterRequest $request, Character $character)
     {
-        $character->user_id = $request->user;
-        $character->name = $request->name;
+        $some_possible_attributes = [
+            'user' => 'user_id',
+            'name' => 'name'
+        ];
+
+        foreach ($some_possible_attributes as $key => $value) {
+            if (isset($request->{$key})){
+                $character->{$value} = $request->{$key};
+            }
+        }
+
+        //$character->user_id = $request->user;
+        //$character->name = $request->name;
         $character->experience = $request->experience;
         $character->level = $this->getLevel($request->experience);
 

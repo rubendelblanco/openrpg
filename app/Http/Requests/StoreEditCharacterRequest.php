@@ -24,8 +24,8 @@ class StoreEditCharacterRequest extends FormRequest
     public function rules()
     {
         return [
-            'user'       => 'required|exists:users,id',
-            'name'          =>  'required|string|min:3',
+            'user'       => 'sometimes|required|exists:users,id',
+            'name'          =>  'sometimes|required|string|min:3',
             'experience'    =>  'required|integer|min:0'
         ];
     }

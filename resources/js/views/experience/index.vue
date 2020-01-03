@@ -11,83 +11,151 @@
                             label-for="character"
                             description="Personaje al que se le suman los puntos de experiencia"
                         >
-                            <b-form-select id="character" v-model="selected.character" :options="options" required></b-form-select>
+                            <b-form-select id="character" @change="fillFormWithCharLevel()" v-model="selected.character" :options="options" required></b-form-select>
                         </b-form-group>
                     </div>
+
                     <div class="row my-1">
-                        <div class="col-sm-2"><label for="maneuver">Maniobras</label></div>
-                        <div class="col-sm-4">
-                            <b-form-select id="maneuver" v-model="selected.maneuver" :options="maneuver_options" @change="calculateXP(`maneuver?man=${selected.maneuver}`, 'totalManeuver')"></b-form-select>
-                        </div>
-                        <div class="col-sm-2" ref="totalManeuver"></div>
-                        <div class="col-sm-3"></div>
+                        <b-form-group
+                            label="Maniobra"
+                            label-for="maneuver"
+                            description="Dificultad de la maniobra"
+                        >
+                            <b-form inline>
+                                <b-form-select id="maneuver" v-model="selected.maneuver" :options="maneuver_options"
+                                               @change="calculateXP(`maneuver?man=${selected.maneuver}`, 'totalManeuver')">
+
+                                </b-form-select>
+                                <b-input-group prepend="Total">
+                                    <b-form-input type="number"
+                                                  v-model="selected.xp.totalManeuver"
+                                                  ref="totalManeuver" @change="recalculateXP()"></b-form-input>
+                                </b-input-group>
+                            </b-form>
+                        </b-form-group>
                     </div>
+
                     <div class="row my-1">
-                        <div class="col-sm-2">Por feitizo</div>
-                        <div class="col-sm-2">Nivel hechicero</div>
-                        <div class="col-sm-2">
-                            <b-form-input v-model="selected.casterLevel" type="number"
-                                                                     ref="casterLevel" min="1" @change="calculateXP(`spell?caster=${selected.casterLevel}&spell=${selected.spellLevel}`, 'totalSpell')"></b-form-input>
-                        </div>
-                        <div class="col-sm-2">Nivel hechizo</div>
-                        <div class="col-sm-2">
-                            <b-form-input v-model="selected.spellLevel" type="number"
-                                                                     ref="spellLevel" min="1" @change="calculateXP(`spell?caster=${selected.casterLevel}&spell=${selected.spellLevel}`, 'totalSpell')"></b-form-input>
-                        </div>
-                        <div class="col-sm-2" ref="totalSpell"></div>
+                        <b-form-group
+                            label="Hechizos"
+                            description="Puntos por lanzar hechizos">
+                            <b-form inline>
+                                <b-input-group prepend="Nivel hechicero / nivel hechizo">
+                                    <b-form-input v-model="selected.casterLevel" type="number"
+                                                                         ref="casterLevel" min="1" @change="calculateXP(`spell?caster=${selected.casterLevel}&spell=${selected.spellLevel}`, 'totalSpell')"></b-form-input>
+                                    <b-form-input v-model="selected.spellLevel" type="number"
+                                                                         ref="spellLevel" min="0" @change="calculateXP(`spell?caster=${selected.casterLevel}&spell=${selected.spellLevel}`, 'totalSpell')"></b-form-input>
+                                </b-input-group>
+                                <b-input-group prepend="Total">
+                                    <b-form-input
+                                        type="number"
+                                        v-model="selected.xp.totalSpell"
+                                        ref="totalSpell" @change="recalculateXP()"></b-form-input>
+                                </b-input-group>
+                            </b-form>
+                        </b-form-group>
                     </div>
+
                     <div class="row my-1">
-                        <div class="col-sm-2">Crítico</div>
-                        <div class="col-sm-2">Nivel del blanco</div>
-                        <div class="col-sm-2">
-                            <b-form-input v-model="selected.criticalTargetLevel" type="number"
-                                          ref="criticalTargetLevel" min="1" @change="calculateXP(`critical?crit=${selected.critical}&level=${selected.criticalTargetLevel}`, 'totalCritical')"></b-form-input>
-                        </div>
-                        <div class="col-sm-2">Crítico</div>
-                        <div class="col-sm-2">
-                            <b-form-select v-model="selected.critical" :options = "critical_options"
-                                          ref="critical" @change="calculateXP(`critical?crit=${selected.critical}&level=${selected.criticalTargetLevel}`, 'totalCritical')"></b-form-select>
-                        </div>
-                        <div class="col-sm-2" ref="totalCritical"></div>
+                        <b-form-group
+                            label="Críticos"
+                            description="Por infligir crítico a un adversario">
+                            <b-form inline>
+                                <b-input-group prepend="Nivel del blanco / nivel del crítico">
+                                    <b-form-input v-model="selected.criticalTargetLevel" type="number"
+                                                  ref="criticalTargetLevel" min="1" @change="calculateXP(`critical?crit=${selected.critical}&level=${selected.criticalTargetLevel}`, 'totalCritical')"></b-form-input>
+                                    <b-form-select v-model="selected.critical" :options = "critical_options"
+                                                   ref="critical" @change="calculateXP(`critical?crit=${selected.critical}&level=${selected.criticalTargetLevel}`, 'totalCritical')"></b-form-select>
+                                </b-input-group>
+                                <b-input-group prepend="Total">
+                                    <b-form-input
+                                        type="number"
+                                        v-model="selected.xp.totalCritical"
+                                        ref="totalCritical" @change="recalculateXP()">
+                                    </b-form-input>
+                                </b-input-group>
+                            </b-form>
+                        </b-form-group>
                     </div>
+
                     <div class="row my-1">
-                        <div class="col-sm-2">Pieza</div>
-                        <div class="col-sm-2">Nivel atacante</div>
-                        <div class="col-sm-2">
-                            <b-form-input v-model="selected.attackerLevel" type="number"
-                                      ref="attackerLevel" min="1" @change="calculateXP(`kill?attack=${selected.attackerLevel}&def=${selected.defenderLevel}`, 'totalKill')"></b-form-input>
-                        </div>
-                        <div class="col-sm-2">Nivel defensor</div>
-                        <div class="col-sm-2">
-                            <b-form-input v-model="selected.defenderLevel" type="number"
-                                      ref="defenderLevel" min="1" @change="calculateXP(`kill?attack=${selected.attackerLevel}&def=${selected.defenderLevel}`, 'totalKill')"></b-form-input>
-                        </div>
-                        <div class="col-sm-2" ref="totalKill"></div>
+                        <b-form-group
+                            label="Pieza"
+                            description="Por 'vencer' a un adversario">
+                            <b-form inline>
+                                <b-input-group prepend="Nivel del atacante / nivel del defensor">
+                                    <b-form-input v-model="selected.attackerLevel" type="number"
+                                                  ref="attackerLevel" min="0" @change="calculateXP(`kill?attack=${selected.attackerLevel}&def=${selected.defenderLevel}`, 'totalKill')"></b-form-input>
+                                    <b-form-input v-model="selected.defenderLevel" type="number"
+                                                  ref="defenderLevel" min="1" @change="calculateXP(`kill?attack=${selected.attackerLevel}&def=${selected.defenderLevel}`, 'totalKill')"></b-form-input>
+                                </b-input-group>
+                                <b-input-group prepend="Total">
+                                    <b-form-input type="number" v-model="selected.xp.totalKill"
+                                                  ref="totalKill" @change="recalculateXP()">
+                                    </b-form-input>
+                                </b-input-group>
+                            </b-form>
+                        </b-form-group>
                     </div>
+
                     <div class="row my-1">
-                        <div class="col-sm-2">Bonus enemigo</div>
-                        <div class="col-sm-2">Nivel atacante</div>
-                        <div class="col-sm-2">
-                            <b-form-input v-model="selected.attackerLevelBonus" type="number"
-                                          ref="attackerLevelBonus" min="1" @change="calculateXP(`bonus?level=${selected.attackerLevelBonus}&code=${selected.bonusExp}`, 'totalBonus')"></b-form-input>
-                        </div>
-                        <div class="col-sm-2">Código bonus</div>
-                        <div class="col-sm-2">
-                            <b-form-select v-model="selected.bonusExp" :options = "bonus_options"
-                                           ref="bonus" @change="calculateXP(`bonus?level=${selected.attackerLevelBonus}&code=${selected.bonusExp}`, 'totalBonus')"></b-form-select>
-                        </div>
-                        <div class="col-sm-2" ref="totalBonus"></div>
+                        <b-form-group
+                            label="Bonus pieza"
+                            description="Bonus por 'vencer' a un adversario (Manual monstruos y criaturas)">
+                            <b-form inline>
+                                <b-input-group prepend="Nivel del atacante / código bonus">
+                                    <b-form-input v-model="selected.attackerLevelBonus" type="number"
+                                                  ref="attackerLevelBonus" min="1" @change="calculateXP(`bonus?level=${selected.attackerLevelBonus}&code=${selected.bonusExp}`, 'totalBonus')"></b-form-input>
+                                    <b-form-select v-model="selected.bonusExp" :options = "bonus_options"
+                                                   ref="bonus" @change="calculateXP(`bonus?level=${selected.attackerLevelBonus}&code=${selected.bonusExp}`, 'totalBonus')"></b-form-select>
+                                </b-input-group>
+                                <b-input-group prepend="Total">
+                                    <b-form-input type="number" v-model="selected.xp.totalBonus"
+                                                  ref="totalBonus" @change="recalculateXP()"></b-form-input>
+                                </b-input-group>
+                            </b-form>
+                        </b-form-group>
                     </div>
+
                     <div class="row my-1">
-                        <div class="col-sm-3">Puntos de vida, poder y viaje</div>
-                        <div class="col-sm-2">
-                            <b-form-input ref="travel" type="number" min="0" v-model="selected.travel" @change="calculateXP(`travel?base=${selected.travel}`, 'totalTravel')"></b-form-input>
-                        </div>
-                        <div class="col-sm-2" ref="totalTravel"></div>
+                        <b-form-group
+                            label="Puntos de vida, poder y viaje"
+                            description="Por PV infligidos o sufridos, por PP gastados y por km de viaje">
+                            <b-form inline>
+                                <b-input-group prepend="Total">
+                                    <b-form-input type="number" v-model="selected.xp.totalTravel" @change="recalculateXP()">
+                                    </b-form-input>
+                                </b-input-group>
+                            </b-form>
+                        </b-form-group>
                     </div>
+
                     <div class="row my-1">
-                        <span>Total: </span><b-form-input v-model="selected.totalXP" min="0" type="number" class="totalXP" ref="totalXP"></b-form-input>
+                        <b-form-group
+                            label="Puntos por ideas/aventura"
+                            description="Por ideas u objetivos cumplidos en la aventura">
+                            <b-form inline>
+                                <b-input-group prepend="Total">
+                                    <b-form-input type="number" v-model="selected.xp.totalIdea"
+                                                  ref="totalIdea" @change="recalculateXP()">
+                                    </b-form-input>
+                                </b-input-group>
+                            </b-form>
+                        </b-form-group>
                     </div>
+
+                    <div class="row my-1">
+                        <b-form-group
+                            label="Suma total" class="totalXP-label">
+                            <b-form inline>
+                                <b-input-group prepend="Total">
+                                    <b-form-input v-model="selected.totalXP" type="number"
+                                                  class="totalXP" ref="totalXP"></b-form-input>
+                                </b-input-group>
+                            </b-form>
+                        </b-form-group>
+                    </div>
+
                     <div class="row my-1">
                         <b-button type="submit">Sumar</b-button>
                     </div>
@@ -104,16 +172,16 @@
                 experiencesModel: {
                 },
                 selected: {
-                    critical: 'a',
+                    critical: 'null',
                     criticalTargetLevel: 1,
                     character:null,
                     casterLevel:1,
-                    spellLevel:1,
-                    attackerLevel: 1,
+                    spellLevel:0,
+                    attackerLevel: 0,
                     defenderLevel: 1,
-                    bonusExp: 'a',
-                    attackerLevelBonus: 1,
-                    maneuver: 'n',
+                    bonusExp: 'null',
+                    attackerLevelBonus: 0,
+                    maneuver: 'ru',
                     travel: 0,
                     xp: {
                         totalManeuver: 0,
@@ -121,7 +189,8 @@
                         totalCritical: 0,
                         totalKill: 0,
                         totalBonus: 0,
-                        totalTravel: 0
+                        totalTravel: 0,
+                        totalIdea: 0
                     },
                     totalXP: 0
                 },
@@ -132,6 +201,7 @@
                 validationErrors: "",
                 options: [],
                 maneuver_options:{
+                    'ru':'Rutina',
                     'mf':'Muy facil',
                     'f':'Facil',
                     'n':'Normal',
@@ -142,6 +212,7 @@
                     'ab':'Absurdo'
                 },
                 critical_options:{
+                    'null':'--',
                     'a':'A',
                     'b':'B',
                     'c':'C',
@@ -149,6 +220,7 @@
                     'e':'E'
                 },
                 bonus_options:{
+                    'null':'--',
                     'a':'A',
                     'b':'B',
                     'c':'C',
@@ -169,7 +241,7 @@
                 .get(`/api/characters/`)
                 .then(res => {
                     const characters = res.data;
-                    this.experiencesModel = new Map(characters.map(c => [c.id,c.experience]));
+                    this.experiencesModel = new Map(characters.map(c => [c.id,{'experience':c.experience,'level':c.level}]));
                     this.options = characters.map(c => ({value:c.id, text: `${c.name} - ${c.experience} (Niv: ${c.level})`}));
                 })
                 .catch(err => {
@@ -186,6 +258,7 @@
                             this.validationErrors = "";
                             this.success = true;
                             this.success_message = res.data.message;
+                            e.target.reset();
                         }
                     })
                     .catch(err => {
@@ -198,14 +271,17 @@
                 axios
                     .get(`api/xp/${endpoint}`)
                     .then(res => {
-                        this.$refs[ref].innerText = res.data.message;
                         this.selected.xp[ref] = res.data.message;
-                        this.selected.totalXP = this.recalculateXP();
+                        this.recalculateXP();
                     })
+                    .catch(err => {
+                        this.selected.xp[ref] = 0;
+                        this.recalculateXP();
+                    });
             },
             sumXp(){
                 const selectedCharacterCurrentXP = this.experiencesModel.get(this.selected.character);
-                return {'experience' : parseInt(selectedCharacterCurrentXP)+parseInt(this.$refs.totalXP.innerText)};
+                return {'experience' : parseInt(selectedCharacterCurrentXP.experience)+parseInt(this.selected.totalXP)};
             },
             recalculateXP(){
                 let sumXPFields = 0;
@@ -215,14 +291,25 @@
                     sumXPFields += parseInt(xp);
                 }
 
-                return sumXPFields;
+                this.selected.totalXP = sumXPFields;
+            },
+            fillFormWithCharLevel(){
+                const selectedCharacter = this.experiencesModel.get(this.selected.character);
+                let fields = ['casterLevel','attackerLevel','attackerLevelBonus'];
+
+                for ( let i = 0;i< fields.length; i++){
+                    this.selected[fields[i]] = selectedCharacter.level;
+                }
             }
         }
     };
 </script>
 <style>
     .totalXP{
-        padding-left:1%;
         font-weight: bold;
+    }
+    .totalXP-label{
+        font-weight: bold;
+        color: #2fa360;
     }
 </style>

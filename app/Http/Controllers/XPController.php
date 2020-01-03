@@ -26,6 +26,7 @@ class XPController extends Controller
         ]);
 
         $table = array(
+            'ru' => '0',
             'mf' => '5',
             'f' => '10',
             'n' => '50',

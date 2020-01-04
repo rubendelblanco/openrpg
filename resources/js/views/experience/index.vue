@@ -1,17 +1,18 @@
 <template>
-    <div>
+    <div ref="top">
         <validation-errors :errors="validationErrors" v-if="validationErrors"></validation-errors>
-        <success-message :success="success" :success_message="success_message" v-if="success"></success-message>
+        <success-message @click="toggleSuccess" :success="success" :success_message="success_message"></success-message>
         <div class="panel-body">
             <div class="container-fluid">
-                <form @submit="submitForm">
+                <form @submit="submitForm" ref="XPForm">
                     <div class="row my-1">
                         <b-form-group
                             label="Personaje:"
                             label-for="character"
                             description="Personaje al que se le suman los puntos de experiencia"
                         >
-                            <b-form-select id="character" @change="fillFormWithCharLevel()" v-model="selected.character" :options="options" required></b-form-select>
+                            <b-form-select id="character" @change="fillFormWithCharLevel()" v-model="selected.character"
+                                           :options="options" required></b-form-select>
                         </b-form-group>
                     </div>
 
@@ -42,9 +43,11 @@
                             <b-form inline>
                                 <b-input-group prepend="Nivel hechicero / nivel hechizo">
                                     <b-form-input v-model="selected.casterLevel" type="number"
-                                                                         ref="casterLevel" min="1" @change="calculateXP(`spell?caster=${selected.casterLevel}&spell=${selected.spellLevel}`, 'totalSpell')"></b-form-input>
+                                                  ref="casterLevel" min="1"
+                                                  @change="calculateXP(`spell?caster=${selected.casterLevel}&spell=${selected.spellLevel}`, 'totalSpell')"></b-form-input>
                                     <b-form-input v-model="selected.spellLevel" type="number"
-                                                                         ref="spellLevel" min="0" @change="calculateXP(`spell?caster=${selected.casterLevel}&spell=${selected.spellLevel}`, 'totalSpell')"></b-form-input>
+                                                  ref="spellLevel" min="0"
+                                                  @change="calculateXP(`spell?caster=${selected.casterLevel}&spell=${selected.spellLevel}`, 'totalSpell')"></b-form-input>
                                 </b-input-group>
                                 <b-input-group prepend="Total">
                                     <b-form-input
@@ -63,9 +66,11 @@
                             <b-form inline>
                                 <b-input-group prepend="Nivel del blanco / nivel del crítico">
                                     <b-form-input v-model="selected.criticalTargetLevel" type="number"
-                                                  ref="criticalTargetLevel" min="1" @change="calculateXP(`critical?crit=${selected.critical}&level=${selected.criticalTargetLevel}`, 'totalCritical')"></b-form-input>
-                                    <b-form-select v-model="selected.critical" :options = "critical_options"
-                                                   ref="critical" @change="calculateXP(`critical?crit=${selected.critical}&level=${selected.criticalTargetLevel}`, 'totalCritical')"></b-form-select>
+                                                  ref="criticalTargetLevel" min="1"
+                                                  @change="calculateXP(`critical?crit=${selected.critical}&level=${selected.criticalTargetLevel}`, 'totalCritical')"></b-form-input>
+                                    <b-form-select v-model="selected.critical" :options="critical_options"
+                                                   ref="critical"
+                                                   @change="calculateXP(`critical?crit=${selected.critical}&level=${selected.criticalTargetLevel}`, 'totalCritical')"></b-form-select>
                                 </b-input-group>
                                 <b-input-group prepend="Total">
                                     <b-form-input
@@ -85,9 +90,11 @@
                             <b-form inline>
                                 <b-input-group prepend="Nivel del atacante / nivel del defensor">
                                     <b-form-input v-model="selected.attackerLevel" type="number"
-                                                  ref="attackerLevel" min="0" @change="calculateXP(`kill?attack=${selected.attackerLevel}&def=${selected.defenderLevel}`, 'totalKill')"></b-form-input>
+                                                  ref="attackerLevel" min="0"
+                                                  @change="calculateXP(`kill?attack=${selected.attackerLevel}&def=${selected.defenderLevel}`, 'totalKill')"></b-form-input>
                                     <b-form-input v-model="selected.defenderLevel" type="number"
-                                                  ref="defenderLevel" min="1" @change="calculateXP(`kill?attack=${selected.attackerLevel}&def=${selected.defenderLevel}`, 'totalKill')"></b-form-input>
+                                                  ref="defenderLevel" min="1"
+                                                  @change="calculateXP(`kill?attack=${selected.attackerLevel}&def=${selected.defenderLevel}`, 'totalKill')"></b-form-input>
                                 </b-input-group>
                                 <b-input-group prepend="Total">
                                     <b-form-input type="number" v-model="selected.xp.totalKill"
@@ -105,9 +112,11 @@
                             <b-form inline>
                                 <b-input-group prepend="Nivel del atacante / código bonus">
                                     <b-form-input v-model="selected.attackerLevelBonus" type="number"
-                                                  ref="attackerLevelBonus" min="1" @change="calculateXP(`bonus?level=${selected.attackerLevelBonus}&code=${selected.bonusExp}`, 'totalBonus')"></b-form-input>
-                                    <b-form-select v-model="selected.bonusExp" :options = "bonus_options"
-                                                   ref="bonus" @change="calculateXP(`bonus?level=${selected.attackerLevelBonus}&code=${selected.bonusExp}`, 'totalBonus')"></b-form-select>
+                                                  ref="attackerLevelBonus" min="1"
+                                                  @change="calculateXP(`bonus?level=${selected.attackerLevelBonus}&code=${selected.bonusExp}`, 'totalBonus')"></b-form-input>
+                                    <b-form-select v-model="selected.bonusExp" :options="bonus_options"
+                                                   ref="bonus"
+                                                   @change="calculateXP(`bonus?level=${selected.attackerLevelBonus}&code=${selected.bonusExp}`, 'totalBonus')"></b-form-select>
                                 </b-input-group>
                                 <b-input-group prepend="Total">
                                     <b-form-input type="number" v-model="selected.xp.totalBonus"
@@ -123,7 +132,8 @@
                             description="Por PV infligidos o sufridos, por PP gastados y por km de viaje">
                             <b-form inline>
                                 <b-input-group prepend="Total">
-                                    <b-form-input type="number" v-model="selected.xp.totalTravel" @change="recalculateXP()">
+                                    <b-form-input type="number" v-model="selected.xp.totalTravel"
+                                                  @change="recalculateXP()">
                                     </b-form-input>
                                 </b-input-group>
                             </b-form>
@@ -169,16 +179,15 @@
     export default {
         data() {
             return {
-                experiencesModel: {
-                },
+                experiencesModel: {},
                 selected: {
                     critical: 'null',
                     criticalTargetLevel: 1,
-                    character:null,
-                    casterLevel:1,
-                    spellLevel:0,
+                    character: null,
+                    casterLevel: 1,
+                    spellLevel: 0,
                     attackerLevel: 0,
-                    defenderLevel: 1,
+                    defenderLevel: 0,
                     bonusExp: 'null',
                     attackerLevelBonus: 0,
                     maneuver: 'ru',
@@ -200,65 +209,58 @@
                 success: false,
                 validationErrors: "",
                 options: [],
-                maneuver_options:{
-                    'ru':'Rutina',
-                    'mf':'Muy facil',
-                    'f':'Facil',
-                    'n':'Normal',
-                    'd':'Dificil',
-                    'md':'Muy difícil',
-                    'ed':'Extremadamente difícil',
-                    'lc':'Locura completa',
-                    'ab':'Absurdo'
+                maneuver_options: {
+                    'ru': 'Rutina',
+                    'mf': 'Muy facil',
+                    'f': 'Facil',
+                    'n': 'Normal',
+                    'd': 'Dificil',
+                    'md': 'Muy difícil',
+                    'ed': 'Extremadamente difícil',
+                    'lc': 'Locura completa',
+                    'ab': 'Absurdo'
                 },
-                critical_options:{
-                    'null':'--',
-                    'a':'A',
-                    'b':'B',
-                    'c':'C',
-                    'd':'D',
-                    'e':'E'
+                critical_options: {
+                    'null': '--',
+                    'a': 'A',
+                    'b': 'B',
+                    'c': 'C',
+                    'd': 'D',
+                    'e': 'E'
                 },
-                bonus_options:{
-                    'null':'--',
-                    'a':'A',
-                    'b':'B',
-                    'c':'C',
-                    'd':'D',
-                    'e':'E',
-                    'f':'F',
-                    'g':'G',
-                    'h':'H',
-                    'i':'I',
-                    'j':'J',
-                    'k':'K',
-                    'l':'L'
+                bonus_options: {
+                    'null': '--',
+                    'a': 'A',
+                    'b': 'B',
+                    'c': 'C',
+                    'd': 'D',
+                    'e': 'E',
+                    'f': 'F',
+                    'g': 'G',
+                    'h': 'H',
+                    'i': 'I',
+                    'j': 'J',
+                    'k': 'K',
+                    'l': 'L'
                 }
             };
         },
         mounted() {
-            axios
-                .get(`/api/characters/`)
-                .then(res => {
-                    const characters = res.data;
-                    this.experiencesModel = new Map(characters.map(c => [c.id,{'experience':c.experience,'level':c.level}]));
-                    this.options = characters.map(c => ({value:c.id, text: `${c.name} - ${c.experience} (Niv: ${c.level})`}));
-                })
-                .catch(err => {
-                    this.errors.push(err);
-                });
+            this.fillFormWithSelectChars();
         },
         methods: {
             submitForm(e) {
                 e.preventDefault();
                 axios
-                    .patch(this.submit_url+this.selected.character, this.sumXp())
+                    .patch(this.submit_url + this.selected.character, this.sumXp())
                     .then(res => {
                         if (res.status === 200) {
+                            Object.assign(this.$data, this.$options.data.call(this));
+                            window.scrollTo(0, this.$refs.top.offsetTop);
                             this.validationErrors = "";
                             this.success = true;
                             this.success_message = res.data.message;
-                            e.target.reset();
+                            this.fillFormWithSelectChars();
                         }
                     })
                     .catch(err => {
@@ -267,7 +269,7 @@
                         }
                     });
             },
-            calculateXP(endpoint,ref){
+            calculateXP(endpoint, ref) {
                 axios
                     .get(`api/xp/${endpoint}`)
                     .then(res => {
@@ -279,36 +281,58 @@
                         this.recalculateXP();
                     });
             },
-            sumXp(){
+            sumXp() {
                 const selectedCharacterCurrentXP = this.experiencesModel.get(this.selected.character);
-                return {'experience' : parseInt(selectedCharacterCurrentXP.experience)+parseInt(this.selected.totalXP)};
+                return {'experience': parseInt(selectedCharacterCurrentXP.experience) + parseInt(this.selected.totalXP)};
             },
-            recalculateXP(){
+            recalculateXP() {
                 let sumXPFields = 0;
                 const selectedXPKeys = Object.entries(this.selected.xp);
 
-                for (const [key,xp] of selectedXPKeys) {
+                for (const [key, xp] of selectedXPKeys) {
                     sumXPFields += parseInt(xp);
                 }
 
                 this.selected.totalXP = sumXPFields;
             },
-            fillFormWithCharLevel(){
+            fillFormWithCharLevel() {
                 const selectedCharacter = this.experiencesModel.get(this.selected.character);
-                let fields = ['casterLevel','attackerLevel','attackerLevelBonus'];
+                let fields = ['casterLevel', 'attackerLevel', 'attackerLevelBonus'];
 
-                for ( let i = 0;i< fields.length; i++){
+                for (let i = 0; i < fields.length; i++) {
                     this.selected[fields[i]] = selectedCharacter.level;
                 }
+            },
+            fillFormWithSelectChars() {
+                axios
+                    .get(`/api/characters/`)
+                    .then(res => {
+                        const characters = res.data;
+                        this.experiencesModel = new Map(characters.map(c => [c.id, {
+                            'experience': c.experience,
+                            'level': c.level
+                        }]));
+                        this.options = characters.map(c => ({
+                            value: c.id,
+                            text: `${c.name} - ${c.experience} (Niv: ${c.level})`
+                        }));
+                    })
+                    .catch(err => {
+                        this.errors.push(err);
+                    });
+            },
+            toggleSuccess(){
+                this.success = !this.success;
             }
         }
     };
 </script>
 <style>
-    .totalXP{
+    .totalXP {
         font-weight: bold;
     }
-    .totalXP-label{
+
+    .totalXP-label {
         font-weight: bold;
         color: #2fa360;
     }

@@ -1,0 +1,40 @@
+---
+
+# OpenRPG Development docker-compose
+# For those who cannot afford wasting time on installing packages
+
+version: '3.7'
+
+services:
+  database:
+    container_name: openrpg-db
+    image: postgres:11
+    restart: always
+    environment:
+      POSTGRES_DATABASE: homestead
+      POSTGRES_USER: homestead
+      POSTGRES_PASSWORD: secret
+    ports:
+      - 5432:5432
+    networks:
+      - backend-tier
+  webapp:
+    container_name: openrpg-webapp
+    build:
+      context: .
+      dockerfile: ./webapp.dockerfile
+    ports:
+      - 8000:8000
+    volumes:
+      - type: bind
+        source: ../../
+        target: /app
+    env_file: '.env'
+    depends_on:
+      - database
+    networks:
+      - backend-tier
+
+networks:
+  backend-tier:
+

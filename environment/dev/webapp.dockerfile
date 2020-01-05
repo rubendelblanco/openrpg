@@ -25,8 +25,13 @@ RUN docker-php-ext-install pdo pgsql pdo_pgsql mbstring zip exif bcmath gd intl 
 
 RUN pecl install xdebug && docker-php-ext-enable xdebug
 
-EXPOSE 8000
+ENV HOST=0.0.0.0
+ENV PORT=8000
+
+EXPOSE ${PORT}
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /app
+
+ENTRYPOINT [ "./environment/dev/entry.sh" ]

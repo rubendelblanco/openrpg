@@ -18,6 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::resource("spell-lists", 'SpellListController');
+Route::resource("spells", 'SpellController');
 Route::resource('users', 'User\UserController')->except([ 'create', 'edit' ]);
 Route::resource('characters', 'CharacterController')->except([ 'create', 'edit' ]);
 Route::get('/roll', 'DiceController@roll');

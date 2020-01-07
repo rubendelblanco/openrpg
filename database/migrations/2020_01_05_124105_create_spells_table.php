@@ -34,10 +34,11 @@ class CreateSpellsTable extends Migration
             $table->json('effect_area');
             $table->json('duration');
             $table->json('range');
-            $table->text('notes');
-            $table->integer('list_id');
+            $table->text('notes')->nullable(true);
+            $table->integer('list_id')->nullable(true);
             $table->foreign('list_id')->references('id')->on('spell_lists')->onDelete("set null");
         });
+        // TODO: Constraint: pair(level, list_id)
         DB::statement("ALTER TABLE spells ADD COLUMN searchtext TSVECTOR");
         DB::statement("UPDATE spells SET searchtext = to_tsvector('spanish', name || '. ' || description || '. ' || list_name);");
         DB::statement("CREATE INDEX searchtext_gin ON spells USING GIN(searchtext)");

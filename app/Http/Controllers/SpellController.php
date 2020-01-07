@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\SpellStoreRequest;
 use App\Spell;
 
 class SpellController extends Controller
@@ -38,12 +39,37 @@ class SpellController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \App\Http\Requests\SpellStoreRequest
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SpellStoreRequest $request)
     {
-        //
+        $spell = new Spell;
+
+        $validated = $request->validated();
+
+        $spell->name = $validated['name'];
+        $spell->level = $validated['level'];
+        $spell->description = $validated['description'];
+        $spell->list_name = $validated['list_name'];
+        $spell->code = $validated['code'];
+        $spell->class = $validated['class'];
+        $spell->subclass = $validated['subclass'];
+        // TODO: JSON data to be manually validated
+        $spell->effect_area = $validated['effect_area'];
+        $spell->duration = $validated['duration'];
+        $spell->range = $validated['range'];
+        // End TODO
+        $spell->notes = $validated['notes'];
+        $spell->list_id = $validated['list_id'];
+
+        if ($spell->save()) {
+            return response()->json([
+                'data' => json_decode($spell->toJson(JSON_PRETTY_PRINT))
+            ], 201);
+        }
+
+        return response()->json(['message' => ''], 500);
     }
 
     /**

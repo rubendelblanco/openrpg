@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\SpellStoreRequest;
+use App\Http\Requests\SpellUpdateRequest;
 use App\Spell;
 
 class SpellController extends Controller
@@ -69,7 +70,7 @@ class SpellController extends Controller
             ], 201);
         }
 
-        return response()->json(['message' => ''], 500);
+        return response()->json(['message' => 'Ocurrio un error al crear el feitizo'], 500);
     }
 
     /**
@@ -98,12 +99,21 @@ class SpellController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Spell  $spell
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SpellUpdateRequest $request, Spell $spell)
     {
-        //
+        $validated = $request->validated();
+        $spell->update($validated);
+
+        if ($spell->save()) {
+            return response()->json([
+                'data' => json_decode($spell->toJson(JSON_PRETTY_PRINT))
+            ], 200);
+        }
+
+        return response()->json(['message' => 'no se pudo actualizar el hechizo'], 500);
     }
 
     /**

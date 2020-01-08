@@ -6,6 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Spell extends Model
 {
+    protected $fillable = [
+        'name'       ,
+        'description',
+        'level'    ,
+        'list_name',
+        'code' ,
+        'class',
+        'subclass',
+        'effect_area',
+        'duration',
+        'range' ,
+        'notes' ,
+        'list_id',
+    ];
+
     public function scopeSearch($query, $search) {
         if (! $search) {
             return $query;

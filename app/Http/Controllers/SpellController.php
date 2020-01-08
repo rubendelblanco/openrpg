@@ -130,6 +130,18 @@ class SpellController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $spell = Spell::find($id);
+
+        if (!$spell) {
+            return response()->json(['message' => 'Spell not found'], 404);
+        }
+
+        try {
+            $spell->delete();
+            return response()->json(['message' => 'Feitizo borrado'], 204);
+        }
+        catch (\Exception $e) {
+            return response()->json(['message' => 'Ocurrio un error al eliminar: '.$e->getMessage()], 500);
+        }
     }
 }

@@ -65,9 +65,12 @@ class SpellController extends Controller
         $spell->list_id = $validated['list_id'];
 
         if ($spell->save()) {
-            return response()->json([
-                'data' => json_decode($spell->toJson(JSON_PRETTY_PRINT))
-            ], 201);
+            return response()
+                ->json(
+                    ['data' => json_decode($spell->toJson(JSON_PRETTY_PRINT))],
+                    201,
+                    ['Location' => route("spells.show", ['spell' => $spell->id])]
+                );
         }
 
         return response()->json(['message' => 'Ocurrio un error al crear el feitizo'], 500);

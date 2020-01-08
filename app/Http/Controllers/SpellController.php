@@ -84,7 +84,11 @@ class SpellController extends Controller
      */
     public function show($id)
     {
-        //
+        $spell = Spell::find($id);
+        if ($spell) {
+            return response()->json(json_decode($spell->toJson(JSON_PRETTY_PRINT)));
+        }
+        return response()->json(['message' => 'Spell not found'], 404);
     }
 
     /**
@@ -95,7 +99,6 @@ class SpellController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**

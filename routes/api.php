@@ -14,12 +14,21 @@ use Symfony\Component\HttpKernel\Fragment\RoutableFragmentRenderer;
 |
 */
 
+if (! function_exists("pureApiRoute")) {
+    function pureApiRoute($route) {
+        return $route->except(['create', 'edit']);
+    }
+}
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('users', 'User\UserController')->except([ 'create', 'edit' ]);
-Route::resource('characters', 'CharacterController')->except([ 'create', 'edit' ]);
+pureApiRoute(Route::resource("spell-lists", 'SpellListController'));
+pureApiRoute(Route::resource("spells", 'SpellController'));
+pureApiRoute(Route::resource('users', 'User\UserController'));
+pureApiRoute(Route::resource('characters', 'CharacterController'));
+
 Route::get('/roll', 'DiceController@roll');
 Route::prefix('xp')->group(function () {
     Route::get('maneuver', 'XPController@getManeuverXP');

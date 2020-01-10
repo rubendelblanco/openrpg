@@ -1,0 +1,18 @@
+{
+  "id":1,
+  "created_at":null,
+  "updated_at":null,
+  "level":1,
+  "name":"Memorizar",
+  "description":"El lanzador memoriza una unica imagen que puede ser recordada en cualquier momento. Solo se puede memorizar una imagen por nivel del hechicero.",
+  "list_name":"Amplificaciones",
+  "code":"std",
+  "class":"U",
+  "subclass":"none",
+  "duration": "{\"code\":\"INS\"}",
+  "range": "{\"code\":\"SELF\"}",
+  "effect_area": "{\"code\":\"SELF\"}",
+  "notes":"",
+  "list_id":1,
+  "searchtext":"'amplif':25 'cualqui':13 'hechicer':24 'imag':7,20 'lanzador':3 'memoriz':1,4,18 'moment':14 'nivel':22 'pued':9,17 'record':11 'ser':10 'sol':15 'unic':6"
+}

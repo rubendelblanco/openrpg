@@ -1,5 +1,6 @@
 function SpellSuggestionAdapter (spells) {
     return spells.map(spell => ({
+        id: spell.id,
         text: `LVL: ${spell.level} LIST: ${spell.list_name} NAME: ${spell.name}`,
         link: `/api/spells/${spell.id}`
     }));

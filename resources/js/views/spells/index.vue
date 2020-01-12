@@ -4,7 +4,9 @@
     <ul v-show="isOpen" class="autocomplete-results">
       <div v-if="matches.length">
         <li v-for="(match, i) in matches" :key="i" class="autocomplete-result">
-          <a :href="match.link">{{ match.text }}</a>
+            <router-link :to="{name: 'spell-detail', params: {id: match.id}}">
+                {{ match.text }}
+            </router-link>
         </li>
       </div>
       <div v-if="!matches.length">

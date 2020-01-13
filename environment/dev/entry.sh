@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
-php artisan db:migrate
+php artisan migrate:reset
+php artisan migrate
 php artisan db:seed
-php artisan serve ${HOST}:${PORT}
+php artisan serve --host ${HOST} --port ${PORT}

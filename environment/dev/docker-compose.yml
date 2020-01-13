@@ -10,10 +10,7 @@ services:
     container_name: openrpg-db
     image: postgres:11
     restart: always
-    environment:
-      POSTGRES_DATABASE: homestead
-      POSTGRES_USER: homestead
-      POSTGRES_PASSWORD: secret
+    env_file: .env
     ports:
       - 5432:5432
     networks:
@@ -29,11 +26,23 @@ services:
       - type: bind
         source: ../../
         target: /app
-    env_file: '.env'
+    env_file: .env
     depends_on:
       - database
     networks:
       - backend-tier
+  django:
+    container_name: openrpg-dj
+    build:
+      context: ../../django/
+    ports:
+      - 8001:8000
+    depends_on:
+      - database
+    networks:
+      - backend-tier
+    env_file: 
+      ../../django/.env
 
 networks:
   backend-tier:

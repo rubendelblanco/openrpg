@@ -87,6 +87,21 @@ let router = new Router({
             name: 'xp',
             path: '/xp',
             component: require('./views/experience/index').default
+        },
+        {
+            name: 'spells',
+            path: '/spells',
+            component: require('./views/spells/index').default
+        },
+        {
+            name: 'spells',
+            path: '/spells/search',
+            component: require('./views/spells/index').default
+        },
+        {
+            name: 'spell-detail',
+            path: '/spells/:id(\\d+)',
+            component: require('./views/spells/show').default
         }
     ],
     linkExactActiveClass: 'active'

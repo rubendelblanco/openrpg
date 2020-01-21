@@ -35,7 +35,7 @@ class CharacterController extends Controller
 
         $character = new Character;
 
-        $character->user_id = $request->user;
+        $character->user_id = $request->user()->id;
         $character->name = $request->name;
         $character->experience = $request->experience;
         $character->level = $this->getLevel($request->experience);

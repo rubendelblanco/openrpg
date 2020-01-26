@@ -24,6 +24,6 @@ jobs:
     - name: Generate key
       run: php artisan key:generate
     - name: Set up database
-      run: php artisan migrate
+      run: php artisan migrate && php artisan db:seed
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       run: vendor/bin/phpunit

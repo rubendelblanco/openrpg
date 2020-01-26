@@ -29,6 +29,15 @@ pureApiRoute(Route::resource("spells", 'SpellController'));
 pureApiRoute(Route::resource('users', 'User\UserController'));
 pureApiRoute(Route::resource('characters', 'CharacterController'));
 
+Route::prefix('auth')->group(function() {
+    Route::resource('sessions', 'Api\Auth\SessionsController')->only(['store']);
+    Route::middleware('auth:jwt')->group(function() {
+        Route::resource('refreshments', 'Api\Auth\RefreshmentsController')->only(['store']);
+        Route::get('session', 'Api\Auth\SessionController@show');
+        Route::delete('session', 'Api\Auth\SessionController@destroy');
+    });
+});
+
 Route::get('/roll', 'DiceController@roll');
 Route::prefix('xp')->group(function () {
     Route::get('maneuver', 'XPController@getManeuverXP');

@@ -22,7 +22,7 @@ stop:
 
 composer-install:
 	$(info Make: Install composer dependencies.)
-	@docker-compose -f ${COMPOSEFILE} run webapp sh -c "composer install"
+	@docker exec -it openrpg-webapp sh -c "composer install"
 
 django-install:
 	$(info Make: Install django deps)

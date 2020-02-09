@@ -19,8 +19,11 @@ class Professions extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->string('code')->unique();
-            $table->enum('stat1', $stats_list);
-            $table->enum('stat2', $stats_list);
+            $table->string('stat1');
+            $table->string('stat2');
+            $table->string('stat3')->nullable();
+            $table->string('stat4')->nullable();
+            $table->integer('stats_number');
             $table->json('spell_realms')->nullable();
             $table->enum('spell_user_type', $spell_user_types);
         });

@@ -35,7 +35,7 @@ class SpellStoreRequest extends FormRequest
             'duration' => 'required|string|min:5',
             'range' => 'required|string|min:5',
             'notes' => 'string|nullable',
-            'list_id' => 'nullable|required|integer|exists:spell_lists,id',
+            'list_id' => 'nullable|integer|exists:spell_lists,id',
         ];
     }
 }

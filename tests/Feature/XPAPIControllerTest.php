@@ -10,20 +10,20 @@ class XPAPIControllerTest extends TestCase
 {
     private $endpoints;
 
-    protected function setUp(){
+    protected function setUp(): void {
         parent::setUp();
         $this->endpoints = ['maneuver','spell','travel','critical','kill','hp', 'bonus'];
     }
 
     /**
      * Test case parameters are missing in all endpoints because
-     * all endpoints nedds at least one parameter regardless what method 
+     * all endpoints nedds at least one parameter regardless what method
      * are using.
      *
      * @return void
      */
     public function testEndpointsYieldsErrorIfNotQueryGiven()
-    {   
+    {
         foreach ($this->endpoints as $endpoint){
             $response = $this->json('GET', '/api/xp/'.$endpoint);
         }
@@ -36,7 +36,7 @@ class XPAPIControllerTest extends TestCase
      * @return void
      */
     public function testEndpointManeuverYieldsErrorIfInvalidQueryGiven()
-    {   
+    {
         $response = $this->json('GET', '/api/xp/maneuver?man=j');
         $response->assertStatus(422);
         $response = $this->json('GET', '/api/xp/maneuver?man=mfa');
@@ -55,7 +55,7 @@ class XPAPIControllerTest extends TestCase
      * @return void
      */
     public function testEndpointManeuverSuccessIfValidQueryGiven()
-    {   
+    {
         $response = $this->json('GET', '/api/xp/maneuver?man=mf');
         $response->assertStatus(200);
         $response = $this->json('GET', '/api/xp/maneuver?man=ab&mod=0.5');
@@ -66,11 +66,11 @@ class XPAPIControllerTest extends TestCase
 
     /**
      * Test case receiving correct values for maneuver XP
-     * 
+     *
      * @return void
      */
     public function testEndpointManeuverReturnsCorrectXPValues()
-    {   
+    {
         $response = $this->json('GET', '/api/xp/maneuver?man=ed');
         $content = $response->getOriginalContent();
         $this->assertEquals(200, $content['message']);
@@ -88,7 +88,7 @@ class XPAPIControllerTest extends TestCase
      * @return void
      */
     public function testEndpointSpellYieldsErrorIfInvalidQueryGiven()
-    {   
+    {
         $response = $this->json('GET', '/api/xp/spell?caster=j');
         $response->assertStatus(422);
         $response = $this->json('GET', '/api/xp/spell?caster=0');
@@ -107,18 +107,18 @@ class XPAPIControllerTest extends TestCase
      * @return void
      */
     public function testEndpointSpellSuccessIfValidQueryGiven()
-    {   
+    {
         $response = $this->json('GET', '/api/xp/spell?caster=1&spell=12&mod=2');
         $response->assertStatus(200);
     }
 
     /**
      * Test case receiving correct values for spell XP
-     * 
+     *
      * @return void
      */
     public function testEndpointSpellReturnsCorrectXPValues()
-    {   
+    {
         $response = $this->json('GET', '/api/xp/spell?caster=1&spell=12&mod=2');
         $content = $response->getOriginalContent();
         $this->assertEquals(400, $content['message']);
@@ -135,7 +135,7 @@ class XPAPIControllerTest extends TestCase
      * @return void
      */
     public function testEndpointTravelOrHPYieldsErrorIfInvalidQueryGiven()
-    {   
+    {
         $response = $this->json('GET', '/api/xp/travel?base=j');
         $response->assertStatus(422);
         $response = $this->json('GET', '/api/xp/hp?base=-18');
@@ -150,18 +150,18 @@ class XPAPIControllerTest extends TestCase
      * @return void
      */
     public function testEndpointTravelOrHPSuccessIfValidQueryGiven()
-    {   
+    {
         $response = $this->json('GET', '/api/xp/travel?base=1003&mod=12');
         $response->assertStatus(200);
     }
 
     /**
      * Test case receiving correct values for spell XP
-     * 
+     *
      * @return void
      */
     public function testEndpointTravelOrHPReturnsCorrectXPValues()
-    {   
+    {
         $response = $this->json('GET', '/api/xp/travel?base=189');
         $content = $response->getOriginalContent();
         $this->assertEquals(189, $content['message']);
@@ -176,7 +176,7 @@ class XPAPIControllerTest extends TestCase
      * @return void
      */
     public function testEndpointCriticalYieldsErrorIfInvalidQueryGiven()
-    {   
+    {
         $response = $this->json('GET', '/api/xp/critical?crit=j');
         $response->assertStatus(422);
         $response = $this->json('GET', '/api/xp/critical?crit=ea');
@@ -195,7 +195,7 @@ class XPAPIControllerTest extends TestCase
      * @return void
      */
     public function testEndpointCriticalSuccessIfValidQueryGiven()
-    {   
+    {
         $response = $this->json('GET', '/api/xp/critical?crit=E&level=2');
         $response->assertStatus(200);
         $response = $this->json('GET', '/api/xp/critical?crit=a&level=5&mod=1.5');
@@ -204,11 +204,11 @@ class XPAPIControllerTest extends TestCase
 
     /**
      * Test case receiving correct values for critical XP
-     * 
+     *
      * @return void
      */
     public function testEndpointCriticalReturnsCorrectXPValues()
-    {   
+    {
         $response = $this->json('GET', '/api/xp/critical?crit=E&level=2');
         $content = $response->getOriginalContent();
         $this->assertEquals(50, $content['message']);
@@ -226,7 +226,7 @@ class XPAPIControllerTest extends TestCase
      * @return void
      */
     public function testEndpointKillSuccessIfValidQueryGiven()
-    {   
+    {
         $response = $this->json('GET', '/api/xp/kill?attack=8&def=2');
         $response->assertStatus(200);
         $response = $this->json('GET', '/api/xp/kill?attack=8&def=2&mod=1.5');
@@ -235,11 +235,11 @@ class XPAPIControllerTest extends TestCase
 
     /**
      * Test case receiving correct values for critical XP
-     * 
+     *
      * @return void
      */
     public function testEndpointKillReturnsCorrectXPValues()
-    {   
+    {
         $response = $this->json('GET', '/api/xp/kill?attack=8&def=2');
         $content = $response->getOriginalContent();
         $this->assertEquals(80, $content['message']);
@@ -252,7 +252,7 @@ class XPAPIControllerTest extends TestCase
     }
 
     public function testEndpointBonusYieldsErrorIfInvalidQueryGiven()
-    {   
+    {
         $response = $this->json('GET', '/api/xp/bonus?crit=jk$level=12');
         $response->assertStatus(422);
         $response = $this->json('GET', '/api/xp/bonus?crit=j$level=-2');
@@ -265,7 +265,7 @@ class XPAPIControllerTest extends TestCase
      * @return void
      */
     public function testEndpointBonusSuccessIfValidQueryGiven()
-    {   
+    {
         $response = $this->json('GET', '/api/xp/bonus?level=8&code=E');
         $response->assertStatus(200);
         $response = $this->json('GET', '/api/xp/bonus?level=25&code=j');
@@ -274,11 +274,11 @@ class XPAPIControllerTest extends TestCase
 
     /**
      * Test case receiving correct values for bonus XP
-     * 
+     *
      * @return void
      */
     public function testEndpointBonusReturnsCorrectXPValues()
-    {   
+    {
         $row_21 = [
             'a' => 0,
             'b' => 0,

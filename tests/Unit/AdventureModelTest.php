@@ -4,14 +4,15 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Database\QueryException;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 use App\Adventure;
 use App\Campaign;
 
 class AdventureModelTest extends TestCase
 {
+    use DatabaseTransactions;
+
     public function testLintFactory()
     {
         $adventure = factory(Adventure::class)->create();

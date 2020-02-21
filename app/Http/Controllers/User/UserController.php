@@ -36,8 +36,8 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|min:4',
             'email' => 'required|email|unique:users,email',
-            'password' => 'same:repeat_password|min:6',
-            'repeat_password' => 'same:password|min:6'
+            'password' => 'same:repeat_password|min:8',
+            'repeat_password' => 'same:password|min:8'
         ]);
 
         $user = new User;
@@ -81,7 +81,7 @@ class UserController extends Controller
         ]);
 
         $user->name = $request->name;
-        
+
         //if the email changes, then check out that new email doesn't exists in DB
         if ($user->email !== $request->email) {
             $request->validate([
@@ -92,8 +92,8 @@ class UserController extends Controller
 
         if (!empty($request->password)) {
             $request->validate([
-                'password' => 'same:repeat_password|min:6',
-                'repeat_password' => 'same:password|min:6'
+                'password' => 'same:repeat_password|min:8',
+                'repeat_password' => 'same:password|min:8'
             ]);
 
             $user->password = Hash::make($request->password);

@@ -17,7 +17,7 @@ class CreateSpellsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->text('name');
-            $table->text('list_type'); // config.rolemaster.list_types
+            $table->text('list_type'); // config.rolemaster.spell_list_types
             $table->text('description');
             $table->text('notes');
         });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\SpellList;
+use App\Http\Requests\SpellListStoreRequest;
 
 class SpellListController extends Controller
 {
@@ -18,24 +19,39 @@ class SpellListController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SpellListStoreRequest $request)
     {
-        //
+        $spellList = new SpellList;
+
+        $validated = $request->validated();
+
+        if (! array_filter(config('rolemaster.spell_list_type'), function ($item) use ($validated) {
+            return $item['code'] === $validated['list_type'];
+        })) {
+            return response()->json(['error' => 'unknown list type'], 422);
+        }
+
+        $spellList->description = $validated['description'];
+        $spellList->notes = $validated['notes'];
+        $spellList->list_type = $validated['list_type'];
+        $spellList->name = $validated['name'];
+
+
+        if ($spellList->save()) {
+            return response()
+                ->json(
+                    ['data' => json_decode($spellList->toJson(JSON_PRETTY_PRINT))],
+                    201,
+                    ['Location' => route("spell-lists.show", ['spell' => $spellList->id])]
+                );
+        }
+
+        return response()->json(['message' => 'Ocurrio un error al crear el feitizo'], 500);
     }
 
     /**
@@ -45,17 +61,6 @@ class SpellListController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
     {
         //
     }

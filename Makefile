@@ -22,7 +22,7 @@ stop:
 
 composer-install:
 	$(info Make: Install composer dependencies.)
-	@docker exec -it openrpg-webapp sh -c "composer install"
+	@docker exec -it openrpg-webapp sh -c "composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist"
 
 django-install:
 	$(info Make: Install django deps)
@@ -31,6 +31,10 @@ django-install:
 refresh-db:
 	$(info Make: Reset & refresh db)
 	@docker exec -it openrpg-webapp sh -c "php artisan db:flush && php artisan migrate && php artisan db:seed"
+
+test:
+	$(info Make: Test)
+	@docker exec -it openrpg-webapp sh -c "./vendor/bin/phpunit"
 
 install:
 	@make -s build

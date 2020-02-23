@@ -11,10 +11,33 @@ class SpellListsControllerTest extends TestCase
     use WithoutMiddleware;
     use DatabaseTransactions;
 
+    public function testEndpointDeleteReturnsNotFoundIfSpellListDoesNotExist()
+    {
+        $response = $this->json('DELETE', 'api/spell-lists/43', []);
+        $response->assertStatus(404);
+    }
+
+    public function testEndpointDeleteReturnsNoContentIfSpellIsSuccessfullyDeleted()
+    {
+        // Create the spell list
+        $payload = [
+            'name' => 'Arcane shields',
+            'description' => 'Arcane shields groups defensive spells against either physhical or magical attacks',
+            'notes' => '- none -',
+            'list_type' => 'open'
+        ];
+        $response = $this->json('POST', '/api/spell-lists/', $payload);
+        $response->assertStatus(201);
+        // $response->dump();
+        $body = $response->decodeResponseJson();
+        $response = $this->json('DELETE', 'api/spell-lists/' . $body['data']['id'], []);
+        $response->assertStatus(204);
+    }
+
     public function testEndpointRequiresTitle()
     {
         $payload = [
-            // 'title' => 'Arcane shields',
+            // 'name' => 'Arcane shields',
             'description' => 'Arcane shields groups defensive spells against either physhical or magical attacks',
             'notes' => '- none -',
             'list_type' => 'open'
@@ -26,7 +49,7 @@ class SpellListsControllerTest extends TestCase
     public function testEndpointRequiresListType()
     {
         $payload = [
-            'title' => 'Arcane shields',
+            'name' => 'Arcane shields',
             'description' => 'Arcane shields groups defensive spells against either physhical or magical attacks',
             'notes' => '- none -',
             // 'list_type' => 'open'
@@ -37,7 +60,7 @@ class SpellListsControllerTest extends TestCase
 
     public function testEndpointFailsIfWrongListType() {
         $payload = [
-            'title' => 'Arcane shields',
+            'name' => 'Arcane shields',
             'description' => 'Arcane shields groups defensive spells against either physhical or magical attacks',
             'notes' => '- none -',
             'list_type' => 'whatever' // check config.rolemaster.spell_list_types
@@ -48,7 +71,7 @@ class SpellListsControllerTest extends TestCase
 
     public function testEndpointNotesCanBeNone() {
         $payload = [
-            'title' => 'Arcane shields',
+            'name' => 'Arcane shields',
             'description' => 'Arcane shields groups defensive spells against either physhical or magical attacks',
             'notes' => null,
             'list_type' => 'whatever' // check config.rolemaster.spell_list_types
@@ -59,16 +82,12 @@ class SpellListsControllerTest extends TestCase
 
     public function testEndpointOK() {
         $payload = [
-            'title' => 'Arcane shields',
+            'name' => 'Arcane shields',
             'description' => 'Arcane shields groups defensive spells against either physhical or magical attacks',
             'notes' => '- none -',
             'list_type' => 'open'
         ];
         $response = $this->json('POST', '/api/spell-lists/', $payload);
-        $response->assertStatus(422);
-    }
-
-    protected function prepareAjaxJsonRequest()
-    {
+        $response->assertStatus(201);
     }
 }

@@ -78,13 +78,24 @@ class SpellListController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $spellList = SpellList::find($id);
+
+        if (!$spellList) {
+            return response()->json(['message' => 'Spell list not found'], 404);
+        }
+
+        try {
+            $spellList->delete();
+            return response()->json(['message' => 'Lista de Feitizo borrado'], 204);
+        }
+        catch (\Exception $e) {
+            return response()->json(['message' => 'Ocurrio un error al eliminar: '.$e->getMessage()], 500);
+        }
     }
 }

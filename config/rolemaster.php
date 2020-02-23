@@ -49,8 +49,8 @@ return [
         'effect_areas' => [
             'SELF' => ['code' => 'SELF', 'display' => 'A uno mismo'],
             'AREA' => ['code' => 'AREA', 'display' => 'A un area determinada (1 hierba, 1 extremidad)'],
-            'TARGET' => ['code' => 'SELF', 'display' => 'A objetivo(s)'],
-            'TARGET_LVL' => ['code' => 'SELF', 'display' => 'A objetivo(s) / nivel'],
+            'TARGET' => ['code' => 'TARGET', 'display' => 'A objetivo(s)'],
+            'TARGET_LVL' => ['code' => 'TARGET_LVL', 'display' => 'A objetivo(s) / nivel'],
             'DIST' => ['code' => 'DIST', 'display' => 'Distancia en metros (radio)'],
             'DIST_LVL' => ['code' => 'DIST_LVL', 'display' => 'Distancia en metros/nivel (radio)'],
             'VARY' => ['code' => 'VARY', 'display' => 'Varia en funcion de las circunstancias'],

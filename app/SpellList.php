@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class SpellList extends Model
 { 
     protected $fillable = [
-        'title',
+        'name',
         'description',
         'notes',
         'list_type',

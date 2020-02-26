@@ -5,16 +5,11 @@ namespace App\Http\Controllers\User;
 use Auth;
 use App\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
+class UserController extends ApiController
 {
-    public function __construct()
-    {
-        $this->middleware('auth:api,jwt');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -47,13 +42,10 @@ class UserController extends Controller
         $user->api_token = Str::random(60);
 
         if ($user->save()) {
-            return [
-                'response' => 'OK',
-                'message' => 'Usuario creado'
-            ];
+            return $this->sendMessage('User was created');
+        } else {
+            return $this->sendMessage('Cannot create user', 500);
         }
-
-        return ['response' => 'KO'];
     }
 
     /**
@@ -100,13 +92,10 @@ class UserController extends Controller
         }
 
         if ($user->save()) {
-            return [
-                'response' => 'OK',
-                'message' => 'Usuario editado: ' . $user->email
-            ];
+            return $this->sendMessage('User was updated');
+        } else {
+            return $this->sendMessage('Cannot update user');
         }
-
-        return ['response' => 'KO'];
     }
 
     /**
@@ -125,19 +114,13 @@ class UserController extends Controller
             $email = $user->email;
             $response = $user->delete();
         } else {
-            return response()->json(
-                ['response' => 'KO', 'message' => 'Cannot delete yourself'],
-                403
-            );
+            return $this->sendMessage('Cannot delete yourself', 403);
         }
 
         if ($response) {
-            return [
-                'response' => 'OK',
-                'message' => 'Usuario borrado: ' . $user->email
-            ];
+            return $this->sendMessage('User was deleted');
+        } else {
+            return $this->sendMessage('Cannot delete user', 500);
         }
-
-        return ['response' => 'KO'];
     }
 }

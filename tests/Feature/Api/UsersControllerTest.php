@@ -24,6 +24,7 @@ class UsersControllerTest extends TestCase
         $this->user1 = factory(User::class)->create([
             'name' => 'John Doe',
             'email' => 'johndoe@example.com',
+            'password' => '00000000',
         ]);
         $this->user2 = factory(User::class)->create([
             'name' => 'Foo Bar',
@@ -58,6 +59,81 @@ class UsersControllerTest extends TestCase
              ->assertStatus(401);
     }
 
+    public function testStoreSucceeds()
+    {
+        $payload = [
+            'name' => 'John Smith',
+            'email' => 'johnsmith@example.com',
+            'password' => '12345678',
+            'repeat_password' => '12345678',
+        ];
+        $this->actingAs($this->user1, 'jwt')
+             ->json('post', '/api/users/', $payload)
+             ->assertStatus(201)
+             ->assertHeader('Location');
+        $this->assertDatabaseHas('users', [
+            'name' => 'John Smith',
+            'email' => 'johnsmith@example.com',
+        ]);
+        $this->json('post', '/api/auth/sessions', [
+            'email' => 'johnsmith@example.com',
+            'password' => '12345678'
+        ])
+             ->assertStatus(200);
+    }
+
+    public function testStoreFailsIfInvalid()
+    {
+        $payload = [
+            'name' => 'John Smith',
+            'email' => 'johnsmith@example.com',
+            'password' => '12345678',
+            'repeat_password' => '87654321',
+        ];
+        $this->actingAs($this->user1, 'jwt')
+             ->json('post', '/api/users/', $payload)
+             ->assertStatus(422);
+
+        $this->json('post', '/api/auth/sessions', [
+            'email' => 'johnsmith@example.com',
+            'password' => '12345678'
+        ])
+             ->assertStatus(401);
+    }
+
+    public function testStoreFailsIfUnauthenticated()
+    {
+        $payload = [
+            'name' => 'John Smith',
+            'email' => 'johnsmith@example.com',
+            'password' => '12345678',
+            'repeat_password' => '12345678',
+        ];
+        $this->json('post', '/api/users/', $payload)
+             ->assertStatus(401);
+    }
+
+    public function testStoreIntegration()
+    {
+        $payload = [
+            'name' => 'John Smith',
+            'email' => 'johnsmith@example.com',
+            'password' => '12345678',
+            'repeat_password' => '12345678',
+        ];
+        $response = $this->actingAs($this->user1, 'jwt')
+                         ->json('post', '/api/users/', $payload);
+        $this->actingAs($this->user1, 'jwt')
+             ->json('get', $response->headers->get('Location'))
+             ->assertStatus(200)
+             ->assertJson([
+                 'data' => [
+                     'name' => 'John Smith',
+                     'email' => 'johnsmith@example.com',
+                 ],
+             ]);
+    }
+
     public function testShowSucceeds()
     {
         $this->actingAs($this->user1, 'jwt')
@@ -84,5 +160,108 @@ class UsersControllerTest extends TestCase
     {
         $this->json('get', "/api/users/{$this->user1->id}")
              ->assertStatus(401);
+    }
+
+    public function testUpdateSucceeds()
+    {
+        $payload = [
+            'name' => 'Jack Daniels',
+            'email' => 'jackdaniels@example.com',
+        ];
+        $this->actingAs($this->user1, 'jwt')
+             ->json('put', "/api/users/{$this->user1->id}", $payload)
+             ->assertStatus(200);
+        $this->assertDatabaseHas('users', [
+            'id' => $this->user1->id,
+            'name' => 'Jack Daniels',
+            'email' => 'jackdaniels@example.com',
+        ]);
+        $this->json('post', '/api/auth/sessions', [
+            'email' => 'jackdaniels@example.com',
+            'password' => '00000000'
+        ])
+             ->assertStatus(200);
+    }
+
+    public function testUpdatePartiallySucceeds()
+    {
+        $payload = [
+            'name' => 'Jack Daniels',
+        ];
+        $this->actingAs($this->user1, 'jwt')
+             ->json('patch', "/api/users/{$this->user1->id}", $payload)
+             ->assertStatus(200);
+        $this->assertDatabaseHas('users', [
+            'id' => $this->user1->id,
+            'name' => 'Jack Daniels',
+            'email' => 'johndoe@example.com',
+        ]);
+        $this->json('post', '/api/auth/sessions', [
+            'email' => 'johndoe@example.com',
+            'password' => '00000000'
+        ])
+             ->assertStatus(200);
+    }
+
+    public function testUpdateWithPasswordSucceeds()
+    {
+        $payload = [
+            'name' => 'Jack Daniels',
+            'email' => 'jackdaniels@example.com',
+            'password' => '20202020',
+            'repeat_password' => '20202020',
+        ];
+        $this->actingAs($this->user1, 'jwt')
+             ->json('put', "/api/users/{$this->user1->id}", $payload)
+             ->assertStatus(200);
+        $this->assertDatabaseHas('users', [
+            'id' => $this->user1->id,
+            'name' => 'Jack Daniels',
+            'email' => 'jackdaniels@example.com',
+        ]);
+        $this->json('post', '/api/auth/sessions', [
+            'email' => 'jackdaniels@example.com',
+            'password' => '20202020'
+        ])
+             ->assertStatus(200);
+    }
+
+    public function testUpdateFailsIfNotValid()
+    {
+        $payload = [
+            'name' => '',
+        ];
+        $this->actingAs($this->user1, 'jwt')
+             ->json('patch', "/api/users/{$this->user1->id}", $payload)
+             ->assertStatus(422);
+    }
+
+    public function testUpdateFailsIfNotAuthenticated()
+    {
+        $payload = [
+            'name' => 'Jack Daniels',
+        ];
+        $this->json('patch', "/api/users/{$this->user1->id}", $payload)
+             ->assertStatus(401);
+    }
+
+    public function testUpdateIntegration()
+    {
+        $payload = [
+            'name' => 'Jack Daniels',
+        ];
+        $this->actingAs($this->user1, 'jwt')
+             ->json('patch', "/api/users/{$this->user1->id}", $payload)
+             ->assertStatus(200);
+        $this->actingAs($this->user1, 'jwt')
+             ->json('get', "/api/users/{$this->user1->id}")
+             ->assertStatus(200)
+             ->assertJson([
+                 'data' => [
+                     'id' => $this->user1->id,
+                     'name' => 'Jack Daniels',
+                     'email' => 'johndoe@example.com',
+                 ],
+             ]);
     }
 }

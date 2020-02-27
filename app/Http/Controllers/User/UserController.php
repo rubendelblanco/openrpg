@@ -3,13 +3,11 @@
 namespace App\Http\Controllers\User;
 
 use App\User;
+use App\Http\Controllers\ApiController;
+use App\Http\Requests\Users\UserStoreRequest;
+use App\Http\Requests\Users\UserUpdateRequest;
 use App\Http\Resources\Users\UserCollection;
 use App\Http\Resources\Users\User as UserResource;
-
-use Auth;
-use Illuminate\Http\Request;
-use App\Http\Controllers\ApiController;
-use Illuminate\Support\Facades\Hash;
 
 class UserController extends ApiController
 {
@@ -29,25 +27,14 @@ class UserController extends ApiController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
-        $request->validate([
-            'name' => 'required|min:4',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'same:repeat_password|min:8',
-            'repeat_password' => 'same:password|min:8'
-        ]);
-
-        $user = new User;
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->api_token = Str::random(60);
-
+        $user = new User($request->validated());
         if ($user->save()) {
-            return $this->sendMessage('User was created');
+            return $this->sendMessage('Created successfully', 201)
+                        ->header('Location', route('users.show', ['user' => $user->id]));
         } else {
-            return $this->sendMessage('Cannot create user', 500);
+            return $this->sendMessage('Cannot persist', 500);
         }
     }
 
@@ -69,35 +56,13 @@ class UserController extends ApiController
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UserUpdateRequest $request, User $user)
     {
-        $request->validate([
-            'name' => 'required|min:4'
-        ]);
-
-        $user->name = $request->name;
-
-        //if the email changes, then check out that new email doesn't exists in DB
-        if ($user->email !== $request->email) {
-            $request->validate([
-                'email' => 'required|email|unique:users,email'
-            ]);
-            $user->email = $request->email;
-        }
-
-        if (!empty($request->password)) {
-            $request->validate([
-                'password' => 'same:repeat_password|min:8',
-                'repeat_password' => 'same:password|min:8'
-            ]);
-
-            $user->password = Hash::make($request->password);
-        }
-
+        $user->fill($request->validated());
         if ($user->save()) {
-            return $this->sendMessage('User was updated');
+            return $this->sendMessage('Updated successfully');
         } else {
-            return $this->sendMessage('Cannot update user');
+            return $this->sendMessage('Cannot persist', 500);
         }
     }
 

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\User;
 
-use Auth;
 use App\User;
+use App\Http\Resources\Users\UserCollection;
+use App\Http\Resources\Users\User as UserResource;
+
+use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -22,7 +25,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::all();
+        return new UserCollection(User::paginate());
     }
 
     /**
@@ -64,7 +67,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return User::findOrFail($user->id);
+        return new UserResource($user);
     }
 
     /**

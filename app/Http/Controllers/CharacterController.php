@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreEditCharacterRequest;
 use Illuminate\Http\Response;
 
 use App\Character;
+use App\Http\Requests\Characters\CharacterStoreRequest;
+use App\Http\Requests\Characters\CharacterUpdateRequest;
 use App\Http\Resources\Characters\CharacterCollection;
 use App\Http\Resources\Characters\Character as CharacterResource;
 
@@ -27,20 +28,18 @@ class CharacterController extends ApiController
      * @param  \App\Http\Requests\StoreEditCharacterRequest
      * @return Response
      */
-    public function store(StoreEditCharacterRequest $request)
+    public function store(CharacterStoreRequest $request)
     {
 
-        $character = new Character;
-
+        $character = new Character($request->validated());
         $character->user_id = $request->user()->id;
-        $character->name = $request->name;
-        $character->experience = $request->experience;
         $character->level = $this->getLevel($request->experience);
 
         if ($character->save()) {
-            return $this->sendMessage('Personaje creado');
+            return $this->sendMessage('Created successfully', 201)
+                        ->header('Location', route('characters.show', ['character' => $character]));
         } else {
-            return $this->sendMessage('Ocurrio un error al guardar', 500);
+            return $this->sendMessage('Cannot persist', 500);
         }
     }
 
@@ -62,28 +61,14 @@ class CharacterController extends ApiController
      * @param  int  $character
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreEditCharacterRequest $request, Character $character)
+    public function update(CharacterUpdateRequest $request, Character $character)
     {
-        $some_possible_attributes = [
-            'user' => 'user_id',
-            'name' => 'name'
-        ];
-
-        foreach ($some_possible_attributes as $key => $value) {
-            if (isset($request->{$key})){
-                $character->{$value} = $request->{$key};
-            }
-        }
-
-        //$character->user_id = $request->user;
-        //$character->name = $request->name;
-        $character->experience = $request->experience;
-        $character->level = $this->getLevel($request->experience);
-
+        $character->fill($request->validated());
+        $character->level = $this->getLevel($character->experience);
         if ($character->save()) {
-            return $this->sendMessage('Cambios guardados');
+            return $this->sendMessage('Updated successfully');
         } else {
-            return $this->sendMessage('Ocurrio un error al guardar', 500);
+            return $this->sendMessage('Cannot persist', 500);
         }
     }
 

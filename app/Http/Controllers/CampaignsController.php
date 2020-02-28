@@ -17,11 +17,14 @@ class CampaignsController extends ApiController
 
     public function store(StoreCampaign $request)
     {
-        $validated = $request->validated();
-        $validated['gamemaster_id'] = $request->user()->id;
-        $campaign = Campaign::create($validated);
-        return $this->sendMessage('Created successfully', 201)
-                    ->header('Location', route('campaigns.show', ['campaign' => $campaign]));
+        $campaign = new Campaign($request->validated());
+        $campaign->gamemaster_id = $request->user()->id;
+        if ($campaign->save()) {
+            return $this->sendMessage('Created successfully', 201)
+                        ->header('Location', route('campaigns.show', ['campaign' => $campaign]));
+        } else {
+            return $this->sendMessage('Cannot persist', 500);
+        }
     }
 
     public function show(Campaign $campaign)
@@ -35,7 +38,7 @@ class CampaignsController extends ApiController
         if ($campaign->update($validated)) {
             return $this->sendMessage('Updated successfully');
         } else {
-            return $this->sendMessage('Cannot persist changes', 422);
+            return $this->sendMessage('Cannot persist', 500);
         }
     }
 
@@ -44,7 +47,7 @@ class CampaignsController extends ApiController
         if ($campaign->delete()) {
             return $this->sendMessage('Destroyed successfully');
         } else {
-            return $this->sendMessage('Cannot destroy this campaign');
+            return $this->sendMessage('Cannot destroy', 500);
         }
     }
 }

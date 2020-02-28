@@ -14,20 +14,14 @@ use Symfony\Component\HttpKernel\Fragment\RoutableFragmentRenderer;
 |
 */
 
-if (! function_exists("pureApiRoute")) {
-    function pureApiRoute($route) {
-        return $route->except(['create', 'edit']);
-    }
-}
-
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-pureApiRoute(Route::resource("spell-lists", 'SpellListController'));
-pureApiRoute(Route::resource("spells", 'SpellController'));
-pureApiRoute(Route::resource('users', 'User\UserController'));
-pureApiRoute(Route::resource('characters', 'CharacterController'));
+Route::apiResource("spell-lists", 'SpellListController');
+Route::apiResource("spells", 'SpellController');
+Route::apiResource('users', 'User\UserController');
+Route::apiResource('characters', 'CharacterController');
 
 Route::prefix('auth')->group(function() {
     Route::resource('sessions', 'Api\Auth\SessionsController')->only(['store']);

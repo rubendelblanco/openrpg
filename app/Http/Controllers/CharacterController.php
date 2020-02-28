@@ -6,14 +6,8 @@ use App\Http\Requests\StoreEditCharacterRequest;
 use Illuminate\Http\Response;
 use App\Character;
 
-class CharacterController extends Controller
+class CharacterController extends ApiController
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth:api,jwt');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -40,12 +34,11 @@ class CharacterController extends Controller
         $character->experience = $request->experience;
         $character->level = $this->getLevel($request->experience);
 
-
         if ($character->save()) {
-            return response()->json(['message' => 'Personaje creado'], 200);
+            return $this->sendMessage('Personaje creado');
+        } else {
+            return $this->sendMessage('Ocurrio un error al guardar', 500);
         }
-
-        return response()->json(['message' => 'Ocurrio un error al guardar'], 500);
     }
 
     /**
@@ -85,10 +78,10 @@ class CharacterController extends Controller
         $character->level = $this->getLevel($request->experience);
 
         if ($character->save()) {
-            return response()->json(['message' => 'Cambios guardados'], 200);
+            return $this->sendMessage('Cambios guardados');
+        } else {
+            return $this->sendMessage('Ocurrio un error al guardar', 500);
         }
-
-        return response()->json(['message' => 'Ocurrio un error al guardar'], 500);
     }
 
     /**
@@ -99,12 +92,10 @@ class CharacterController extends Controller
      */
     public function destroy(Character $character)
     {
-        try {
-            $character->delete();
-            return response()->json(['message' => 'Registro borrado'], 200);
-        }
-        catch (\Exception $e) {
-            return response()->json(['message' => 'Ocurrio un error al eliminar: '.$e->getMessage()], 500);
+        if ($character->delete()) {
+            return $this->sendMessage('Registro borrado');
+        } else {
+            return $this->sendMessage('Registro no pudo ser borrado', 500);
         }
     }
 

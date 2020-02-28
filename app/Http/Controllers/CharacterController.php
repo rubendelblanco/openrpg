@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreEditCharacterRequest;
 use Illuminate\Http\Response;
+
 use App\Character;
+use App\Http\Resources\Characters\CharacterCollection;
+use App\Http\Resources\Characters\Character as CharacterResource;
 
 class CharacterController extends ApiController
 {
@@ -15,7 +18,7 @@ class CharacterController extends ApiController
      */
     public function index()
     {
-        return response()->json(Character::all(), 200);
+        return new CharacterCollection(Character::paginate());
     }
 
     /**
@@ -49,7 +52,7 @@ class CharacterController extends ApiController
      */
     public function show(Character $character)
     {
-        return Character::findOrFail($character->id);
+        return new CharacterResource($character);
     }
 
     /**

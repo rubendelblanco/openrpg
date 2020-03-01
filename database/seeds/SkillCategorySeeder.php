@@ -53,7 +53,7 @@ class SkillCategorySeeder extends Seeder
                 'is_editable' => '0',
             ],
             [
-                'name' => 'Armas·Artillería',
+                'name' => 'Armas·Artilleria',
                 'code' => 'ArmAt',
                 'stats' => 'In/Ag/Ra',
                 'progression' => 'standard',
@@ -173,7 +173,7 @@ class SkillCategorySeeder extends Seeder
                 'is_editable' => '0',
             ],
             [
-                'name' => 'Ciencia/Analítica·Básica',
+                'name' => 'Ciencia/Analitica·Basica',
                 'code' => 'CienB',
                 'stats' => 'Ra/Me/Ra',
                 'progression' => 'standard',
@@ -181,7 +181,7 @@ class SkillCategorySeeder extends Seeder
                 'is_editable' => '0',
             ],
             [
-                'name' => 'Ciencia/Analítica·Especializada',
+                'name' => 'Ciencia/Analitica·Especializada',
                 'code' => 'CienE',
                 'stats' => 'Ra/Me/Ra',
                 'progression' => 'combined',
@@ -189,7 +189,7 @@ class SkillCategorySeeder extends Seeder
                 'is_editable' => '0',
             ],
             [
-                'name' => 'Comunicación',
+                'name' => 'Comunicacion',
                 'code' => 'Comun',
                 'stats' => 'Ra/Me/Em',
                 'progression' => 'standard',
@@ -205,7 +205,7 @@ class SkillCategorySeeder extends Seeder
                 'is_editable' => '0',
             ],
             [
-                'name' => 'Conocimiento·Mágico',
+                'name' => 'Conocimiento·Magico',
                 'code' => 'ConMag',
                 'stats' => 'Me/Ra/Me',
                 'progression' => 'standard',
@@ -221,7 +221,7 @@ class SkillCategorySeeder extends Seeder
                 'is_editable' => '0',
             ],
             [
-                'name' => 'Conocimiento·Técnico',
+                'name' => 'Conocimiento·Tecnico',
                 'code' => 'ConTec',
                 'stats' => 'Me/Ra/Me',
                 'progression' => 'standard',
@@ -245,7 +245,7 @@ class SkillCategorySeeder extends Seeder
                 'is_editable' => '0',
             ],
             [
-                'name' => 'Desarrollo Físico',
+                'name' => 'Desarrollo Fisico',
                 'code' => 'DesFis',
                 'stats' => 'Co/Ad/Co',
                 'progression' => 'special',
@@ -277,7 +277,7 @@ class SkillCategorySeeder extends Seeder
                 'is_editable' => '0',
             ],
             [
-                'name' => 'Listas Básicas de Hechizos',
+                'name' => 'Listas Basicas de Hechizos',
                 'code' => 'ListBas',
                 'stats' => '*',
                 'progression' => 'limited',
@@ -301,7 +301,7 @@ class SkillCategorySeeder extends Seeder
                 'is_editable' => '0',
             ],
             [
-                'name' => 'Listas Básicas de Otras Profesiones',
+                'name' => 'Listas Basicas de Otras Profesiones',
                 'code' => 'ListBasOt',
                 'stats' => '*',
                 'progression' => 'limited',
@@ -325,7 +325,7 @@ class SkillCategorySeeder extends Seeder
                 'is_editable' => '0',
             ],
             [
-                'name' => 'Listas Básicas de Otros Reinos',
+                'name' => 'Listas Basicas de Otros Reinos',
                 'code' => 'ListBasOtR',
                 'stats' => '*',
                 'progression' => 'limited',
@@ -357,7 +357,7 @@ class SkillCategorySeeder extends Seeder
                 'is_editable' => '0',
             ],
             [
-                'name' => 'Listas Básicas de la Tríada',
+                'name' => 'Listas Basicas de la Triada',
                 'code' => 'ListTri',
                 'stats' => '*',
                 'progression' => 'limited',
@@ -365,7 +365,7 @@ class SkillCategorySeeder extends Seeder
                 'is_editable' => '0',
             ],
             [
-                'name' => 'Listas Básicas Elementales Complementarias',
+                'name' => 'Listas Basicas Elementales Complementarias',
                 'code' => 'ListElCom',
                 'stats' => '*',
                 'progression' => 'limited',
@@ -389,7 +389,7 @@ class SkillCategorySeeder extends Seeder
                 'is_editable' => '0',
             ],
             [
-                'name' => 'Manipulación del Poder',
+                'name' => 'Manipulacion del Poder',
                 'code' => 'ManPod',
                 'stats' => 'Em/In/Ad',
                 'progression' => 'combined',
@@ -405,7 +405,7 @@ class SkillCategorySeeder extends Seeder
                 'is_editable' => '0',
             ],
             [
-                'name' => 'Percepción·Búsqueda',
+                'name' => 'Percepcion·Busqueda',
                 'code' => 'PerBus',
                 'stats' => 'In/Ra/Ad',
                 'progression' => 'standard',
@@ -413,7 +413,7 @@ class SkillCategorySeeder extends Seeder
                 'is_editable' => '0',
             ],
             [
-                'name' => 'Percepción·Perspicacia',
+                'name' => 'Percepcion·Perspicacia',
                 'code' => 'PerPers',
                 'stats' => 'In/Ad/In',
                 'progression' => 'limited',
@@ -421,7 +421,7 @@ class SkillCategorySeeder extends Seeder
                 'is_editable' => '0',
             ],
             [
-                'name' => 'Percepción·Sentidos',
+                'name' => 'Percepcion·Sentidos',
                 'code' => 'PerSen',
                 'stats' => 'In/Ad/In',
                 'progression' => 'standard',
@@ -429,7 +429,7 @@ class SkillCategorySeeder extends Seeder
                 'is_editable' => '0',
             ],
             [
-                'name' => 'Percepción de Poder',
+                'name' => 'Percepcion de Poder',
                 'code' => 'PerPod',
                 'stats' => 'Em/In/Pr',
                 'progression' => 'standard',
@@ -445,7 +445,7 @@ class SkillCategorySeeder extends Seeder
                 'is_editable' => '0',
             ],
             [
-                'name' => 'Subterfugio·Mecánica',
+                'name' => 'Subterfugio·Mecanica',
                 'code' => 'SubMec',
                 'stats' => 'In/Ag/Ra',
                 'progression' => 'standard',
@@ -461,7 +461,7 @@ class SkillCategorySeeder extends Seeder
                 'is_editable' => '0',
             ],
             [
-                'name' => 'Técnica/Comercio·General',
+                'name' => 'Tecnica/Comercio·General',
                 'code' => 'TecGen',
                 'stats' => 'Ra/Me/Ad',
                 'progression' => 'standard',
@@ -469,7 +469,7 @@ class SkillCategorySeeder extends Seeder
                 'is_editable' => '0',
             ],
             [
-                'name' => 'Técnica/Comercio·Profesional',
+                'name' => 'Tecnica/Comercio·Profesional',
                 'code' => 'TecPro',
                 'stats' => 'Ra/Me/In',
                 'progression' => 'combined',
@@ -477,7 +477,7 @@ class SkillCategorySeeder extends Seeder
                 'is_editable' => '0',
             ],
             [
-                'name' => 'Técnica/Comercio·Vocacional',
+                'name' => 'Tecnica/Comercio·Vocacional',
                 'code' => 'TecVoc',
                 'stats' => 'Me/In/Ra',
                 'progression' => 'combined',

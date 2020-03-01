@@ -15,7 +15,7 @@ class BonusProfessionSkillCategoriesSeeder extends Seeder
         $json_professions = json_decode(file_get_contents('database/seeds/fixtures/professions.json'));
 
         foreach ($json_professions as $profession => $data) {
-            $profession_id = Str::slug($profession);
+            $profession_id = Str::slug(trim($profession),'_');
             $profession_exists = DB::table('professions')->where('code', '=', $profession_id)->exists();
 
             if ($profession_exists) {
@@ -24,10 +24,10 @@ class BonusProfessionSkillCategoriesSeeder extends Seeder
                     $query = DB::table('skill_categories')->whereRaw('name like \'%' . $dp->skill_cat . '%\'')->first();
                     $bonus = 0;
 
-                    foreach ( $data->profession_bonus as $b) {
-                       if ($b->prof === $query->name) {
-                           $bonus = $b->bonus;
-                       }
+                    foreach ($data->profession_bonus as $b) {
+                        if ($b->prof === $query->name) {
+                            $bonus = $b->bonus;
+                        }
                     }
 
                     $row = [
@@ -38,7 +38,6 @@ class BonusProfessionSkillCategoriesSeeder extends Seeder
                     ];
                     DB::table('bonus_profession_skill_category')->insert($row);
                 }
-
             }
         }
     }

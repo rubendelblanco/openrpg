@@ -23,6 +23,7 @@ Route::apiResource("spells", 'SpellController');
 Route::apiResource('users', 'User\UserController');
 Route::apiResource('characters', 'CharacterController');
 Route::apiResource('campaigns', 'CampaignsController');
+Route::apiResource('campaigns.adventures', 'AdventuresController');
 
 Route::prefix('auth')->group(function() {
     Route::resource('sessions', 'Api\Auth\SessionsController')->only(['store']);

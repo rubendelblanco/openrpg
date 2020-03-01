@@ -82,6 +82,19 @@ class UsersControllerTest extends TestCase
              ->assertStatus(200);
     }
 
+    public function testStoreFailsIfEmailTaken()
+    {
+        $payload = [
+            'name' => 'John Smith',
+            'email' => 'foobar@example.com',
+            'password' => '12345678',
+            'repeat_password' => '12345678',
+        ];
+        $this->actingAs($this->user1, 'jwt')
+             ->json('post', '/api/users/', $payload)
+             ->assertStatus(422);
+    }
+
     public function testStoreFailsIfInvalid()
     {
         $payload = [
@@ -180,6 +193,28 @@ class UsersControllerTest extends TestCase
             'email' => 'jackdaniels@example.com',
             'password' => '00000000'
         ])
+             ->assertStatus(200);
+    }
+
+    public function testUpdateFailsIfEmailTaken()
+    {
+        $payload = [
+            'name' => 'Jack Daniels',
+            'email' => 'foobar@example.com',
+        ];
+        $this->actingAs($this->user1, 'jwt')
+             ->json('put', "/api/users/{$this->user1->id}", $payload)
+             ->assertStatus(422);
+    }
+
+    public function testUpdateSucceedsIfDoesntChangeEmail()
+    {
+        $payload = [
+            'name' => 'Jack Bauer',
+            'email' => 'johndoe@example.com',
+        ];
+        $this->actingAs($this->user1, 'jwt')
+             ->json('put', "/api/users/{$this->user1->id}", $payload)
              ->assertStatus(200);
     }
 

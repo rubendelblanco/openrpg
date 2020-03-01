@@ -23,9 +23,10 @@ class UserUpdateRequest extends FormRequest
      */
     public function rules()
     {
+        $user = $this->route()->parameter('user');
         return [
             'name' => 'sometimes|required|min:4',
-            'email' => 'sometimes|required|email|unique:users,email',
+            'email' => "sometimes|required|email|unique:users,email,{$user->id}",
             'password' => 'sometimes|same:repeat_password|min:8',
             'repeat_password' => 'sometimes|same:password|min:8'
         ];

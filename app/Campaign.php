@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Campaign extends Model
 {
+    protected $fillable = [
+        'title',
+        'description',
+        'gamemaster_id',
+    ];
+
     /**
      * Retrieves the user that acts as a gamemaster for this campaign.
      */

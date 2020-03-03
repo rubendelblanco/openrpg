@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\SpellList;
 use App\Spell;
 use App\Http\Requests\SpellListStoreRequest;
@@ -84,6 +84,11 @@ class SpellListController extends ApiController
 
         // Update spell.list_name to refresh searching text capabilities
         $updated = Spell::where('list_id', $spellList->id)->update(['list_name' => $validated['name']]);
+        if ($updated > 0) {
+            Log::info("$updated spells have been updated", ['id' => $spellList->id, 'action' => 'update']);
+        } else {
+            Log::notice("no related spells have been updated. Empty list?", ['id' => $spellList->id, 'action' => 'update']);
+        }
 
         if ($spellList->save()) {
             return $this->sendMessage(json_decode($spellList->toJson(JSON_PRETTY_PRINT)));

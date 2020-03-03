@@ -108,8 +108,11 @@ class SpellListController extends ApiController
         }
 
         try {
-            $spellList->delete();
-            return $this->sendNoContent('Lista de feitizo borrado');
+            if ($spellList->delete()) {
+                return $this->sendNoContent('Lista de feitizo borrado');
+            } else {
+                return $this->sendInternalError('No se ha borrado nada');
+            }
         } catch (\Exception $e) {
             return $this->sendInternalError('Ocurrio un error al eliminar: ' . $e->getMessage());
         }

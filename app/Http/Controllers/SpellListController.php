@@ -41,10 +41,7 @@ class SpellListController extends ApiController
             return $this->sendValidationError('unknown list type');
         }
 
-        $spellList->description = $validated['description'];
-        $spellList->notes = $validated['notes'];
-        $spellList->list_type = $validated['list_type'];
-        $spellList->name = $validated['name'];
+        $spellList->fill($validated);
 
         if ($spellList->save()) {
             $message = json_decode($spellList->toJson(JSON_PRETTY_PRINT));

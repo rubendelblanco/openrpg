@@ -299,4 +299,35 @@ class UsersControllerTest extends TestCase
                  ],
              ]);
     }
+
+    public function testDestroySucceeds()
+    {
+        $this->actingAs($this->user2, 'jwt')
+             ->json('delete', "/api/users/{$this->user1->id}")
+             ->assertStatus(200);
+        $this->assertDeleted($this->user1);
+    }
+
+    public function testDestroyFailsIfUnauthenticated()
+    {
+        $this->json('delete', "/api/users/{$this->user1->id}")
+             ->assertStatus(401);
+    }
+
+    public function testDestroyFailsIfDestroysItself()
+    {
+        $this->actingAs($this->user1, 'jwt')
+             ->json('delete', "/api/users/{$this->user1->id}")
+             ->assertStatus(403);
+    }
+
+    public function testDestroyIntegration()
+    {
+        $this->actingAs($this->user2, 'jwt')
+             ->json('delete', "/api/users/{$this->user1->id}")
+             ->assertStatus(200);
+        $this->actingAs($this->user2, 'jwt')
+             ->json('get', "/api/users/{$this->user1->id}")
+             ->assertStatus(404);
+    }
 }

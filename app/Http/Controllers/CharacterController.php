@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Response;
-
 use App\Character;
 use App\Http\Requests\Characters\CharacterStoreRequest;
 use App\Http\Requests\Characters\CharacterUpdateRequest;
@@ -81,9 +79,9 @@ class CharacterController extends ApiController
     public function destroy(Character $character)
     {
         if ($character->delete()) {
-            return $this->sendMessage('Registro borrado');
+            return $this->sendMessage('Destroyed successfully');
         } else {
-            return $this->sendMessage('Registro no pudo ser borrado', 500);
+            return $this->sendMessage('Cannot destroy', 500);
         }
     }
 

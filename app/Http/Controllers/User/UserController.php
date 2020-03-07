@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\User;
 
+use Illuminate\Support\Facades\Request;
+
 use App\User;
 use App\Http\Controllers\ApiController;
 use App\Http\Requests\Users\UserStoreRequest;
@@ -74,21 +76,13 @@ class UserController extends ApiController
      */
     public function destroy(User $user)
     {
-        $current_user = auth('api')->user();
-        $response = false;
-        $email = null;
-
-        if ($user->id != $current_user->id) {
-            $email = $user->email;
-            $response = $user->delete();
-        } else {
+        if ($user->id == Request::user()->id) {
             return $this->sendMessage('Cannot delete yourself', 403);
         }
-
-        if ($response) {
-            return $this->sendMessage('User was deleted');
+        if ($user->delete()) {
+            return $this->sendMessage('Destroyed successfully');
         } else {
-            return $this->sendMessage('Cannot delete user', 500);
+            return $this->sendMessage('Cannot destroy', 500);
         }
     }
 }

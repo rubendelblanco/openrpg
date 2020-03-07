@@ -223,4 +223,28 @@ class CharactersControllerTest extends TestCase
                  ],
              ]);
     }
+
+    public function testDestroySucceeds()
+    {
+        $this->actingAs($this->user, 'jwt')
+             ->json('delete', "/api/characters/{$this->character1->id}")
+             ->assertStatus(200);
+        $this->assertDeleted($this->character1);
+    }
+
+    public function testDestroyFailsIfUnauthenticated()
+    {
+        $this->json('delete', "/api/characters/{$this->character1->id}")
+             ->assertStatus(401);
+    }
+
+    public function testDestroyIntegration()
+    {
+        $this->actingAs($this->user, 'jwt')
+             ->json('delete', "/api/characters/{$this->character1->id}")
+             ->assertStatus(200);
+        $this->actingAs($this->user, 'jwt')
+             ->json('get', "/api/characters/{$this->character1->id}")
+             ->assertStatus(404);
+    }
 }

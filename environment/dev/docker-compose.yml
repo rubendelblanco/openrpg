@@ -31,18 +31,6 @@ services:
       - database
     networks:
       - backend-tier
-  django:
-    container_name: openrpg-dj
-    build:
-      context: ../../django/
-    ports:
-      - 8001:8000
-    depends_on:
-      - database
-    networks:
-      - backend-tier
-    env_file: 
-      ../../django/.env
 
 networks:
   backend-tier:

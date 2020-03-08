@@ -13,7 +13,7 @@ build:
 
 start:
 	$(info Make: Start docker containers.)
-	@docker-compose -f ${COMPOSEFILE} up -d 
+	@docker-compose -f ${COMPOSEFILE} up -d
 	@echo 'ok'
 
 stop:
@@ -23,10 +23,6 @@ stop:
 composer-install:
 	$(info Make: Install composer dependencies.)
 	@docker exec -it openrpg-webapp sh -c "composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist"
-
-django-install:
-	$(info Make: Install django deps)
-	@docker-compose -f ${COMPOSEFILE} run django install
 
 refresh-db:
 	$(info Make: Reset & refresh db)
@@ -39,4 +35,3 @@ test:
 install:
 	@make -s build
 	@make -s composer-install
-	@make -s django-install

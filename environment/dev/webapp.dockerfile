@@ -5,10 +5,10 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
     && apt-get -y --no-install-recommends install \
      # onigumura
-     libonig-dev \ 
+     libonig-dev \
      wget \
      # psql
-     libpq-dev \ 
+     libpq-dev \
      libicu-dev \
      libpng-dev \
      libzip-dev \

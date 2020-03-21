@@ -24,6 +24,7 @@ Route::apiResource('users', 'User\UserController');
 Route::apiResource('characters', 'CharacterController');
 Route::apiResource('campaigns', 'CampaignsController');
 Route::apiResource('campaigns.adventures', 'AdventuresController');
+Route::apiResource('spell-lists.spells', 'SpellsNestedController');
 
 Route::prefix('auth')->group(function() {
     Route::resource('sessions', 'Api\Auth\SessionsController')->only(['store']);

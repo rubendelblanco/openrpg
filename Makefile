@@ -1,6 +1,8 @@
 export UID
 export GID
 
+.PHONY = clean test install stop start build composer-install refresh-db
+
 ENVIRON ?= "dev"
 COMPOSEFILE = "./environment/$(ENVIRON)/docker-compose.yml"
 
@@ -26,7 +28,7 @@ composer-install:
 
 refresh-db:
 	$(info Make: Reset & refresh db)
-	@docker exec -it openrpg-webapp sh -c "php artisan db:flush && php artisan migrate && php artisan db:seed"
+	@docker exec -it openrpg-webapp sh -c "php artisan migrate:fresh && php artisan db:seed"
 
 test:
 	$(info Make: Test)

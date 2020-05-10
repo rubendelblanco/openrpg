@@ -9,7 +9,9 @@ class ApiController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api,jwt');
+        if (env('APP_ENV', 'local') != 'local') {
+            $this->middleware('auth:api,jwt');
+        }
     }
 
     public function sendMessage($message, $status = 200, $headers = [])

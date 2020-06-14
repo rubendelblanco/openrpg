@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Campaign;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateCampaign extends FormRequest
 {
@@ -24,7 +25,12 @@ class UpdateCampaign extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'sometimes|required|unique:campaigns|max:100',
+            'title' => [
+                'sometimes',
+                'required',
+                'max:100',
+                Rule::unique('campaigns')->ignoreModel($this->campaign),
+            ],
             'description' => 'nullable',
         ];
     }

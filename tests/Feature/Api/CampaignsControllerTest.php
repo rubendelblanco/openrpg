@@ -142,14 +142,17 @@ class CampaignsControllerTest extends TestCase
 
     public function testUpdateSucceeds()
     {
-        $payload = ['title' => 'Dark days are coming'];
+        $payload = [
+            'title' => 'The Lord of the Rings',
+            'description' => 'The original',
+        ];
         $this->actingAs($this->gamemaster, 'jwt')
              ->json('put', "/api/campaigns/{$this->campaign1->id}", $payload)
              ->assertStatus(200);
         $this->assertDatabaseHas('campaigns', [
             'id' => $this->campaign1->id,
-            'title' => 'Dark days are coming',
-            'description' => 'The original, except we slaughtered the book',
+            'title' => 'The Lord of the Rings',
+            'description' => 'The original',
         ]);
     }
 
